@@ -6,6 +6,7 @@ A single Github repository for all new Instaclustr Technical Blogs Example Code 
 https://www.instaclustr.com/category/technical/
 
 ## Building a Real-Time Tide Data Processing Pipeline: Using Apache Kafka, Kafka Connect, Elasticsearch, and Kibana
+https://github.com/instaclustr/blogs/tree/main/data-processing-pipeline
 
 Configuration examples from the blog series: https://www.instaclustr.com/data-processing-pipeline/
 
