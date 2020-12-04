@@ -1,2 +1,2 @@
 # blogs
-Instaclustr Technical Blogs - Example Code and Configurations
+Instaclustr Technical Blogs - Example Code and/or Configurations
