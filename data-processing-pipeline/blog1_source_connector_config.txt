@@ -1,0 +1,16 @@
+curl https://connectorClusterIP:8083/connectors -k -u name:password -X POST -H 'Content-Type: application/json' -d '
+{
+    "name": "source_rest_tide_1",
+    "config": {
+      "key.converter":"org.apache.kafka.connect.storage.StringConverter",
+      "value.converter":"org.apache.kafka.connect.storage.StringConverter",
+      "connector.class": "com.tm.kafka.connect.rest.RestSourceConnector",
+      "tasks.max": "1",
+      "rest.source.poll.interval.ms": "600000",
+      "rest.source.method": "GET",
+      "rest.source.url": "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?date=latest&station=8454000&product=water_level&datum=msl&units=metric&time_zone=gmt&application=instaclustr&format=json",
+      "rest.source.headers": "Content-Type:application/json,Accept:application/json",
+      "rest.source.topic.selector": "com.tm.kafka.connect.rest.selector.SimpleTopicSelector",
+      "rest.source.destination.topics": "tides-topic"
+    }
+}'
