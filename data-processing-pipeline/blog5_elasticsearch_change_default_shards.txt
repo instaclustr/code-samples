@@ -1,0 +1,10 @@
+curl -u user:pass "http://URL:9201/_template/default" -X POST -H 'Content-Type: application/json' -d'
+{
+ "index_patterns": ["*"],
+ "order": -1,
+ "settings": {
+  "number_of_shards": "3",
+  "number_of_replicas": "2"
+ }
+}
+'
