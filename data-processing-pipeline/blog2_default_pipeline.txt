@@ -1,0 +1,8 @@
+curl -u elasticName:elasticPassword ”elasticURL:9201/tides-index/_settings?pretty"  -X PUT -H 'Content-Type: application/json' -d'
+{
+  "index" : {
+    "default_pipeline" : ”locationPipe"
+  }
+}
+'
+
