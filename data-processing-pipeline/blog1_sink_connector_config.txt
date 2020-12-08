@@ -1,0 +1,15 @@
+curl https://connectorClusterIP:8083/connectors -k -u name:password -X POST -H 'Content-Type: application/json' -d '
+{
+  "name" : "elastic-sink-tides",
+  "config" :
+  {
+    "connector.class" : "com.datamountaineer.streamreactor.connect.elastic7.ElasticSinkConnector",
+    "tasks.max" : 3,
+    "topics" : "tides",
+    "connect.elastic.hosts" : ”ip",
+    "connect.elastic.port" : 9201,
+    "connect.elastic.kcql" : "INSERT INTO tides-index SELECT * FROM tides-topic",
+    "connect.elastic.use.http.username" : ”elasticName",
+    "connect.elastic.use.http.password" : ”elasticPassword"
+  }
+}'
