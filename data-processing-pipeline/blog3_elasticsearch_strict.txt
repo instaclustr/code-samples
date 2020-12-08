@@ -1,0 +1,23 @@
+curl -u elasticName:elasticPassword ”elasticURL:9201/tides-index"  -X PUT -H 'Content-Type: application/json' -d'
+{
+"mappings" : {
+  "dynamic" : "strict",
+  "properties" : {
+     "data" : {
+        "properties" : {
+             "t" : { "type" : "date",
+                     "format" : "yyyy-MM-dd HH:mm"
+             },
+             "v" : { "type" : "double" },
+             "f" : { "type" : "text" },
+             "q" : { "type" : "text" },
+             "s" : { "type" : "text" }
+             }
+       },
+       "metadata" : {
+          "properties" : {
+             "id" : { "type" : "text" },
+             "lat" : { "type" : "text" },
+             "long" : { "type" : "text" },
+            "location" : { "type" : "geo_point" },
+             "name" : { "type" : ”keyword" } }}}}         }'  
