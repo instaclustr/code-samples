@@ -1,0 +1,18 @@
+curl https://ip:port/connectors/camel-elastic-stocks20p/config -k -u user:password -X PUT -H 'Content-Type: application/json' -d '
+{
+    "connector.class" : "org.apache.camel.kafkaconnector.elasticsearchrest.CamelElasticsearchrestSinkConnector",
+    "tasks.max" : 1,
+    "topics" : "tides-topic",
+    "camel.sink.endpoint.operation" : "Index",
+    "camel.sink.endpoint.indexName" : "tides-index",
+    "camel.sink.path.clusterName" : "elasticsearch",
+    "camel.sink.endpoint.hostAddresses" : "ip:port",
+    "camel.component.elasticsearch-rest.user" : "user",
+    "camel.component.elasticsearch-rest.password" : "password",
+    "errors.tolerance": "all",
+    "errors.deadletterqueue.topic.name" : "camel-elastic-deadletter",
+    "errors.log.enable" : "true",
+    "errors.log.include.messages" : "true",
+    "value.converter.schemas.enable": "false",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter"
+}'
