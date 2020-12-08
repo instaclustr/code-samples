@@ -1,0 +1,13 @@
+curl -u elasticName:elasticPassword ”elasticURL:9201/ _ingest/pipeline/locationPipe"  -X PUT -H 'Content-Type: application/json' -d'
+{
+  "description" : ”construct geo_point String field",
+  "processors" : [
+    {
+      "set" : {
+        "field": "metadata.location",
+        "value": "{{metadata.lat}},{{metadata.lon}}"
+      }
+    }
+  ]
+}
+'
