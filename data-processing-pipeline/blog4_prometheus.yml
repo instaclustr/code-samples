@@ -1,0 +1,47 @@
+scrape_configs:
+  - job_name: 'instaclustr_kafka_connect'
+    scheme: https
+    basic_auth:
+      username: 'user'
+      password: 'monitoring API Key'
+    params:
+      format: ['prometheus']
+      metrics: ['kct::datagen-stocktrades::0::sourceRecordWriteRate,kct::datagen-stocktrades::1::sourceRecordWriteRate,kct::camel-elastic-stocks20p::0::sinkRecordSendRate,kct::camel-elastic-stocks20p::1::sinkRecordSendRate,kct::camel-elastic-stocks20p::2::sinkRecordSendRate,kct::camel-elastic-stocks20p::3::sinkRecordSendRate,kct::camel-elastic-stocks20p::4::sinkRecordSendRate,kcc::datagen-stocktrades::connectorRunningTaskCount,kcc::camel-elastic-stocks20p::connectorRunningTaskCount']
+    metrics_path: /monitoring/v1/clusters/<kafka Connect Cluster ID>
+    static_configs:
+    - targets: ['api.instaclustr.com']
+  - job_name: 'instaclustr_elastic'
+    scheme: https
+    basic_auth:
+      username: 'user'
+      password: 'monitoring API Key'
+    params:
+      format: ['prometheus']
+      metrics: ['e::indextotalpersec']
+    metrics_path: /monitoring/v1/clusters/<elasticsearch Cluster ID>
+    static_configs:
+    - targets: ['api.instaclustr.com']
+  - job_name: 'instaclustr_kafka'
+    scheme: https
+    basic_auth:
+      username: 'user'
+      password: 'monitoring API Key'
+    params:
+      format: ['prometheus']
+      metrics: ['kt::stock-trades-20P::messagesInPerTopic::one_minute_rate']
+    metrics_path: /monitoring/v1/clusters/<Kafka Cluster ID>
+    static_configs:
+    - targets: ['api.instaclustr.com']
+- job_name: 'instaclustr_kafka_consumer_group'
+    scheme: https
+    basic_auth:
+      username: 'user'
+      password: 'monitoring API Key'
+    params:
+      format: ['prometheus']
+      metrics: ['consumerGroupLag']
+      consumerGroup : ['connect-camel-elastic-stocks20p']
+      topic : ['stock-trades-20P']
+    metrics_path: /monitoring/v1/clusters/<Kafka Cluster ID>/kafka/consumerGroupMetrics
+    static_configs:
+    - targets: ['api.instaclustr.com']
