@@ -12,3 +12,8 @@ Configuration examples from the blog series: https://www.instaclustr.com/data-pr
 
 This series looks at how to build a real-time Tide Data Processing Pipeline using multiple Instaclustr Managed Services/clusters.
 Along the way we also add Apache Camel Kafka Connector, Prometheus and Grafana to the mix. There's no code (that's sort of the point with Kafka Connectors), but lots of examples of Kafka connector configurations, and Prometheus configuration as well.
+
+## Apache ZooKeeper meets the Dining Philosophers
+https://github.com/instaclustr/blogs/tree/main/zookeeper-meets-Dining-Philosophers
+
+Demo code for the ZooKeeper Blog.
