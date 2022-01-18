@@ -19,7 +19,7 @@ https://github.com/instaclustr/blogs/tree/main/zookeeper-meets-Dining-Philosophe
 Demo code for the ZooKeeper Blog.
 
 ## Spinning Apache Kafka Microservices Wwith Cadence Workflows
-https://github.com/instaclustr/blogs/tree/main/zookeeper-meets-Dining-Philosophers
+https://github.com/instaclustr/blogs/tree/main/CadenceKafka
 
 Demo code for the Cadence + Kafka integration blog.
 
