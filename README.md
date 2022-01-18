@@ -17,3 +17,9 @@ Along the way we also add Apache Camel Kafka Connector, Prometheus and Grafana t
 https://github.com/instaclustr/blogs/tree/main/zookeeper-meets-Dining-Philosophers
 
 Demo code for the ZooKeeper Blog.
+
+## Spinning Apache Kafka Microservices Wwith Cadence Workflows
+https://github.com/instaclustr/blogs/tree/main/zookeeper-meets-Dining-Philosophers
+
+Demo code for the Cadence + Kafka integration blog.
+
