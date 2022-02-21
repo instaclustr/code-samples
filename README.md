@@ -23,3 +23,8 @@ https://github.com/instaclustr/blogs/tree/main/CadenceKafka
 
 Demo code for the Cadence + Kafka integration blog.
 
+## Spinning Your Drones with Cadence and Apache Kafka
+https://github.com/instaclustr/blogs/tree/main/CadenceKafkaDroneDeliveryDemo
+
+Drone Delivery Demo Application for Blog series, uses Cadence and Kafka
+
