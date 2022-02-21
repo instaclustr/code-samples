@@ -1,9 +1,8 @@
-package DroneMaths;
+package DroneDeliveryDemo;
 
 public class CommonProps {
 
 	public CommonProps() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	// Cadence server IP and domain

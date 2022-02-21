@@ -1,4 +1,4 @@
-package DroneMaths;
+package DroneDeliveryDemo;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -19,27 +19,21 @@ import com.uber.cadence.serviceclient.WorkflowServiceTChannel;
 
 import DroneMaths.DroneDeliveryApp2.OrderWorkflow;
 
-// This is a Kafka consumer than reads from new orders Kafka topic and create an Order WF simple!
+// This is a Kafka consumer than reads from new orders Kafka topic and starts an Order WF simple!
 // Runs forever
 
 public class CreateOrderWFConsumer {
 
 	public CreateOrderWFConsumer() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	static Properties kafkaProps;
-	//static final String orderjobsTopicName = "orderjobs";
-	//static final String newordersTopicName = "neworders";  // Kafka topic to request new order WF creation
 	static final String orderjobsTopicName = CommonProps.orderjobsTopicName;
 	static final String newordersTopicName = CommonProps.newordersTopicName;
+	static final String host = CommonProps.host;
+	static final String domainName = CommonProps.domainName;
 
 public static void main(String[] args) {
-    	
-    	String host  = "34.195.123.250";
-    	
-    	String domainName = "droneDemo";
-    	
         
         WorkflowClient workflowClient =
                 WorkflowClient.newInstance(
@@ -49,13 +43,13 @@ public static void main(String[] args) {
         
         Properties kafkaProps = new Properties();
 
-        try (FileReader fileReader = new FileReader("consumer2.properties")) {
+        try (FileReader fileReader = new FileReader("consumer.properties")) {
             kafkaProps.load(fileReader);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // must be in a different group to other consumers
+        // must be in a unique group
         kafkaProps.put("group.id", "newOrder");
 
         try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(kafkaProps)) {
@@ -72,16 +66,11 @@ public static void main(String[] args) {
                     String orderName = record.value().toString();
                     
                     OrderWorkflow orderWorkflow = workflowClient.newWorkflowStub(OrderWorkflow.class);
-                    //orderName = name + "_order_" + i;
                     System.out.println("Starting new Order workfow!");
                 	WorkflowExecution workflowExecution = WorkflowClient.start(orderWorkflow::startWorkflow, orderName);
                     System.out.println("Started new Order workfow! Workflow ID = " + workflowExecution.getWorkflowId());
-
-                    
                     }
                 }
             }
         }
-
-
 }
