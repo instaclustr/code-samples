@@ -27,5 +27,6 @@ Demo code for the Cadence + Kafka integration blog.
 https://github.com/instaclustr/blogs/tree/main/CadenceKafkaDroneDeliveryDemo
 
 Drone Delivery Demo Application for Blog series, uses Cadence and Kafka.
+
 Part 1 of the Drone Delivery blog series: Spinning Your Drones with Cadence – Introduction - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-introduction/
 
