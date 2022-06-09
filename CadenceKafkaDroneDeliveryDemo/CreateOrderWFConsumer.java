@@ -43,7 +43,7 @@ public static void main(String[] args) {
         
         Properties kafkaProps = new Properties();
 
-        try (FileReader fileReader = new FileReader("consumer.properties")) {
+        try (FileReader fileReader = new FileReader("consumer2.properties")) {
             kafkaProps.load(fileReader);
         } catch (IOException e) {
             e.printStackTrace();

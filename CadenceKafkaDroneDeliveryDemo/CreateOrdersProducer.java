@@ -27,26 +27,32 @@ public class CreateOrdersProducer {
 		
 		kafkaProps = new Properties();
 
-        try (FileReader fileReader = new FileReader("producer.properties")) {
+        try (FileReader fileReader = new FileReader("producer2.properties")) {
             kafkaProps.load(fileReader);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-        int numOrders = 40;
+        int numOrders = 20;
+        KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProps);
         
         for (int i=0; i < numOrders; i++) {
         	
-        	String order = "order_" + i;
+        	// String order = "order_" + i;
+        	String order = "" + i;
         	ProducerRecord<String, String> producerRecord = new ProducerRecord<>(newordersTopicName, "", order);
 
-        	try (KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProps)) {
+        	try  {
         		producer.send(producerRecord);
         		System.out.println("sent order " + order + " to topic " + newordersTopicName);
-        		producer.flush();
-         } catch (Exception e) {
+        		// producer.flush();
+        	} catch (Exception e) {
              e.printStackTrace();
-         }
+        	}
+        
+        	
         }
+        producer.flush();
+        producer.close();
 	}
 }
