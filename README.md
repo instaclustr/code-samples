@@ -30,7 +30,7 @@ Drone Delivery Demo Application for Blog series, uses Cadence and Kafka.
 
 Part 1 of the Drone Delivery blog series: Spinning Your Drones with Cadence – Introduction - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-introduction/
 
-Part 2:Spinning Apache Kafka® Microservices With Cadence Workflows - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-architecture-order-and-delivery-workflows/
+Part 2: Spinning Apache Kafka® Microservices With Cadence Workflows - https://www.instaclustr.com/blog/spinning-apache-kafka-microservices-with-cadence-workflows/
 
 Part 3: Spinning Your Drones With Cadence and Apache Kafka – Integration Patterns and New Cadence Features - https://www.instaclustr.com/blog/spinning-apache-kafka-microservices-with-cadence-workflows/
 
