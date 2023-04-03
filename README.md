@@ -34,5 +34,8 @@ Part 2: Spinning Your Drones With Cadence and Apache Kafka® – Architecture, O
 
 Part 3: Spinning Your Drones With Cadence and Apache Kafka – Integration Patterns and New Cadence Features - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-integration-patterns-and-new-cadence-features/
 
-Part 4: Coming soon with the new Kafka integration pattern and some scalability results!
+Part 4: Spinning Your Drones With Cadence and Apache Kafka® – Architecture, Order and Delivery Workflows - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-architecture-order-and-delivery-workflows/
 
+Part 5: Spinning Your Drones With Cadence and Apache Kafka – Integration Patterns and New Cadence Features - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-integration-patterns-and-new-cadence-features/
+
+Part 6: Spinning Your Drones With Cadence and Apache Kafka®: How Many Drones Can We Fly? - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-how-many-drones-can-we-fly/
