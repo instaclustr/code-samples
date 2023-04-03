@@ -32,7 +32,7 @@ Part 1 of the Drone Delivery blog series: Spinning Your Drones with Cadence – 
 
 Part 2: Spinning Apache Kafka® Microservices With Cadence Workflows - https://www.instaclustr.com/blog/spinning-apache-kafka-microservices-with-cadence-workflows/
 
-Part 3: Spinning Your Drones With Cadence and Apache Kafka – Integration Patterns and New Cadence Features - https://www.instaclustr.com/blog/spinning-apache-kafka-microservices-with-cadence-workflows/
+Part 3: Spinning Your Drones With Cadence and Apache Kafka – Integration Patterns and New Cadence Features - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-integration-patterns-and-new-cadence-features/
 
 Part 4: Spinning Your Drones With Cadence and Apache Kafka® – Architecture, Order and Delivery Workflows - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-architecture-order-and-delivery-workflows/
 
