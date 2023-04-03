@@ -39,3 +39,8 @@ Part 4: Spinning Your Drones With Cadence and Apache Kafka® – Architecture, O
 Part 5: Spinning Your Drones With Cadence and Apache Kafka – Integration Patterns and New Cadence Features - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-integration-patterns-and-new-cadence-features/
 
 Part 6: Spinning Your Drones With Cadence and Apache Kafka®: How Many Drones Can We Fly? - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-how-many-drones-can-we-fly/
+
+## Machine Learning over Streaming Kafka Data
+https://github.com/instaclustr/blogs/tree/main/KafkaML 
+
+A new series exploring incremental Machine Learning (ML) over streaming Kafka Data. The data is spatiotemporal data produced by the Drone Delivery Application.
