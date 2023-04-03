@@ -28,8 +28,7 @@ https://github.com/instaclustr/blogs/tree/main/CadenceKafkaDroneDeliveryDemo
 
 Drone Delivery Demo Application for Blog series, uses Cadence and Kafka.
 
-Part 1 Spinning Your Workflows With Cadence!
-- https://www.instaclustr.com/blog/spinning-your-workflows-with-cadence/ 
+Part 1 Spinning Your Workflows With Cadence! - https://www.instaclustr.com/blog/spinning-your-workflows-with-cadence/ 
 
 Part 2: Spinning Apache Kafka® Microservices With Cadence Workflows - https://www.instaclustr.com/blog/spinning-apache-kafka-microservices-with-cadence-workflows/
 
