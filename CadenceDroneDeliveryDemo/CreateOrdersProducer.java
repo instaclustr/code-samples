@@ -1,4 +1,4 @@
-package DroneDeliveryDemo;
+package DroneMaths;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,16 +10,17 @@ import org.apache.kafka.common.header.internals.RecordHeader;
 
 import com.uber.cadence.activity.Activity;
 
-
-// initiates the drone demo by requesting some new orders to be delivered
-// Pure Kafka, just sends a new request to the new orders topic
-public class CreateOrdersProducer {
+public class createOrdersProducer {
 	
 	static Properties kafkaProps;
+	// static final String orderjobsTopicName = "orderjobs";
+	//static final String newordersTopicName = "neworders";  // Kafka topic to request new order WF creation
+
 	static final String orderjobsTopicName = CommonProps.orderjobsTopicName;
 	static final String newordersTopicName = CommonProps.newordersTopicName;
 
-	public CreateOrdersProducer() {
+	public createOrdersProducer() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {
@@ -27,26 +28,31 @@ public class CreateOrdersProducer {
 		
 		kafkaProps = new Properties();
 
-        try (FileReader fileReader = new FileReader("producer.properties")) {
+        try (FileReader fileReader = new FileReader("producer2.properties")) {
             kafkaProps.load(fileReader);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-        int numOrders = 40;
+        int numOrders = 1;
         
         for (int i=0; i < numOrders; i++) {
         	
         	String order = "order_" + i;
-        	ProducerRecord<String, String> producerRecord = new ProducerRecord<>(newordersTopicName, "", order);
+        
+        	// TODO Check order value - seems to be a GUID!???
+        	
+		 ProducerRecord<String, String> producerRecord = new ProducerRecord<>(newordersTopicName, "", order);
 
-        	try (KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProps)) {
-        		producer.send(producerRecord);
-        		System.out.println("sent order " + order + " to topic " + newordersTopicName);
-        		producer.flush();
+         try (KafkaProducer<String, String> producer = new KafkaProducer<>(kafkaProps)) {
+             producer.send(producerRecord);
+             System.out.println("sent order " + order + " to topic " + newordersTopicName);
+             producer.flush();
          } catch (Exception e) {
              e.printStackTrace();
          }
         }
+         
 	}
+
 }
