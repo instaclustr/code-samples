@@ -1,46 +1,15 @@
-# blogs
-# Instaclustr Technical Blogs - Example Code and/or Configurations
+# Instaclustr by NetApp Code Samples
 
-A single Github repository for all new Instaclustr Technical Blogs Example Code and/or configurations
+This repository has been created to share code samples from our blog posts, YouTube videos, conference presentations, and more. While this code is not supported and you should make sure to read and understand the code before executing in your own environments, it is an easy way for users to try new demos and learn more about the technologies.
 
-https://www.instaclustr.com/category/technical/
+## Features
 
-## Building a Real-Time Tide Data Processing Pipeline: Using Apache Kafka, Kafka Connect, Elasticsearch, and Kibana
-https://github.com/instaclustr/blogs/tree/main/data-processing-pipeline
+Each technology will have it's own folder hierarchy. There will be multi-tech demos that span multiple technologies but will be committed to the folder of the primary technology, with an updated Readme defining the additional technologies used.
 
-Configuration examples from the blog series: https://www.instaclustr.com/data-processing-pipeline/
+## Getting Started
 
-This series looks at how to build a real-time Tide Data Processing Pipeline using multiple Instaclustr Managed Services/clusters.
-Along the way we also add Apache Camel Kafka Connector, Prometheus and Grafana to the mix. There's no code (that's sort of the point with Kafka Connectors), but lots of examples of Kafka connector configurations, and Prometheus configuration as well.
+Each code sample will have a getting-started section and an examples section to help you use the code.
 
-## Apache ZooKeeper meets the Dining Philosophers
-https://github.com/instaclustr/blogs/tree/main/zookeeper-meets-Dining-Philosophers
+## Conclusion
 
-Demo code for the ZooKeeper Blog: https://www.instaclustr.com/blog/apache-zookeeper-meets-the-dining-philosophers/
-
-## Spinning Apache Kafka Microservices with Cadence Workflows
-https://github.com/instaclustr/blogs/tree/main/CadenceKafka
-
-Demo code for the Cadence + Kafka integration blog.
-
-## Spinning Your Drones with Cadence and Apache Kafka
-https://github.com/instaclustr/blogs/tree/main/CadenceKafkaDroneDeliveryDemo
-
-Drone Delivery Demo Application for Blog series, uses Cadence and Kafka.
-
-Part 1 Spinning Your Workflows With Cadence! - https://www.instaclustr.com/blog/spinning-your-workflows-with-cadence/ 
-
-Part 2: Spinning Apache Kafka® Microservices With Cadence Workflows - https://www.instaclustr.com/blog/spinning-apache-kafka-microservices-with-cadence-workflows/
-
-Part 3:Spinning Your Drones with Cadence – Introduction - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-introduction/
-
-Part 4: Spinning Your Drones With Cadence and Apache Kafka® – Architecture, Order and Delivery Workflows - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-architecture-order-and-delivery-workflows/
-
-Part 5: Spinning Your Drones With Cadence and Apache Kafka – Integration Patterns and New Cadence Features - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-integration-patterns-and-new-cadence-features/
-
-Part 6: Spinning Your Drones With Cadence and Apache Kafka®: How Many Drones Can We Fly? - https://www.instaclustr.com/blog/spinning-your-drones-with-cadence-and-apache-kafka-how-many-drones-can-we-fly/
-
-## Machine Learning over Streaming Kafka Data
-https://github.com/instaclustr/blogs/tree/main/KafkaML 
-
-A new series exploring incremental Machine Learning (ML) over streaming Kafka Data. The data is spatiotemporal data produced by the Drone Delivery Application.
+We hope you enjoy these samples!
