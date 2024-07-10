@@ -33,7 +33,7 @@ public class ZookeeperMeetsDiningPhilosophers {
 	
 	static Philosopher[] philosophers = new Philosopher[numPhilosophers];
 	
-	// Array of semaphores, each fork has it's own, to use a fork you have to get a lock
+	// Array of semaphores, each fork has its own, to use a fork you have to get a lock
 	// Forks are numbered from 1 to numForks, so element 0 isn't used.
 	static InterProcessSemaphoreMutex[] forks = new InterProcessSemaphoreMutex[numForks+1];
 	
