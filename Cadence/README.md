@@ -4,7 +4,7 @@ The following folders contain samples related to Cadence on Instaclustr by NetAp
 
 ## Getting Started
 
-Each sample has it's own readme that describe the sample, any prerequisites, examples, and anything else relevant to the code.
+Each sample has its own readme that describe the sample, any prerequisites, examples, and anything else relevant to the code.
 
 
 ## Additional Materials
