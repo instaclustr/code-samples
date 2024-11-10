@@ -2,8 +2,9 @@
 
 ## Description
 
-This series looks at how to build a real-time Tide Data Processing Pipeline using multiple Instaclustr Managed Services/clusters.
+This series looks at how to build a "zero-code" real-time Tide Data Processing Pipeline using multiple Instaclustr Managed Services/clusters.
 Along the way we also add Apache Camel Kafka Connector, Prometheus and Grafana to the mix. There's no code (that's sort of the point with Kafka Connectors), but lots of examples of Kafka connector configurations, and Prometheus configuration as well.
+Note that the full explanation of what connectors I used, how to deploy, configure, run and monitor them etc is in the blogs!
 
 ## [Blog 1](https://www.instaclustr.com/data-processing-pipeline/)
 
@@ -15,21 +16,35 @@ Along the way we also add Apache Camel Kafka Connector, Prometheus and Grafana t
 
 ## [Blog 5](https://www.instaclustr.com/blog/scaling-kafka-connect-streaming-data-processing-pipeline-series-part-5/)
 
+## [Blog 6](https://www.instaclustr.com/blog/kafka-postgres-connector-pipeline-series-part-6/)
+
+## [Blog 7](https://www.instaclustr.com/blog/apache-superset-pipeline-series-part-7/)
+
+## [Blog 8](https://www.instaclustr.com/blog/kafka-connect-elasticsearch-pipeline-series-part-8/)
+
+## [Blog 9](https://www.instaclustr.com/blog/postgresql-pipeline-series-part-9/)
+
+## [Blog 10](https://www.instaclustr.com/blog/kafka-connect-pipelines-conclusion-pipeline-series-part-10/)
+
 ## Getting Started
 
-These are configuration examples from the [blog series](https://www.instaclustr.com/blog/data-processing-pipeline/)
+These are configuration examples from the 2021 [blog series](https://www.instaclustr.com/blog/data-processing-pipeline/)
+
 
 ### Prerequisites
 
-Coming Shortly!
+They were designed to work with the Instaclustr managed services for Apache Kafka, Apache Kafka Connect, Elasticsearch, PostgreSQL and other open source software including Apache Camel Kafka Connectors and Apache Superset.
+They worked correctly with the versions supported at the time (2021). Note that we no longer provide Elasticsearch, which has been replaced by OpenSearch. We now provide a [managed Kafka Sink Connector for OpenSearch](https://www.instaclustr.com/support/documentation/kafka-connect/bundled-kafka-connect-plugins/opensearch-sink-connector/).
+
+The Apache Camel Kafka Connectors are documented and available [here](https://camel.apache.org/camel-kafka-connector/next/user-guide/index.html).
 
 ### Configuration
 
-Coming Shortly!
+These are the example configuration files, data, etc.
 
 ## Deployment
 
-Coming Shortly!
+The latest [support documentation for Instaclustr Kafka Connect is here](https://www.instaclustr.com/support/documentation/kafka-connect/). 
 
 ## Authors
 
