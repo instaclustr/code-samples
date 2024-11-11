@@ -38,9 +38,17 @@ They worked correctly with the versions supported at the time (2021). Note that 
 
 The Apache Camel Kafka Connectors are documented and available [here](https://camel.apache.org/camel-kafka-connector/next/user-guide/index.html).
 
+I also used this open source [Kafka REST source connector](https://github.com/llofberg/kafka-connect-rest).
+
+To test the error handling, I used this alternative [Kafka Elasticsearch sink connector](https://github.com/confluentinc/kafka-connect-elasticsearch). 
+
+And for testing (e.g. synthetic load generation) I used this [Kafaka connect datagen source connector](https://github.com/confluentinc/kafka-connect-datagen). 
+
+For Blog 4, I used Prometheus and Grafana to monitor the connector metrics, see [our support documentation for the current way of monitoring with Prometheus](https://www.instaclustr.com/support/api-integrations/integrations/instaclustr-monitoring-with-prometheus/).
+
 ### Configuration
 
-These are the example configuration files, data, etc.
+These are the example configuration files, data, etc.  See the specific blogs for further details for the different connector types.
 
 ## Deployment
 
