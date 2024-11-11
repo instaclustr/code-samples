@@ -46,6 +46,10 @@ And for testing (e.g. synthetic load generation) I used this [Kafaka connect dat
 
 For Blog 4, I used Prometheus and Grafana to monitor the connector metrics, see [our support documentation for the current way of monitoring with Prometheus](https://www.instaclustr.com/support/api-integrations/integrations/instaclustr-monitoring-with-prometheus/).
 
+Blog 6 uses a custom Kafka PostgreSQL sink connector that I wrote, [here](https://github.com/instaclustr/kafka-connect-jdbc-sink). 
+
+Blog 7 uses Apache Superset for data visualisation. It can be obtained [here](https://superset.apache.org/docs/installation/docker-compose/).
+
 ### Configuration
 
 These are the example configuration files, data, etc.  See the specific blogs for further details for the different connector types.
