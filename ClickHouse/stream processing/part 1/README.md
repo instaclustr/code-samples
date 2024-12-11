@@ -6,5 +6,7 @@ I will try and implement the stream processing logic from my earlier blog “An 
 
 This first part focusses on the SQL logic (joins and time windows) using static data - check out the blog HERE TODO
 
+The SQL examples are designed to work with open source ClickHouse or NetApp Instaclustr managed ClickHouse - instructions for creating a cluster and using it can be found here: https://www.instaclustr.com/support/documentation/clickhouse/ 
+
 In the next part I will try and integrate it with Kafka topics and get the complete pipeline working in real-time.
 
