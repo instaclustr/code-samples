@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apache Kafka Tiered Storage IO and Network Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h2>Apache Kafka Tiered Storage IO and Network Calculator</h2>
+    <h3>Inputs</h3>
+    <label for="producerWorkload">Producer workload (MBytes/s):</label>
+    <input type="number" id="producerWorkload" name="producerWorkload" value="1000" oninput="calculateIO()"><br><br>
+    <label for="realTimeConsumers">Real-time consumers (MBytes/s):</label>
+    <input type="number" id="realTimeConsumers" name="realTimeConsumers" value="1000" oninput="calculateIO()"><br><br>
+    <label for="delayedConsumers">Delayed consumers (MBytes/s):</label>
+    <input type="number" id="delayedConsumers" name="delayedConsumers" value="1000" oninput="calculateIO()"><br><br>
+    <label for="remoteConsumers">Remote consumers (MBytes/s):</label>
+    <input type="number" id="remoteConsumers" name="remoteConsumers" value="1000" oninput="calculateIO()"><br><br>
+
+    <h3>Options</h3>
+    <input type="checkbox" id="ssdEbs" name="ssdEbs" checked onchange="calculateIO()">
+    <label for="ssdEbs">SSD or EBS storage</label><br>
+    <input type="checkbox" id="tieredStorage" name="tieredStorage" checked onchange="calculateIO()">
+    <label for="tieredStorage">Tiered storage enabled</label><br>
+    <label for="replicationFactor">Replication factor:</label>
+    <select id="replicationFactor" name="replicationFactor" onchange="calculateIO()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+    </select><br><br>
+
+    <h3>Outputs</h3>
+    <p id="localIO">Local IO: 0 MBytes/s</p>
+    <p id="networkIO">Network IO: 0 MBytes/s</p>
+    <p id="fanOutRatio">Fan-out ratio: 0</p>
+
+    <canvas id="inputChart"></canvas>
+    <canvas id="outputChart"></canvas>
+
+    <script>
+        var inputChart, outputChart;
+
+        function calculateIO() {
+            var producerWorkload = parseFloat(document.getElementById('producerWorkload').value) || 0;
+            var realTimeConsumers = parseFloat(document.getElementById('realTimeConsumers').value) || 0;
+            var delayedConsumers = parseFloat(document.getElementById('delayedConsumers').value) || 0;
+            var remoteConsumers = parseFloat(document.getElementById('remoteConsumers').value) || 0;
+            var ssdEbs = document.getElementById('ssdEbs').checked;
+            var tieredStorage = document.getElementById('tieredStorage').checked;
+            var replicationFactor = parseInt(document.getElementById('replicationFactor').value) || 1;
+
+            var localIO = 0;
+            if (ssdEbs) {
+                localIO = producerWorkload + producerWorkload * (replicationFactor - 1);
+                if (tieredStorage) {
+                    localIO += producerWorkload;
+                }
+                localIO += delayedConsumers;
+            }
+
+            var networkIO = producerWorkload;
+            if (!ssdEbs) {
+                networkIO += producerWorkload;
+            }
+            networkIO += producerWorkload * (replicationFactor - 1);
+            if (!ssdEbs) {
+                networkIO += producerWorkload * (replicationFactor - 1);
+            }
+            if (tieredStorage) {
+                networkIO += producerWorkload;
+                if (!ssdEbs) {
+                    networkIO += producerWorkload;
+                }
+            }
+            networkIO += realTimeConsumers;
+            networkIO += delayedConsumers;
+            if (!ssdEbs) {
+                networkIO += delayedConsumers;
+            }
+            networkIO += remoteConsumers * 2;
+
+            var fanOutRatio = (realTimeConsumers + delayedConsumers + remoteConsumers) / producerWorkload;
+
+            document.getElementById('localIO').innerText = 'Local IO: ' + localIO + ' MBytes/s';
+            document.getElementById('networkIO').innerText = 'Network IO: ' + networkIO + ' MBytes/s';
+            document.getElementById('fanOutRatio').innerText = 'Fan-out ratio: ' + fanOutRatio.toFixed(2);
+
+            updateCharts(producerWorkload, realTimeConsumers, delayedConsumers, remoteConsumers, localIO, networkIO);
+        }
+
+        function updateCharts(producerWorkload, realTimeConsumers, delayedConsumers, remoteConsumers, localIO, networkIO) {
+            var inputCtx = document.getElementById('inputChart').getContext('2d');
+            var outputCtx = document.getElementById('outputChart').getContext('2d');
+
+            if (inputChart) {
+                inputChart.destroy();
+            }
+            if (outputChart) {
+                outputChart.destroy();
+            }
+
+            inputChart = new Chart(inputCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Producer Workload', 'Real-time Consumers', 'Delayed Consumers', 'Remote Consumers'],
+                    datasets: [{
+                        label: 'Inputs (MBytes/s)',
+                        data: [producerWorkload, realTimeConsumers, delayedConsumers, remoteConsumers],
+                        backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+                        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(153, 102, 255, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            outputChart = new Chart(outputCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Local IO', 'Network IO'],
+                    datasets: [{
+                        label: 'Outputs (MBytes/s)',
+                        data: [localIO, networkIO],
+                        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+                        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(255, 159, 64, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initial calculation with default values
+        calculateIO();
+    </script>
+</body>
+</html>
