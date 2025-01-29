@@ -1,4 +1,4 @@
-Apache Kafka Sizing Calculator
+# Apache Kafka Sizing Calculator
 
 This demo calculator accompanies the Apache Kafka Tiered Storage blog series (specifically parts 5 onwards) and is designed to allow for simple Kafka cluster size calculations at the cluster level, given:
 
@@ -16,16 +16,20 @@ It's just javascript and html, so download the file to your local disk and point
 
 You can use it compare IO and Network requirements (minimums) for an existing Kafka cluster before enabling remote tiered storage, or the impact of increasing the remote consumer workload rate, etc.
 
-The blogs are available here:
+## The blogs are available here:
 
 
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-1/
+
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-2/
+
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-3/
+
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-4/
 
 Future blogs which explain the Kafka sizing model in more detail will be:
 
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-5/
+
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-6/
 
