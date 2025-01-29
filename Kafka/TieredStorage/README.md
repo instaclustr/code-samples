@@ -12,6 +12,8 @@ Outputs are Local IO and Network in MBytes/s, and the fan-out ratio.
 
 This version has bar graphs. 
 
+Note that the producer and consumer workloads are independent. This allows you to model alternatives including producer only, consumer only, or some combination of producer and consumer workloads, with or without tiered storage. 
+
 It's just javascript and html, so download the file to your local disk and point your browser at it.
 
 You can use it compare IO and Network requirements (minimums) for an existing Kafka cluster before enabling remote tiered storage, or the impact of increasing the remote consumer workload rate, etc.
