@@ -16,6 +16,8 @@ It's just javascript and html, so download the file to your local disk and point
 
 You can use it compare IO and Network requirements (minimums) for an existing Kafka cluster before enabling remote tiered storage, or the impact of increasing the remote consumer workload rate, etc.
 
+There are lots of assumptions, see the blogs for details. The plan is to add functionality as required over time, potentially resulting in a fully-fledged Apache Kafka performance model including IO, Network and CPU!
+
 ## The blogs are available here:
 
 
