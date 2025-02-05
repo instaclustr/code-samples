@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apache Kafka Tiered Storage IO, Network & Storage size Calculator</title>
+</head>
+<body>
+    <h2>Apache Kafka Tiered Storage IO, Network & Storage size Calculator</h2>
+    <label for="producerWorkload">Producer workload (MBytes/s):</label>
+    <input type="number" id="producerWorkload" name="producerWorkload" value="1000" oninput="calculateIO()"><br><br>
+    <label for="realTimeConsumers">Real-time consumers (MBytes/s):</label>
+    <input type="number" id="realTimeConsumers" name="realTimeConsumers" value="1000" oninput="calculateIO()"><br><br>
+    <label for="delayedConsumers">Delayed consumers (MBytes/s):</label>
+    <input type="number" id="delayedConsumers" name="delayedConsumers" value="1000" oninput="calculateIO()"><br><br>
+    <label for="remoteConsumers">Remote consumers (MBytes/s):</label>
+    <input type="number" id="remoteConsumers" name="remoteConsumers" value="1000" oninput="calculateIO()"><br><br>
+    <label for="localRetentionTime">Local retention time (seconds):</label>
+    <input type="number" id="localRetentionTime" name="localRetentionTime" value="3600" oninput="calculateIO()"><br><br>
+    <label for="remoteRetentionTime">Remote retention time (seconds):</label>
+    <input type="number" id="remoteRetentionTime" name="remoteRetentionTime" value="3600" oninput="calculateIO()"><br><br>
+    <label for="localStorageCost">Local storage cost ($ per GB/month):</label>
+    <input type="number" id="localStorageCost" name="localStorageCost" value="0.1" oninput="calculateIO()"><br><br>
+    <label for="remoteStorageCost">Remote storage cost ($ per GB/month):</label>
+    <input type="number" id="remoteStorageCost" name="remoteStorageCost" value="0.1" oninput="calculateIO()"><br><br>
+
+    <h3>Options</h3>
+    <input type="checkbox" id="ssdEbs" name="ssdEbs" checked onchange="calculateIO()">
+    <label for="ssdEbs">SSD or EBS storage</label><br>
+    <input type="checkbox" id="tieredStorage" name="tieredStorage" checked onchange="calculateIO()">
+    <label for="tieredStorage">Tiered storage enabled</label><br>
+    <label for="replicationFactor">Replication factor:</label>
+    <select id="replicationFactor" name="replicationFactor" onchange="calculateIO()">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+    </select><br><br>
+
+    <h3>Outputs</h3>
+    <p id="localIO">Local IO: 0 MBytes/s</p>
+    <p id="networkIO">Network IO: 0 MBytes/s</p>
+    <p id="fanOutRatio">Fan-out ratio: 0</p>
+    <p id="localStorageUsed">Local storage used: 0 TB</p>
+    <p id="remoteStorageUsed">Remote storage used: 0 TB</p>
+    <p id="localStorageCostPerMonth">Local storage cost per month: $0</p>
+    <p id="remoteStorageCostPerMonth">Remote storage cost per month: $0</p>
+
+    <script>
+        function calculateIO() {
+            var producerWorkload = parseFloat(document.getElementById('producerWorkload').value) || 0;
+            var realTimeConsumers = parseFloat(document.getElementById('realTimeConsumers').value) || 0;
+            var delayedConsumers = parseFloat(document.getElementById('delayedConsumers').value) || 0;
+            var remoteConsumers = parseFloat(document.getElementById('remoteConsumers').value) || 0;
+            var localRetentionTime = parseFloat(document.getElementById('localRetentionTime').value) || 0;
+            var remoteRetentionTime = parseFloat(document.getElementById('remoteRetentionTime').value) || 0;
+            var localStorageCost = parseFloat(document.getElementById('localStorageCost').value) || 0;
+            var remoteStorageCost = parseFloat(document.getElementById('remoteStorageCost').value) || 0;
+            var ssdEbs = document.getElementById('ssdEbs').checked;
+            var tieredStorage = document.getElementById('tieredStorage').checked;
+            var replicationFactor = parseInt(document.getElementById('replicationFactor').value) || 1;
+
+            var localIO = 0;
+            if (ssdEbs) {
+                localIO = producerWorkload + producerWorkload * (replicationFactor - 1);
+                if (tieredStorage) {
+                    localIO += producerWorkload;
+                }
+                localIO += delayedConsumers;
+            }
+
+            var networkIO = producerWorkload;
+            if (!ssdEbs) {
+                networkIO += producerWorkload;
+            }
+            networkIO += producerWorkload * (replicationFactor - 1);
+            if (!ssdEbs) {
+                networkIO += producerWorkload * (replicationFactor - 1);
+            }
+            if (tieredStorage) {
+                networkIO += producerWorkload;
+                if (!ssdEbs) {
+                    networkIO += producerWorkload;
+                }
+            }
+            networkIO += realTimeConsumers;
+            networkIO += delayedConsumers;
+            if (!ssdEbs) {
+                networkIO += delayedConsumers;
+            }
+            networkIO += remoteConsumers * 2;
+
+            var fanOutRatio = (realTimeConsumers + delayedConsumers + remoteConsumers) / producerWorkload;
+
+            var localStorageUsed = (producerWorkload * replicationFactor * localRetentionTime) / 1000000;
+            var remoteStorageUsed = 0;
+            if (tieredStorage) {
+                remoteStorageUsed = (producerWorkload * remoteRetentionTime) / 1000000;
+            }
+
+            var localStorageCostPerMonth = localStorageCost * localStorageUsed * 1000;
+            var remoteStorageCostPerMonth = remoteStorageCost * remoteStorageUsed * 1000;
+
+            document.getElementById('localIO').innerText = 'Local IO: ' + localIO + ' MBytes/s';
+            document.getElementById('networkIO').innerText = 'Network IO: ' + networkIO + ' MBytes/s';
+            document.getElementById('fanOutRatio').innerText = 'Fan-out ratio: ' + fanOutRatio.toFixed(2);
+            document.getElementById('localStorageUsed').innerText = 'Local storage used: ' + localStorageUsed.toFixed(2) + ' TB';
+            document.getElementById('remoteStorageUsed').innerText = 'Remote storage used: ' + remoteStorageUsed.toFixed(2) + ' TB';
+            document.getElementById('localStorageCostPerMonth').innerText = 'Local storage cost per month: $' + localStorageCostPerMonth.toFixed(2);
+            document.getElementById('remoteStorageCostPerMonth').innerText = 'Remote storage cost per month: $' + remoteStorageCostPerMonth.toFixed(2);
+        }
+
+        // Initial calculation with default values
+        calculateIO();
+    </script>
+</body>
+</html>
