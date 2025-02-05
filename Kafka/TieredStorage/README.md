@@ -20,6 +20,8 @@ You can use it compare IO and Network requirements (minimums) for an existing Ka
 
 There are lots of assumptions, see the blogs for details. The plan is to add functionality as required over time, potentially resulting in a fully-fledged Apache Kafka performance model including IO, Network and CPU!
 
+Update for blog part 7! A new version with Kafka storage calculations (but no graphs) is available as kafka_storage.html 
+
 ## The blogs are available here:
 
 
@@ -36,4 +38,7 @@ Future blogs which explain the Kafka sizing model in more detail will be:
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-5/
 
 https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-6/
+
+https://www.instaclustr.com/blog/apache-kafka-tiered-storage-part-7/
+
 
