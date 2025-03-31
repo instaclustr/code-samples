@@ -10,7 +10,7 @@ Options include SSD or EBS local storage, tiered storage enabled/disabled, and R
 
 Outputs are Local IO and Network in MBytes/s, and the fan-out ratio.
 
-This version has bar graphs. 
+The initial version has bar graphs (kafka_calculator_graphs.html)
 
 Note that the producer and consumer workloads are independent. This allows you to model alternatives including producer only, consumer only, or some combination of producer and consumer workloads, with or without tiered storage. 
 
