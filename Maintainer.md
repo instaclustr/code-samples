@@ -10,10 +10,9 @@ This document contains a list of maintainers in this repo.
 
 | Maintainer         | GitHub ID                                                 | Affiliation |
 | ------------------ | --------------------------------------------------------- | ----------- |
-| Brian Graf         | [TheBrianGraf](https://github.com/thebriangraf)           | Instaclustr by NetApp |
-| Paul Brebner       | [paul-brebner](https://github.com/paul-brebner)           | Instaclustr by NetApp |
-| Hichem Kenniche    | [hichemken](https://github.com/hichemken)                 | Instaclustr by NetApp |
-| Kassian Wren       | [nodebotanist](https://github.com/nodebotanist)           | Instaclustr by NetApp |
+| Brian Graf         | [TheBrianGraf](https://github.com/thebriangraf)           | NetApp Instaclustr |
+| Paul Brebner       | [paul-brebner](https://github.com/paul-brebner)           | NetApp Instaclustr |
+| Kassian Wren       | [nodebotanist](https://github.com/nodebotanist)           | NetApp Instaclustr |
 
 
 ## Emeritus
