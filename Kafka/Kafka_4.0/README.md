@@ -8,4 +8,5 @@ https://github.com/instaclustr/code-samples/blob/main/Kafka/Kafka_4.0/rebalance_
 
 Example Java consumer code for the new "consumer" protocol. 
 To run it you need a Kafka 4.0 cluster and Kafka 4.0 clients. 
+https://github.com/instaclustr/code-samples/blob/main/Kafka/Kafka_4.0/Test4.java 
 
