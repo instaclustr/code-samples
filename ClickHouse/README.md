@@ -1,14 +1,14 @@
-# PostgreSQL Code Samples
+# ClickHouse Code Samples
 
 ## Description
 
-The following folders contain code samples related to [PostgreSQL](https://www.postgresql.org/) on NetApp Instaclustr. These samples demonstrate performance testing and benchmarking of managed PostgreSQL services.
+The following folders contain code samples related to [ClickHouse](https://clickhouse.com/) on NetApp Instaclustr. These samples explore using ClickHouse for stream processing with advanced SQL windowing and join operations.
 
 ## Projects
 
 | Project | Description |
 |---------|-------------|
-| [Postgres-ANF](./Postgres-ANF/) | Performance test scripts for Instaclustr PostgreSQL on Azure NetApp Files (ANF) |
+| [stream processing/part 1](./stream%20processing/part%201/) | SQL examples using ClickHouse as a stream processor with joins and time windows |
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Each sample has its own README that describes the sample, any prerequisites, exa
 
 ### Prerequisites
 
-- PostgreSQL instance (e.g., [Instaclustr managed PostgreSQL](https://www.instaclustr.com/products/postgresql/))
+- ClickHouse instance (e.g., [Instaclustr managed ClickHouse](https://www.instaclustr.com/support/documentation/clickhouse/))
 - Additional prerequisites vary per project — see individual READMEs
 
 ## Additional Materials
@@ -25,7 +25,7 @@ Each README will also include a link to a blog post, YouTube video, or conferenc
 
 ## Authors
 
-* [NetApp Instaclustr](https://github.com/Instaclustr)
+* **Paul Brebner** - [NetApp Instaclustr](https://github.com/Instaclustr)
 
 See also the list of [MAINTAINERS](https://github.com/instaclustr/code-samples/blob/main/Maintainer.md) who participated in projects in this repository.
 
