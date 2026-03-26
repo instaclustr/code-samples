@@ -1,0 +1,5 @@
+com/example/kafka/assignor/PartitionMetadata.class
+com/example/kafka/assignor/ConsumerMember.class
+com/example/kafka/assignor/RackAwareAssignor.class
+com/example/kafka/assignor/AssignmentResult.class
+com/example/kafka/assignor/SimulationHarness.class

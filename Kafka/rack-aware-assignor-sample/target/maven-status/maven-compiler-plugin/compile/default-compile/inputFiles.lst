@@ -1,0 +1,5 @@
+/Users/pbrebner/rack-aware-assignor-sample/src/main/java/com/example/kafka/assignor/AssignmentResult.java
+/Users/pbrebner/rack-aware-assignor-sample/src/main/java/com/example/kafka/assignor/ConsumerMember.java
+/Users/pbrebner/rack-aware-assignor-sample/src/main/java/com/example/kafka/assignor/PartitionMetadata.java
+/Users/pbrebner/rack-aware-assignor-sample/src/main/java/com/example/kafka/assignor/RackAwareAssignor.java
+/Users/pbrebner/rack-aware-assignor-sample/src/main/java/com/example/kafka/assignor/SimulationHarness.java
