@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="local.kip1034.dlq.Kip1034DeserializationDlqIT" time="3.775" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq/target/test-classes:/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq/target/classes:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-streams/4.2.0/kafka-streams-4.2.0.jar:/Users/pbrebner/.m2/repository/org/rocksdb/rocksdbjni/10.1.3/rocksdbjni-10.1.3.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.19.2/jackson-annotations-2.19.2.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.19.2/jackson-databind-2.19.2.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.19.2/jackson-core-2.19.2.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-clients/4.2.0/kafka-clients-4.2.0.jar:/Users/pbrebner/.m2/repository/com/github/luben/zstd-jni/1.5.6-10/zstd-jni-1.5.6-10.jar:/Users/pbrebner/.m2/repository/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/pbrebner/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.7/snappy-java-1.1.10.7.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/Users/pbrebner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/Users/pbrebner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/Users/pbrebner/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/pbrebner/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-simple/2.0.16/slf4j-simple-2.0.16.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Australia/Sydney"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="AU"/>
+    <property name="sun.boot.library.path" value="/Users/pbrebner/.sdkman/candidates/java/25-open/lib"/>
+    <property name="kip1034.trace" value="true"/>
+    <property name="sun.java.command" value="/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq/target/surefire/surefirebooter-20260505104113483_3.jar /Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq/target/surefire 2026-05-05T10-41-13_429-jvmRun1 surefire-20260505104113483_1tmp surefire_0-20260505104113483_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="Kip1034DeserializationDlqIT"/>
+    <property name="surefire.test.class.path" value="/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq/target/test-classes:/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq/target/classes:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-streams/4.2.0/kafka-streams-4.2.0.jar:/Users/pbrebner/.m2/repository/org/rocksdb/rocksdbjni/10.1.3/rocksdbjni-10.1.3.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.19.2/jackson-annotations-2.19.2.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.19.2/jackson-databind-2.19.2.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.19.2/jackson-core-2.19.2.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-clients/4.2.0/kafka-clients-4.2.0.jar:/Users/pbrebner/.m2/repository/com/github/luben/zstd-jni/1.5.6-10/zstd-jni-1.5.6-10.jar:/Users/pbrebner/.m2/repository/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/pbrebner/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.7/snappy-java-1.1.10.7.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/Users/pbrebner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/Users/pbrebner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/Users/pbrebner/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/pbrebner/.m2/repository/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-simple/2.0.16/slf4j-simple-2.0.16.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/pbrebner"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-09-16"/>
+    <property name="java.home" value="/Users/pbrebner/.sdkman/candidates/java/25-open"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq/target/surefire/surefirebooter-20260505104113483_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25+36-3489"/>
+    <property name="user.name" value="pbrebner"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.4.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/pbrebner/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/lm/yxvs_0pj12g40wrd917qlxr00000gn/T/"/>
+    <property name="java.version" value="25"/>
+    <property name="user.dir" value="/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/pbrebner/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25+36-3489"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="batchOf100_withOneFaultyRecord_producesSingleDlqAndWindowedAverages" classname="local.kip1034.dlq.Kip1034DeserializationDlqIT" time="3.451">
+    <system-out><![CDATA[
+========== TRACE: produce → kip1034-dlq-input (batchEventTs=1777941670000 windowSizeMs=10000) ==========
+produce i=  0 slot=0 key=key-0  CreateTime=1777941670000 value=1000
+produce i=  1 slot=1 key=key-1  CreateTime=1777941670000 value=1001
+produce i=  2 slot=2 key=key-2  CreateTime=1777941670000 value=1002
+produce i=  3 slot=3 key=key-3  CreateTime=1777941670000 value=1003
+produce i=  4 slot=4 key=key-4  CreateTime=1777941670000 value=1004
+produce i=  5 slot=5 key=key-5  CreateTime=1777941670000 value=1005
+produce i=  6 slot=6 key=key-6  CreateTime=1777941670000 value=1006
+produce i=  7 slot=7 key=key-7  CreateTime=1777941670000 value=1007
+produce i=  8 slot=8 key=key-8  CreateTime=1777941670000 value=1008
+produce i=  9 slot=9 key=key-9  CreateTime=1777941670000 value=1009
+produce i= 10 slot=0 key=key-0  CreateTime=1777941670000 value=1010
+produce i= 11 slot=1 key=key-1  CreateTime=1777941670000 value=1011
+produce i= 12 slot=2 key=key-2  CreateTime=1777941670000 value=1012
+produce i= 13 slot=3 key=key-3  CreateTime=1777941670000 value=1013
+produce i= 14 slot=4 key=key-4  CreateTime=1777941670000 value=1014
+produce i= 15 slot=5 key=key-5  CreateTime=1777941670000 value=1015
+produce i= 16 slot=6 key=key-6  CreateTime=1777941670000 value=1016
+produce i= 17 slot=7 key=key-7  CreateTime=1777941670000 value=1017
+produce i= 18 slot=8 key=key-8  CreateTime=1777941670000 value=1018
+produce i= 19 slot=9 key=key-9  CreateTime=1777941670000 value=1019
+produce i= 20 slot=0 key=key-0  CreateTime=1777941670000 value=1020
+produce i= 21 slot=1 key=key-1  CreateTime=1777941670000 value=1021
+produce i= 22 slot=2 key=key-2  CreateTime=1777941670000 value=1022
+produce i= 23 slot=3 key=key-3  CreateTime=1777941670000 value=1023
+produce i= 24 slot=4 key=key-4  CreateTime=1777941670000 value=1024
+produce i= 25 slot=5 key=key-5  CreateTime=1777941670000 value=1025
+produce i= 26 slot=6 key=key-6  CreateTime=1777941670000 value=1026
+produce i= 27 slot=7 key=key-7  CreateTime=1777941670000 value=1027
+produce i= 28 slot=8 key=key-8  CreateTime=1777941670000 value=1028
+produce i= 29 slot=9 key=key-9  CreateTime=1777941670000 value=1029
+produce i= 30 slot=0 key=key-0  CreateTime=1777941670000 value=1030
+produce i= 31 slot=1 key=key-1  CreateTime=1777941670000 value=1031
+produce i= 32 slot=2 key=key-2  CreateTime=1777941670000 value=1032
+produce i= 33 slot=3 key=key-3  CreateTime=1777941670000 value=1033
+produce i= 34 slot=4 key=key-4  CreateTime=1777941670000 value=1034
+produce i= 35 slot=5 key=key-5  CreateTime=1777941670000 value=1035
+produce i= 36 slot=6 key=key-6  CreateTime=1777941670000 value=1036
+produce i= 37 slot=7 key=key-7  CreateTime=1777941670000 value=1037
+produce i= 38 slot=8 key=key-8  CreateTime=1777941670000 value=1038
+produce i= 39 slot=9 key=key-9  CreateTime=1777941670000 value=1039
+produce i= 40 slot=0 key=key-0  CreateTime=1777941670000 value=1040
+produce i= 41 slot=1 key=key-1  CreateTime=1777941670000 value=1041
+produce i= 42 slot=2 key=key-2  CreateTime=1777941670000 value=1042
+produce i= 43 slot=3 key=key-3  CreateTime=1777941670000 value=1043
+produce i= 44 slot=4 key=key-4  CreateTime=1777941670000 value=1044
+produce i= 45 slot=5 key=key-5  CreateTime=1777941670000 value=1045
+produce i= 46 slot=6 key=key-6  CreateTime=1777941670000 value=1046
+produce i= 47 slot=7 key=key-7  CreateTime=1777941670000 value=1047
+produce i= 48 slot=8 key=key-8  CreateTime=1777941670000 value=1048
+produce i= 49 slot=9 key=key-9  CreateTime=1777941670000 value=1049
+produce i= 50 slot=0 key=key-0  CreateTime=1777941670000 value=1050
+produce i= 51 slot=1 key=key-1  CreateTime=1777941670000 value=1051
+produce i= 52 slot=2 key=key-2  CreateTime=1777941670000 value=1052
+produce i= 53 slot=3 key=key-3  CreateTime=1777941670000 value=1053
+produce i= 54 slot=4 key=key-4  CreateTime=1777941670000 value=1054
+produce i= 55 slot=5 key=key-5  CreateTime=1777941670000 value=1055
+produce i= 56 slot=6 key=key-6  CreateTime=1777941670000 value=1056
+produce i= 57 slot=7 key=key-7  CreateTime=1777941670000 value=1057
+produce i= 58 slot=8 key=key-8  CreateTime=1777941670000 value=1058
+produce i= 59 slot=9 key=key-9  CreateTime=1777941670000 value=1059
+produce i= 60 slot=0 key=key-0  CreateTime=1777941670000 value=1060
+produce i= 61 slot=1 key=key-1  CreateTime=1777941670000 value=1061
+produce i= 62 slot=2 key=key-2  CreateTime=1777941670000 value=1062
+produce i= 63 slot=3 key=key-3  CreateTime=1777941670000 value=1063
+produce i= 64 slot=4 key=key-4  CreateTime=1777941670000 value=1064
+produce i= 65 slot=5 key=key-5  CreateTime=1777941670000 value=1065
+produce i= 66 slot=6 key=key-6  CreateTime=1777941670000 value=1066
+produce i= 67 slot=7 key=key-7  CreateTime=1777941670000 value=1067
+produce i= 68 slot=8 key=key-8  CreateTime=1777941670000 value=1068
+produce i= 69 slot=9 key=key-9  CreateTime=1777941670000 value=1069
+produce i= 70 slot=0 key=key-0  CreateTime=1777941670000 value=1070
+produce i= 71 slot=1 key=key-1  CreateTime=1777941670000 value=1071
+produce i= 72 slot=2 key=key-2  CreateTime=1777941670000 value=1072
+produce i= 73 slot=3 key=key-3  CreateTime=1777941670000 value=1073
+produce i= 74 slot=4 key=key-4  CreateTime=1777941670000 value=1074
+produce i= 75 slot=5 key=key-5  CreateTime=1777941670000 value=1075
+produce i= 76 slot=6 key=key-6  CreateTime=1777941670000 value=1076
+produce i= 77 slot=7 key=key-7  CreateTime=1777941670000 value=FAULT(not-an-int)
+produce i= 78 slot=8 key=key-8  CreateTime=1777941670000 value=1078
+produce i= 79 slot=9 key=key-9  CreateTime=1777941670000 value=1079
+produce i= 80 slot=0 key=key-0  CreateTime=1777941670000 value=1080
+produce i= 81 slot=1 key=key-1  CreateTime=1777941670000 value=1081
+produce i= 82 slot=2 key=key-2  CreateTime=1777941670000 value=1082
+produce i= 83 slot=3 key=key-3  CreateTime=1777941670000 value=1083
+produce i= 84 slot=4 key=key-4  CreateTime=1777941670000 value=1084
+produce i= 85 slot=5 key=key-5  CreateTime=1777941670000 value=1085
+produce i= 86 slot=6 key=key-6  CreateTime=1777941670000 value=1086
+produce i= 87 slot=7 key=key-7  CreateTime=1777941670000 value=1087
+produce i= 88 slot=8 key=key-8  CreateTime=1777941670000 value=1088
+produce i= 89 slot=9 key=key-9  CreateTime=1777941670000 value=1089
+produce i= 90 slot=0 key=key-0  CreateTime=1777941670000 value=1090
+produce i= 91 slot=1 key=key-1  CreateTime=1777941670000 value=1091
+produce i= 92 slot=2 key=key-2  CreateTime=1777941670000 value=1092
+produce i= 93 slot=3 key=key-3  CreateTime=1777941670000 value=1093
+produce i= 94 slot=4 key=key-4  CreateTime=1777941670000 value=1094
+produce i= 95 slot=5 key=key-5  CreateTime=1777941670000 value=1095
+produce i= 96 slot=6 key=key-6  CreateTime=1777941670000 value=1096
+produce i= 97 slot=7 key=key-7  CreateTime=1777941670000 value=1097
+produce i= 98 slot=8 key=key-8  CreateTime=1777941670000 value=1098
+produce i= 99 slot=9 key=key-9  CreateTime=1777941670000 value=1099
+========== TRACE: produce end (flushed) ==========
+
+
+========== DLQ ConsumerRecord dump ==========
+topic:              kip1034-dlq-dead-letter
+partition:          0
+offset:             82
+timestamp:          1777940942486
+timestampType:      CreateTime
+serializedKeySize:  5
+serializedValueSize:10
+leaderEpoch:        Optional[0]
+key (hex):          6b65792d37
+key (UTF-8 try):    key-7
+value (hex):        6e6f742d616e2d696e74
+value (UTF-8 try):  not-an-int
+--- headers (6) ---
+  [__streams.errors.exception]
+      hex: 6f72672e6170616368652e6b61666b612e636f6d6d6f6e2e6572726f72732e53657269616c697a6174696f6e457863657074696f6e
+      utf8: org.apache.kafka.common.errors.SerializationException
+  [__streams.errors.message]
+      hex: 53697a65206f66206461746120726563656976656420627920496e7465676572446573657269616c697a6572206973206e6f742034
+      utf8: Size of data received by IntegerDeserializer is not 4
+  [__streams.errors.stacktrace]
+      hex: 6f72672e6170616368652e6b61666b612e636f6d6d6f6e2e6572726f72732e53657269616c697a6174696f6e457863657074696f6e3a2053697a65206f66206461746120726563656976656420627920496e7465676572446573657269616c697a6572206973206e6f7420340a096174206f72672e6170616368652e6b61666b612e636f6d6d6f6e2e73657269616c697a6174696f6e2e496e7465676572446573657269616c697a65722e646573657269616c697a6528496e7465676572446573657269616c697a65722e6a6176613a3330290a096174206f72672e6170616368652e6b61666b612e636f6d6d6f6e2e73657269616c697a6174696f6e2e496e7465676572446573657269616c697a65722e646573657269616c697a6528496e7465676572446573657269616c697a65722e6a6176613a3234290a096174206f72672e6170616368652e6b61666b612e636f6d6d6f6e2e73657269616c697a6174696f6e2e446573657269616c697a65722e646573657269616c697a6528446573657269616c697a65722e6a6176613a3835290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e536f757263654e6f64652e646573657269616c697a6556616c756528536f757263654e6f64652e6a6176613a3630290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e5265636f7264446573657269616c697a65722e646573657269616c697a65285265636f7264446573657269616c697a65722e6a6176613a3730290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e5265636f726451756575652e75706461746548656164285265636f726451756575652e6a6176613a323136290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e5265636f726451756575652e706f6c6c285265636f726451756575652e6a6176613a313438290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e506172746974696f6e47726f75702e6e6578745265636f726428506172746974696f6e47726f75702e6a6176613a323533290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e53747265616d5461736b2e70726f636573732853747265616d5461736b2e6a6176613a373936290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e5461736b4578656375746f722e70726f636573735461736b285461736b4578656375746f722e6a6176613a3935290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e5461736b4578656375746f722e70726f63657373285461736b4578656375746f722e6a6176613a3736290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e5461736b4d616e616765722e70726f63657373285461736b4d616e616765722e6a6176613a32303834290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e53747265616d5468726561642e72756e4f6e6365576974686f757450726f63657373696e67546872656164732853747265616d5468726561642e6a6176613a31323635290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e53747265616d5468726561642e72756e4c6f6f702853747265616d5468726561642e6a6176613a393532290a096174206f72672e6170616368652e6b61666b612e73747265616d732e70726f636573736f722e696e7465726e616c732e53747265616d5468726561642e72756e2853747265616d5468726561642e6a6176613a393132290a
+      utf8: org.apache.kafka.common.errors.SerializationException: Size of data received by IntegerDeserializer is not 4\n\tat org.apache.kafka.common.serialization.IntegerDeserializer.deserialize(IntegerDeserializer.java:30)\n\tat org.apache.kafka.common.serialization.IntegerDeserializer.deserialize(IntegerDeserializer.java:24)\n\tat org.apache.kafka.common.serialization.Deserializer.deserialize(Deserializer.java:85)\n\tat org.apache.kafka.streams.processor.internals.SourceNode.deserializeValue(SourceNode.…(1591 chars)
+  [__streams.errors.topic]
+      hex: 6b6970313033342d646c712d696e707574
+      utf8: kip1034-dlq-input
+  [__streams.errors.partition]
+      hex: 30
+      utf8: 0
+  [__streams.errors.offset]
+      hex: 333739
+      utf8: 379
+============================================
+========== TRACE: output ← kip1034-dlq-output-windowed (running mean per key in window; may be >99 lines) ==========
+output  #   1 key=key-5  mean=1010.0 partition=0 offset=4638 ts=1777941169363 tsType=CreateTime
+output  #   2 key=key-6  mean=1011.0 partition=0 offset=4639 ts=1777941169370 tsType=CreateTime
+output  #   3 key=key-7  mean=1012.0 partition=0 offset=4640 ts=1777941169378 tsType=CreateTime
+output  #   4 key=key-8  mean=1013.0 partition=0 offset=4641 ts=1777941169385 tsType=CreateTime
+output  #   5 key=key-9  mean=1014.0 partition=0 offset=4642 ts=1777941169394 tsType=CreateTime
+output  #   6 key=key-0  mean=1010.0 partition=0 offset=4643 ts=1777941169402 tsType=CreateTime
+output  #   7 key=key-1  mean=1011.0 partition=0 offset=4644 ts=1777941169413 tsType=CreateTime
+output  #   8 key=key-2  mean=1012.0 partition=0 offset=4645 ts=1777941169420 tsType=CreateTime
+output  #   9 key=key-3  mean=1013.0 partition=0 offset=4646 ts=1777941169426 tsType=CreateTime
+output  #  10 key=key-4  mean=1014.0 partition=0 offset=4647 ts=1777941169432 tsType=CreateTime
+output  #  11 key=key-5  mean=1015.0 partition=0 offset=4648 ts=1777941169439 tsType=CreateTime
+output  #  12 key=key-6  mean=1016.0 partition=0 offset=4649 ts=1777941169446 tsType=CreateTime
+output  #  13 key=key-7  mean=1017.0 partition=0 offset=4650 ts=1777941169454 tsType=CreateTime
+output  #  14 key=key-8  mean=1018.0 partition=0 offset=4651 ts=1777941169462 tsType=CreateTime
+output  #  15 key=key-9  mean=1019.0 partition=0 offset=4652 ts=1777941169473 tsType=CreateTime
+output  #  16 key=key-0  mean=1015.0 partition=0 offset=4653 ts=1777941169482 tsType=CreateTime
+output  #  17 key=key-1  mean=1016.0 partition=0 offset=4654 ts=1777941169489 tsType=CreateTime
+output  #  18 key=key-2  mean=1017.0 partition=0 offset=4655 ts=1777941169496 tsType=CreateTime
+output  #  19 key=key-3  mean=1018.0 partition=0 offset=4656 ts=1777941169502 tsType=CreateTime
+output  #  20 key=key-4  mean=1019.0 partition=0 offset=4657 ts=1777941169508 tsType=CreateTime
+output  #  21 key=key-5  mean=1020.0 partition=0 offset=4658 ts=1777941169515 tsType=CreateTime
+output  #  22 key=key-6  mean=1021.0 partition=0 offset=4659 ts=1777941169522 tsType=CreateTime
+output  #  23 key=key-7  mean=1022.0 partition=0 offset=4660 ts=1777941169529 tsType=CreateTime
+output  #  24 key=key-8  mean=1023.0 partition=0 offset=4661 ts=1777941169535 tsType=CreateTime
+output  #  25 key=key-9  mean=1024.0 partition=0 offset=4662 ts=1777941169541 tsType=CreateTime
+output  #  26 key=key-0  mean=1020.0 partition=0 offset=4663 ts=1777941169548 tsType=CreateTime
+output  #  27 key=key-1  mean=1021.0 partition=0 offset=4664 ts=1777941169555 tsType=CreateTime
+output  #  28 key=key-2  mean=1022.0 partition=0 offset=4665 ts=1777941169562 tsType=CreateTime
+output  #  29 key=key-3  mean=1023.0 partition=0 offset=4666 ts=1777941169570 tsType=CreateTime
+output  #  30 key=key-4  mean=1024.0 partition=0 offset=4667 ts=1777941169577 tsType=CreateTime
+output  #  31 key=key-5  mean=1025.0 partition=0 offset=4668 ts=1777941169584 tsType=CreateTime
+output  #  32 key=key-6  mean=1026.0 partition=0 offset=4669 ts=1777941169591 tsType=CreateTime
+output  #  33 key=key-7  mean=1027.0 partition=0 offset=4670 ts=1777941169599 tsType=CreateTime
+output  #  34 key=key-8  mean=1028.0 partition=0 offset=4671 ts=1777941169606 tsType=CreateTime
+output  #  35 key=key-9  mean=1029.0 partition=0 offset=4672 ts=1777941169613 tsType=CreateTime
+output  #  36 key=key-0  mean=1025.0 partition=0 offset=4673 ts=1777941169621 tsType=CreateTime
+output  #  37 key=key-1  mean=1026.0 partition=0 offset=4674 ts=1777941169629 tsType=CreateTime
+output  #  38 key=key-2  mean=1027.0 partition=0 offset=4675 ts=1777941169637 tsType=CreateTime
+output  #  39 key=key-3  mean=1028.0 partition=0 offset=4676 ts=1777941169645 tsType=CreateTime
+output  #  40 key=key-4  mean=1029.0 partition=0 offset=4677 ts=1777941169653 tsType=CreateTime
+output  #  41 key=key-5  mean=1030.0 partition=0 offset=4678 ts=1777941169660 tsType=CreateTime
+output  #  42 key=key-6  mean=1031.0 partition=0 offset=4679 ts=1777941169667 tsType=CreateTime
+output  #  43 key=key-7  mean=1032.0 partition=0 offset=4680 ts=1777941169675 tsType=CreateTime
+output  #  44 key=key-8  mean=1033.0 partition=0 offset=4681 ts=1777941169683 tsType=CreateTime
+output  #  45 key=key-9  mean=1034.0 partition=0 offset=4682 ts=1777941169691 tsType=CreateTime
+output  #  46 key=key-0  mean=1030.0 partition=0 offset=4683 ts=1777941169699 tsType=CreateTime
+output  #  47 key=key-1  mean=1031.0 partition=0 offset=4684 ts=1777941169707 tsType=CreateTime
+output  #  48 key=key-2  mean=1032.0 partition=0 offset=4685 ts=1777941169713 tsType=CreateTime
+output  #  49 key=key-3  mean=1033.0 partition=0 offset=4686 ts=1777941169720 tsType=CreateTime
+output  #  50 key=key-4  mean=1034.0 partition=0 offset=4687 ts=1777941169727 tsType=CreateTime
+output  #  51 key=key-5  mean=1035.0 partition=0 offset=4688 ts=1777941169735 tsType=CreateTime
+output  #  52 key=key-6  mean=1036.0 partition=0 offset=4689 ts=1777941169742 tsType=CreateTime
+output  #  53 key=key-7  mean=1037.0 partition=0 offset=4690 ts=1777941169751 tsType=CreateTime
+output  #  54 key=key-8  mean=1038.0 partition=0 offset=4691 ts=1777941169761 tsType=CreateTime
+output  #  55 key=key-9  mean=1039.0 partition=0 offset=4692 ts=1777941169770 tsType=CreateTime
+output  #  56 key=key-0  mean=1035.0 partition=0 offset=4693 ts=1777941169776 tsType=CreateTime
+output  #  57 key=key-1  mean=1036.0 partition=0 offset=4694 ts=1777941169784 tsType=CreateTime
+output  #  58 key=key-2  mean=1037.0 partition=0 offset=4695 ts=1777941169791 tsType=CreateTime
+output  #  59 key=key-3  mean=1038.0 partition=0 offset=4696 ts=1777941169798 tsType=CreateTime
+output  #  60 key=key-4  mean=1039.0 partition=0 offset=4697 ts=1777941169806 tsType=CreateTime
+output  #  61 key=key-5  mean=1040.0 partition=0 offset=4698 ts=1777941169814 tsType=CreateTime
+output  #  62 key=key-6  mean=1041.0 partition=0 offset=4699 ts=1777941169821 tsType=CreateTime
+output  #  63 key=key-8  mean=1043.0 partition=0 offset=4700 ts=1777941169835 tsType=CreateTime
+output  #  64 key=key-9  mean=1044.0 partition=0 offset=4701 ts=1777941169843 tsType=CreateTime
+output  #  65 key=key-0  mean=1040.0 partition=0 offset=4702 ts=1777941169850 tsType=CreateTime
+output  #  66 key=key-1  mean=1041.0 partition=0 offset=4703 ts=1777941169859 tsType=CreateTime
+output  #  67 key=key-2  mean=1042.0 partition=0 offset=4704 ts=1777941169868 tsType=CreateTime
+output  #  68 key=key-3  mean=1043.0 partition=0 offset=4705 ts=1777941169876 tsType=CreateTime
+output  #  69 key=key-4  mean=1044.0 partition=0 offset=4706 ts=1777941169883 tsType=CreateTime
+output  #  70 key=key-5  mean=1045.0 partition=0 offset=4707 ts=1777941169892 tsType=CreateTime
+output  #  71 key=key-6  mean=1046.0 partition=0 offset=4708 ts=1777941169899 tsType=CreateTime
+output  #  72 key=key-7  mean=1043.25 partition=0 offset=4709 ts=1777941169908 tsType=CreateTime
+output  #  73 key=key-8  mean=1048.0 partition=0 offset=4710 ts=1777941169918 tsType=CreateTime
+output  #  74 key=key-9  mean=1049.0 partition=0 offset=4711 ts=1777941169925 tsType=CreateTime
+output  #  75 key=key-0  mean=1045.0 partition=0 offset=4712 ts=1777941169932 tsType=CreateTime
+output  #  76 key=key-1  mean=1046.0 partition=0 offset=4713 ts=1777941169939 tsType=CreateTime
+output  #  77 key=key-2  mean=1047.0 partition=0 offset=4714 ts=1777941169945 tsType=CreateTime
+output  #  78 key=key-3  mean=1048.0 partition=0 offset=4715 ts=1777941169952 tsType=CreateTime
+output  #  79 key=key-4  mean=1049.0 partition=0 offset=4716 ts=1777941169959 tsType=CreateTime
+output  #  80 key=key-5  mean=1050.0 partition=0 offset=4717 ts=1777941169966 tsType=CreateTime
+output  #  81 key=key-6  mean=1051.0 partition=0 offset=4718 ts=1777941169972 tsType=CreateTime
+output  #  82 key=key-7  mean=1049.2222222222222 partition=0 offset=4719 ts=1777941169978 tsType=CreateTime
+output  #  83 key=key-8  mean=1053.0 partition=0 offset=4720 ts=1777941169985 tsType=CreateTime
+output  #  84 key=key-9  mean=1054.0 partition=0 offset=4721 ts=1777941169991 tsType=CreateTime
+output  #  85 key=key-0  mean=1000.0 partition=0 offset=4722 ts=1777941186445 tsType=CreateTime
+output  #  86 key=key-1  mean=1001.0 partition=0 offset=4723 ts=1777941186456 tsType=CreateTime
+output  #  87 key=key-2  mean=1002.0 partition=0 offset=4724 ts=1777941186464 tsType=CreateTime
+output  #  88 key=key-3  mean=1003.0 partition=0 offset=4725 ts=1777941186472 tsType=CreateTime
+output  #  89 key=key-4  mean=1004.0 partition=0 offset=4726 ts=1777941186481 tsType=CreateTime
+output  #  90 key=key-5  mean=1005.0 partition=0 offset=4727 ts=1777941186498 tsType=CreateTime
+output  #  91 key=key-6  mean=1006.0 partition=0 offset=4728 ts=1777941186505 tsType=CreateTime
+output  #  92 key=key-7  mean=1007.0 partition=0 offset=4729 ts=1777941186511 tsType=CreateTime
+output  #  93 key=key-8  mean=1008.0 partition=0 offset=4730 ts=1777941186519 tsType=CreateTime
+output  #  94 key=key-9  mean=1009.0 partition=0 offset=4731 ts=1777941186528 tsType=CreateTime
+output  #  95 key=key-0  mean=1005.0 partition=0 offset=4732 ts=1777941186535 tsType=CreateTime
+output  #  96 key=key-1  mean=1006.0 partition=0 offset=4733 ts=1777941186544 tsType=CreateTime
+output  #  97 key=key-2  mean=1007.0 partition=0 offset=4734 ts=1777941186551 tsType=CreateTime
+output  #  98 key=key-3  mean=1008.0 partition=0 offset=4735 ts=1777941186558 tsType=CreateTime
+output  #  99 key=key-4  mean=1009.0 partition=0 offset=4736 ts=1777941186564 tsType=CreateTime
+output  # 100 key=key-5  mean=1010.0 partition=0 offset=4737 ts=1777941186571 tsType=CreateTime
+output  # 101 key=key-6  mean=1011.0 partition=0 offset=4738 ts=1777941186578 tsType=CreateTime
+output  # 102 key=key-7  mean=1012.0 partition=0 offset=4739 ts=1777941186584 tsType=CreateTime
+output  # 103 key=key-8  mean=1013.0 partition=0 offset=4740 ts=1777941186591 tsType=CreateTime
+output  # 104 key=key-9  mean=1014.0 partition=0 offset=4741 ts=1777941186598 tsType=CreateTime
+output  # 105 key=key-0  mean=1010.0 partition=0 offset=4742 ts=1777941186604 tsType=CreateTime
+output  # 106 key=key-1  mean=1011.0 partition=0 offset=4743 ts=1777941186610 tsType=CreateTime
+output  # 107 key=key-2  mean=1012.0 partition=0 offset=4744 ts=1777941186617 tsType=CreateTime
+output  # 108 key=key-3  mean=1013.0 partition=0 offset=4745 ts=1777941186624 tsType=CreateTime
+output  # 109 key=key-4  mean=1014.0 partition=0 offset=4746 ts=1777941186631 tsType=CreateTime
+output  # 110 key=key-5  mean=1015.0 partition=0 offset=4747 ts=1777941186637 tsType=CreateTime
+output  # 111 key=key-6  mean=1016.0 partition=0 offset=4748 ts=1777941186643 tsType=CreateTime
+output  # 112 key=key-7  mean=1017.0 partition=0 offset=4749 ts=1777941186650 tsType=CreateTime
+output  # 113 key=key-8  mean=1018.0 partition=0 offset=4750 ts=1777941186656 tsType=CreateTime
+output  # 114 key=key-9  mean=1019.0 partition=0 offset=4751 ts=1777941186663 tsType=CreateTime
+output  # 115 key=key-0  mean=1015.0 partition=0 offset=4752 ts=1777941186669 tsType=CreateTime
+output  # 116 key=key-1  mean=1016.0 partition=0 offset=4753 ts=1777941186676 tsType=CreateTime
+output  # 117 key=key-2  mean=1017.0 partition=0 offset=4754 ts=1777941186683 tsType=CreateTime
+output  # 118 key=key-3  mean=1018.0 partition=0 offset=4755 ts=1777941186689 tsType=CreateTime
+output  # 119 key=key-4  mean=1019.0 partition=0 offset=4756 ts=1777941186696 tsType=CreateTime
+output  # 120 key=key-5  mean=1020.0 partition=0 offset=4757 ts=1777941186703 tsType=CreateTime
+output  # 121 key=key-6  mean=1021.0 partition=0 offset=4758 ts=1777941186709 tsType=CreateTime
+output  # 122 key=key-7  mean=1022.0 partition=0 offset=4759 ts=1777941186716 tsType=CreateTime
+output  # 123 key=key-8  mean=1023.0 partition=0 offset=4760 ts=1777941186722 tsType=CreateTime
+output  # 124 key=key-9  mean=1024.0 partition=0 offset=4761 ts=1777941186728 tsType=CreateTime
+output  # 125 key=key-0  mean=1020.0 partition=0 offset=4762 ts=1777941186735 tsType=CreateTime
+output  # 126 key=key-1  mean=1021.0 partition=0 offset=4763 ts=1777941186741 tsType=CreateTime
+output  # 127 key=key-2  mean=1022.0 partition=0 offset=4764 ts=1777941186748 tsType=CreateTime
+output  # 128 key=key-3  mean=1023.0 partition=0 offset=4765 ts=1777941186755 tsType=CreateTime
+output  # 129 key=key-4  mean=1024.0 partition=0 offset=4766 ts=1777941186761 tsType=CreateTime
+output  # 130 key=key-5  mean=1025.0 partition=0 offset=4767 ts=1777941186768 tsType=CreateTime
+output  # 131 key=key-6  mean=1026.0 partition=0 offset=4768 ts=1777941186774 tsType=CreateTime
+output  # 132 key=key-7  mean=1027.0 partition=0 offset=4769 ts=1777941186781 tsType=CreateTime
+output  # 133 key=key-8  mean=1028.0 partition=0 offset=4770 ts=1777941186788 tsType=CreateTime
+output  # 134 key=key-9  mean=1029.0 partition=0 offset=4771 ts=1777941186795 tsType=CreateTime
+output  # 135 key=key-0  mean=1025.0 partition=0 offset=4772 ts=1777941186801 tsType=CreateTime
+output  # 136 key=key-1  mean=1026.0 partition=0 offset=4773 ts=1777941186808 tsType=CreateTime
+output  # 137 key=key-2  mean=1027.0 partition=0 offset=4774 ts=1777941186815 tsType=CreateTime
+output  # 138 key=key-3  mean=1028.0 partition=0 offset=4775 ts=1777941186822 tsType=CreateTime
+output  # 139 key=key-4  mean=1029.0 partition=0 offset=4776 ts=1777941186828 tsType=CreateTime
+output  # 140 key=key-5  mean=1030.0 partition=0 offset=4777 ts=1777941186835 tsType=CreateTime
+output  # 141 key=key-6  mean=1031.0 partition=0 offset=4778 ts=1777941186842 tsType=CreateTime
+output  # 142 key=key-7  mean=1032.0 partition=0 offset=4779 ts=1777941186849 tsType=CreateTime
+output  # 143 key=key-8  mean=1033.0 partition=0 offset=4780 ts=1777941186856 tsType=CreateTime
+output  # 144 key=key-9  mean=1034.0 partition=0 offset=4781 ts=1777941186862 tsType=CreateTime
+output  # 145 key=key-0  mean=1030.0 partition=0 offset=4782 ts=1777941186868 tsType=CreateTime
+output  # 146 key=key-1  mean=1031.0 partition=0 offset=4783 ts=1777941186874 tsType=CreateTime
+output  # 147 key=key-2  mean=1032.0 partition=0 offset=4784 ts=1777941186881 tsType=CreateTime
+output  # 148 key=key-3  mean=1033.0 partition=0 offset=4785 ts=1777941186889 tsType=CreateTime
+output  # 149 key=key-4  mean=1034.0 partition=0 offset=4786 ts=1777941186897 tsType=CreateTime
+output  # 150 key=key-5  mean=1035.0 partition=0 offset=4787 ts=1777941186904 tsType=CreateTime
+output  # 151 key=key-6  mean=1036.0 partition=0 offset=4788 ts=1777941186913 tsType=CreateTime
+output  # 152 key=key-7  mean=1037.0 partition=0 offset=4789 ts=1777941186920 tsType=CreateTime
+output  # 153 key=key-8  mean=1038.0 partition=0 offset=4790 ts=1777941186927 tsType=CreateTime
+output  # 154 key=key-9  mean=1039.0 partition=0 offset=4791 ts=1777941186935 tsType=CreateTime
+output  # 155 key=key-0  mean=1035.0 partition=0 offset=4792 ts=1777941186941 tsType=CreateTime
+output  # 156 key=key-1  mean=1036.0 partition=0 offset=4793 ts=1777941186950 tsType=CreateTime
+output  # 157 key=key-2  mean=1037.0 partition=0 offset=4794 ts=1777941186958 tsType=CreateTime
+output  # 158 key=key-3  mean=1038.0 partition=0 offset=4795 ts=1777941186968 tsType=CreateTime
+output  # 159 key=key-4  mean=1039.0 partition=0 offset=4796 ts=1777941186976 tsType=CreateTime
+output  # 160 key=key-5  mean=1040.0 partition=0 offset=4797 ts=1777941186984 tsType=CreateTime
+output  # 161 key=key-6  mean=1041.0 partition=0 offset=4798 ts=1777941186991 tsType=CreateTime
+output  # 162 key=key-8  mean=1043.0 partition=0 offset=4799 ts=1777941187005 tsType=CreateTime
+output  # 163 key=key-9  mean=1044.0 partition=0 offset=4800 ts=1777941187013 tsType=CreateTime
+output  # 164 key=key-0  mean=1040.0 partition=0 offset=4801 ts=1777941187022 tsType=CreateTime
+output  # 165 key=key-1  mean=1041.0 partition=0 offset=4802 ts=1777941187030 tsType=CreateTime
+output  # 166 key=key-2  mean=1042.0 partition=0 offset=4803 ts=1777941187038 tsType=CreateTime
+output  # 167 key=key-3  mean=1043.0 partition=0 offset=4804 ts=1777941187046 tsType=CreateTime
+output  # 168 key=key-4  mean=1044.0 partition=0 offset=4805 ts=1777941187053 tsType=CreateTime
+output  # 169 key=key-5  mean=1045.0 partition=0 offset=4806 ts=1777941187062 tsType=CreateTime
+output  # 170 key=key-6  mean=1046.0 partition=0 offset=4807 ts=1777941187070 tsType=CreateTime
+output  # 171 key=key-7  mean=1043.25 partition=0 offset=4808 ts=1777941187078 tsType=CreateTime
+output  # 172 key=key-8  mean=1048.0 partition=0 offset=4809 ts=1777941187086 tsType=CreateTime
+output  # 173 key=key-9  mean=1049.0 partition=0 offset=4810 ts=1777941187093 tsType=CreateTime
+output  # 174 key=key-0  mean=1045.0 partition=0 offset=4811 ts=1777941187101 tsType=CreateTime
+output  # 175 key=key-1  mean=1046.0 partition=0 offset=4812 ts=1777941187108 tsType=CreateTime
+output  # 176 key=key-2  mean=1047.0 partition=0 offset=4813 ts=1777941187115 tsType=CreateTime
+output  # 177 key=key-3  mean=1048.0 partition=0 offset=4814 ts=1777941187123 tsType=CreateTime
+output  # 178 key=key-4  mean=1049.0 partition=0 offset=4815 ts=1777941187131 tsType=CreateTime
+output  # 179 key=key-5  mean=1050.0 partition=0 offset=4816 ts=1777941187139 tsType=CreateTime
+output  # 180 key=key-6  mean=1051.0 partition=0 offset=4817 ts=1777941187145 tsType=CreateTime
+output  # 181 key=key-7  mean=1049.2222222222222 partition=0 offset=4818 ts=1777941187152 tsType=CreateTime
+output  # 182 key=key-8  mean=1053.0 partition=0 offset=4819 ts=1777941187159 tsType=CreateTime
+output  # 183 key=key-9  mean=1054.0 partition=0 offset=4820 ts=1777941187166 tsType=CreateTime
+output  # 184 key=key-0  mean=1000.0 partition=0 offset=4821 ts=1777941209666 tsType=CreateTime
+output  # 185 key=key-1  mean=1001.0 partition=0 offset=4822 ts=1777941209675 tsType=CreateTime
+output  # 186 key=key-2  mean=1002.0 partition=0 offset=4823 ts=1777941209682 tsType=CreateTime
+output  # 187 key=key-3  mean=1003.0 partition=0 offset=4824 ts=1777941209688 tsType=CreateTime
+output  # 188 key=key-4  mean=1004.0 partition=0 offset=4825 ts=1777941209695 tsType=CreateTime
+output  # 189 key=key-5  mean=1005.0 partition=0 offset=4826 ts=1777941209701 tsType=CreateTime
+output  # 190 key=key-6  mean=1006.0 partition=0 offset=4827 ts=1777941209708 tsType=CreateTime
+output  # 191 key=key-7  mean=1007.0 partition=0 offset=4828 ts=1777941209715 tsType=CreateTime
+output  # 192 key=key-8  mean=1008.0 partition=0 offset=4829 ts=1777941209722 tsType=CreateTime
+output  # 193 key=key-9  mean=1009.0 partition=0 offset=4830 ts=1777941209729 tsType=CreateTime
+output  # 194 key=key-0  mean=1005.0 partition=0 offset=4831 ts=1777941209736 tsType=CreateTime
+output  # 195 key=key-1  mean=1006.0 partition=0 offset=4832 ts=1777941209743 tsType=CreateTime
+output  # 196 key=key-2  mean=1007.0 partition=0 offset=4833 ts=1777941209751 tsType=CreateTime
+output  # 197 key=key-3  mean=1008.0 partition=0 offset=4834 ts=1777941209760 tsType=CreateTime
+output  # 198 key=key-4  mean=1009.0 partition=0 offset=4835 ts=1777941209767 tsType=CreateTime
+output  # 199 key=key-5  mean=1010.0 partition=0 offset=4836 ts=1777941209773 tsType=CreateTime
+output  # 200 key=key-6  mean=1011.0 partition=0 offset=4837 ts=1777941209780 tsType=CreateTime
+output  # 201 key=key-7  mean=1012.0 partition=0 offset=4838 ts=1777941209787 tsType=CreateTime
+output  # 202 key=key-8  mean=1013.0 partition=0 offset=4839 ts=1777941209795 tsType=CreateTime
+output  # 203 key=key-9  mean=1014.0 partition=0 offset=4840 ts=1777941209802 tsType=CreateTime
+output  # 204 key=key-0  mean=1010.0 partition=0 offset=4841 ts=1777941209809 tsType=CreateTime
+output  # 205 key=key-1  mean=1011.0 partition=0 offset=4842 ts=1777941209816 tsType=CreateTime
+output  # 206 key=key-2  mean=1012.0 partition=0 offset=4843 ts=1777941209822 tsType=CreateTime
+output  # 207 key=key-3  mean=1013.0 partition=0 offset=4844 ts=1777941209829 tsType=CreateTime
+output  # 208 key=key-4  mean=1014.0 partition=0 offset=4845 ts=1777941209836 tsType=CreateTime
+output  # 209 key=key-5  mean=1015.0 partition=0 offset=4846 ts=1777941209843 tsType=CreateTime
+output  # 210 key=key-6  mean=1016.0 partition=0 offset=4847 ts=1777941209850 tsType=CreateTime
+output  # 211 key=key-7  mean=1017.0 partition=0 offset=4848 ts=1777941209856 tsType=CreateTime
+output  # 212 key=key-8  mean=1018.0 partition=0 offset=4849 ts=1777941209863 tsType=CreateTime
+output  # 213 key=key-9  mean=1019.0 partition=0 offset=4850 ts=1777941209870 tsType=CreateTime
+output  # 214 key=key-0  mean=1015.0 partition=0 offset=4851 ts=1777941209876 tsType=CreateTime
+output  # 215 key=key-1  mean=1016.0 partition=0 offset=4852 ts=1777941209883 tsType=CreateTime
+output  # 216 key=key-2  mean=1017.0 partition=0 offset=4853 ts=1777941209891 tsType=CreateTime
+output  # 217 key=key-3  mean=1018.0 partition=0 offset=4854 ts=1777941209898 tsType=CreateTime
+output  # 218 key=key-4  mean=1019.0 partition=0 offset=4855 ts=1777941209904 tsType=CreateTime
+output  # 219 key=key-5  mean=1020.0 partition=0 offset=4856 ts=1777941209912 tsType=CreateTime
+output  # 220 key=key-6  mean=1021.0 partition=0 offset=4857 ts=1777941209918 tsType=CreateTime
+output  # 221 key=key-7  mean=1022.0 partition=0 offset=4858 ts=1777941209925 tsType=CreateTime
+output  # 222 key=key-8  mean=1023.0 partition=0 offset=4859 ts=1777941209933 tsType=CreateTime
+output  # 223 key=key-9  mean=1024.0 partition=0 offset=4860 ts=1777941209940 tsType=CreateTime
+output  # 224 key=key-0  mean=1020.0 partition=0 offset=4861 ts=1777941209946 tsType=CreateTime
+output  # 225 key=key-1  mean=1021.0 partition=0 offset=4862 ts=1777941209953 tsType=CreateTime
+output  # 226 key=key-2  mean=1022.0 partition=0 offset=4863 ts=1777941209961 tsType=CreateTime
+output  # 227 key=key-3  mean=1023.0 partition=0 offset=4864 ts=1777941209969 tsType=CreateTime
+output  # 228 key=key-4  mean=1024.0 partition=0 offset=4865 ts=1777941209977 tsType=CreateTime
+output  # 229 key=key-5  mean=1025.0 partition=0 offset=4866 ts=1777941209988 tsType=CreateTime
+output  # 230 key=key-6  mean=1026.0 partition=0 offset=4867 ts=1777941209995 tsType=CreateTime
+output  # 231 key=key-7  mean=1047.0 partition=0 offset=4868 ts=1777941210004 tsType=CreateTime
+output  # 232 key=key-8  mean=1048.0 partition=0 offset=4869 ts=1777941210011 tsType=CreateTime
+output  # 233 key=key-9  mean=1049.0 partition=0 offset=4870 ts=1777941210020 tsType=CreateTime
+output  # 234 key=key-0  mean=1050.0 partition=0 offset=4871 ts=1777941210027 tsType=CreateTime
+output  # 235 key=key-1  mean=1051.0 partition=0 offset=4872 ts=1777941210037 tsType=CreateTime
+output  # 236 key=key-2  mean=1052.0 partition=0 offset=4873 ts=1777941210045 tsType=CreateTime
+output  # 237 key=key-3  mean=1053.0 partition=0 offset=4874 ts=1777941210052 tsType=CreateTime
+output  # 238 key=key-4  mean=1054.0 partition=0 offset=4875 ts=1777941210062 tsType=CreateTime
+output  # 239 key=key-5  mean=1055.0 partition=0 offset=4876 ts=1777941210069 tsType=CreateTime
+output  # 240 key=key-6  mean=1056.0 partition=0 offset=4877 ts=1777941210077 tsType=CreateTime
+output  # 241 key=key-7  mean=1052.0 partition=0 offset=4878 ts=1777941210087 tsType=CreateTime
+output  # 242 key=key-8  mean=1053.0 partition=0 offset=4879 ts=1777941210094 tsType=CreateTime
+output  # 243 key=key-9  mean=1054.0 partition=0 offset=4880 ts=1777941210101 tsType=CreateTime
+output  # 244 key=key-0  mean=1055.0 partition=0 offset=4881 ts=1777941210107 tsType=CreateTime
+output  # 245 key=key-1  mean=1056.0 partition=0 offset=4882 ts=1777941210114 tsType=CreateTime
+output  # 246 key=key-2  mean=1057.0 partition=0 offset=4883 ts=1777941210121 tsType=CreateTime
+output  # 247 key=key-3  mean=1058.0 partition=0 offset=4884 ts=1777941210128 tsType=CreateTime
+output  # 248 key=key-4  mean=1059.0 partition=0 offset=4885 ts=1777941210135 tsType=CreateTime
+output  # 249 key=key-5  mean=1060.0 partition=0 offset=4886 ts=1777941210142 tsType=CreateTime
+output  # 250 key=key-6  mean=1061.0 partition=0 offset=4887 ts=1777941210149 tsType=CreateTime
+output  # 251 key=key-7  mean=1057.0 partition=0 offset=4888 ts=1777941210156 tsType=CreateTime
+output  # 252 key=key-8  mean=1058.0 partition=0 offset=4889 ts=1777941210162 tsType=CreateTime
+output  # 253 key=key-9  mean=1059.0 partition=0 offset=4890 ts=1777941210169 tsType=CreateTime
+output  # 254 key=key-0  mean=1060.0 partition=0 offset=4891 ts=1777941210176 tsType=CreateTime
+output  # 255 key=key-1  mean=1061.0 partition=0 offset=4892 ts=1777941210182 tsType=CreateTime
+output  # 256 key=key-2  mean=1062.0 partition=0 offset=4893 ts=1777941210189 tsType=CreateTime
+output  # 257 key=key-3  mean=1063.0 partition=0 offset=4894 ts=1777941210196 tsType=CreateTime
+output  # 258 key=key-4  mean=1064.0 partition=0 offset=4895 ts=1777941210202 tsType=CreateTime
+output  # 259 key=key-5  mean=1065.0 partition=0 offset=4896 ts=1777941210209 tsType=CreateTime
+output  # 260 key=key-6  mean=1066.0 partition=0 offset=4897 ts=1777941210216 tsType=CreateTime
+output  # 261 key=key-8  mean=1063.0 partition=0 offset=4898 ts=1777941210230 tsType=CreateTime
+output  # 262 key=key-9  mean=1064.0 partition=0 offset=4899 ts=1777941210237 tsType=CreateTime
+output  # 263 key=key-0  mean=1065.0 partition=0 offset=4900 ts=1777941210243 tsType=CreateTime
+output  # 264 key=key-1  mean=1066.0 partition=0 offset=4901 ts=1777941210250 tsType=CreateTime
+output  # 265 key=key-2  mean=1067.0 partition=0 offset=4902 ts=1777941210256 tsType=CreateTime
+output  # 266 key=key-3  mean=1068.0 partition=0 offset=4903 ts=1777941210263 tsType=CreateTime
+output  # 267 key=key-4  mean=1069.0 partition=0 offset=4904 ts=1777941210270 tsType=CreateTime
+output  # 268 key=key-5  mean=1070.0 partition=0 offset=4905 ts=1777941210276 tsType=CreateTime
+output  # 269 key=key-6  mean=1071.0 partition=0 offset=4906 ts=1777941210283 tsType=CreateTime
+output  # 270 key=key-7  mean=1064.5 partition=0 offset=4907 ts=1777941210290 tsType=CreateTime
+output  # 271 key=key-8  mean=1068.0 partition=0 offset=4908 ts=1777941210298 tsType=CreateTime
+output  # 272 key=key-9  mean=1069.0 partition=0 offset=4909 ts=1777941210305 tsType=CreateTime
+output  # 273 key=key-0  mean=1070.0 partition=0 offset=4910 ts=1777941210312 tsType=CreateTime
+output  # 274 key=key-1  mean=1071.0 partition=0 offset=4911 ts=1777941210319 tsType=CreateTime
+output  # 275 key=key-2  mean=1072.0 partition=0 offset=4912 ts=1777941210325 tsType=CreateTime
+output  # 276 key=key-3  mean=1073.0 partition=0 offset=4913 ts=1777941210332 tsType=CreateTime
+output  # 277 key=key-4  mean=1074.0 partition=0 offset=4914 ts=1777941210339 tsType=CreateTime
+output  # 278 key=key-5  mean=1075.0 partition=0 offset=4915 ts=1777941210346 tsType=CreateTime
+output  # 279 key=key-6  mean=1076.0 partition=0 offset=4916 ts=1777941210353 tsType=CreateTime
+output  # 280 key=key-7  mean=1071.0 partition=0 offset=4917 ts=1777941210360 tsType=CreateTime
+output  # 281 key=key-8  mean=1073.0 partition=0 offset=4918 ts=1777941210368 tsType=CreateTime
+output  # 282 key=key-9  mean=1074.0 partition=0 offset=4919 ts=1777941210376 tsType=CreateTime
+output  # 283 key=key-0  mean=1000.0 partition=0 offset=4920 ts=1777941550000 tsType=CreateTime
+output  # 284 key=key-1  mean=1001.0 partition=0 offset=4921 ts=1777941550000 tsType=CreateTime
+output  # 285 key=key-2  mean=1002.0 partition=0 offset=4922 ts=1777941550000 tsType=CreateTime
+output  # 286 key=key-3  mean=1003.0 partition=0 offset=4923 ts=1777941550000 tsType=CreateTime
+output  # 287 key=key-4  mean=1004.0 partition=0 offset=4924 ts=1777941550000 tsType=CreateTime
+output  # 288 key=key-5  mean=1005.0 partition=0 offset=4925 ts=1777941550000 tsType=CreateTime
+output  # 289 key=key-6  mean=1006.0 partition=0 offset=4926 ts=1777941550000 tsType=CreateTime
+output  # 290 key=key-7  mean=1007.0 partition=0 offset=4927 ts=1777941550000 tsType=CreateTime
+output  # 291 key=key-8  mean=1008.0 partition=0 offset=4928 ts=1777941550000 tsType=CreateTime
+output  # 292 key=key-9  mean=1009.0 partition=0 offset=4929 ts=1777941550000 tsType=CreateTime
+output  # 293 key=key-0  mean=1005.0 partition=0 offset=4930 ts=1777941550000 tsType=CreateTime
+output  # 294 key=key-1  mean=1006.0 partition=0 offset=4931 ts=1777941550000 tsType=CreateTime
+output  # 295 key=key-2  mean=1007.0 partition=0 offset=4932 ts=1777941550000 tsType=CreateTime
+output  # 296 key=key-3  mean=1008.0 partition=0 offset=4933 ts=1777941550000 tsType=CreateTime
+output  # 297 key=key-4  mean=1009.0 partition=0 offset=4934 ts=1777941550000 tsType=CreateTime
+output  # 298 key=key-5  mean=1010.0 partition=0 offset=4935 ts=1777941550000 tsType=CreateTime
+output  # 299 key=key-6  mean=1011.0 partition=0 offset=4936 ts=1777941550000 tsType=CreateTime
+output  # 300 key=key-7  mean=1012.0 partition=0 offset=4937 ts=1777941550000 tsType=CreateTime
+output  # 301 key=key-8  mean=1013.0 partition=0 offset=4938 ts=1777941550000 tsType=CreateTime
+output  # 302 key=key-9  mean=1014.0 partition=0 offset=4939 ts=1777941550000 tsType=CreateTime
+output  # 303 key=key-0  mean=1010.0 partition=0 offset=4940 ts=1777941550000 tsType=CreateTime
+output  # 304 key=key-1  mean=1011.0 partition=0 offset=4941 ts=1777941550000 tsType=CreateTime
+output  # 305 key=key-2  mean=1012.0 partition=0 offset=4942 ts=1777941550000 tsType=CreateTime
+output  # 306 key=key-3  mean=1013.0 partition=0 offset=4943 ts=1777941550000 tsType=CreateTime
+output  # 307 key=key-4  mean=1014.0 partition=0 offset=4944 ts=1777941550000 tsType=CreateTime
+output  # 308 key=key-5  mean=1015.0 partition=0 offset=4945 ts=1777941550000 tsType=CreateTime
+output  # 309 key=key-6  mean=1016.0 partition=0 offset=4946 ts=1777941550000 tsType=CreateTime
+output  # 310 key=key-7  mean=1017.0 partition=0 offset=4947 ts=1777941550000 tsType=CreateTime
+output  # 311 key=key-8  mean=1018.0 partition=0 offset=4948 ts=1777941550000 tsType=CreateTime
+output  # 312 key=key-9  mean=1019.0 partition=0 offset=4949 ts=1777941550000 tsType=CreateTime
+output  # 313 key=key-0  mean=1015.0 partition=0 offset=4950 ts=1777941550000 tsType=CreateTime
+output  # 314 key=key-1  mean=1016.0 partition=0 offset=4951 ts=1777941550000 tsType=CreateTime
+output  # 315 key=key-2  mean=1017.0 partition=0 offset=4952 ts=1777941550000 tsType=CreateTime
+output  # 316 key=key-3  mean=1018.0 partition=0 offset=4953 ts=1777941550000 tsType=CreateTime
+output  # 317 key=key-4  mean=1019.0 partition=0 offset=4954 ts=1777941550000 tsType=CreateTime
+output  # 318 key=key-5  mean=1020.0 partition=0 offset=4955 ts=1777941550000 tsType=CreateTime
+output  # 319 key=key-6  mean=1021.0 partition=0 offset=4956 ts=1777941550000 tsType=CreateTime
+output  # 320 key=key-7  mean=1022.0 partition=0 offset=4957 ts=1777941550000 tsType=CreateTime
+output  # 321 key=key-8  mean=1023.0 partition=0 offset=4958 ts=1777941550000 tsType=CreateTime
+output  # 322 key=key-9  mean=1024.0 partition=0 offset=4959 ts=1777941550000 tsType=CreateTime
+output  # 323 key=key-0  mean=1020.0 partition=0 offset=4960 ts=1777941550000 tsType=CreateTime
+output  # 324 key=key-1  mean=1021.0 partition=0 offset=4961 ts=1777941550000 tsType=CreateTime
+output  # 325 key=key-2  mean=1022.0 partition=0 offset=4962 ts=1777941550000 tsType=CreateTime
+output  # 326 key=key-3  mean=1023.0 partition=0 offset=4963 ts=1777941550000 tsType=CreateTime
+output  # 327 key=key-4  mean=1024.0 partition=0 offset=4964 ts=1777941550000 tsType=CreateTime
+output  # 328 key=key-5  mean=1025.0 partition=0 offset=4965 ts=1777941550000 tsType=CreateTime
+output  # 329 key=key-6  mean=1026.0 partition=0 offset=4966 ts=1777941550000 tsType=CreateTime
+output  # 330 key=key-7  mean=1027.0 partition=0 offset=4967 ts=1777941550000 tsType=CreateTime
+output  # 331 key=key-8  mean=1028.0 partition=0 offset=4968 ts=1777941550000 tsType=CreateTime
+output  # 332 key=key-9  mean=1029.0 partition=0 offset=4969 ts=1777941550000 tsType=CreateTime
+output  # 333 key=key-0  mean=1025.0 partition=0 offset=4970 ts=1777941550000 tsType=CreateTime
+output  # 334 key=key-1  mean=1026.0 partition=0 offset=4971 ts=1777941550000 tsType=CreateTime
+output  # 335 key=key-2  mean=1027.0 partition=0 offset=4972 ts=1777941550000 tsType=CreateTime
+output  # 336 key=key-3  mean=1028.0 partition=0 offset=4973 ts=1777941550000 tsType=CreateTime
+output  # 337 key=key-4  mean=1029.0 partition=0 offset=4974 ts=1777941550000 tsType=CreateTime
+output  # 338 key=key-5  mean=1030.0 partition=0 offset=4975 ts=1777941550000 tsType=CreateTime
+output  # 339 key=key-6  mean=1031.0 partition=0 offset=4976 ts=1777941550000 tsType=CreateTime
+output  # 340 key=key-7  mean=1032.0 partition=0 offset=4977 ts=1777941550000 tsType=CreateTime
+output  # 341 key=key-8  mean=1033.0 partition=0 offset=4978 ts=1777941550000 tsType=CreateTime
+output  # 342 key=key-9  mean=1034.0 partition=0 offset=4979 ts=1777941550000 tsType=CreateTime
+output  # 343 key=key-0  mean=1030.0 partition=0 offset=4980 ts=1777941550000 tsType=CreateTime
+output  # 344 key=key-1  mean=1031.0 partition=0 offset=4981 ts=1777941550000 tsType=CreateTime
+output  # 345 key=key-2  mean=1032.0 partition=0 offset=4982 ts=1777941550000 tsType=CreateTime
+output  # 346 key=key-3  mean=1033.0 partition=0 offset=4983 ts=1777941550000 tsType=CreateTime
+output  # 347 key=key-4  mean=1034.0 partition=0 offset=4984 ts=1777941550000 tsType=CreateTime
+output  # 348 key=key-5  mean=1035.0 partition=0 offset=4985 ts=1777941550000 tsType=CreateTime
+output  # 349 key=key-6  mean=1036.0 partition=0 offset=4986 ts=1777941550000 tsType=CreateTime
+output  # 350 key=key-7  mean=1037.0 partition=0 offset=4987 ts=1777941550000 tsType=CreateTime
+output  # 351 key=key-8  mean=1038.0 partition=0 offset=4988 ts=1777941550000 tsType=CreateTime
+output  # 352 key=key-9  mean=1039.0 partition=0 offset=4989 ts=1777941550000 tsType=CreateTime
+output  # 353 key=key-0  mean=1035.0 partition=0 offset=4990 ts=1777941550000 tsType=CreateTime
+output  # 354 key=key-1  mean=1036.0 partition=0 offset=4991 ts=1777941550000 tsType=CreateTime
+output  # 355 key=key-2  mean=1037.0 partition=0 offset=4992 ts=1777941550000 tsType=CreateTime
+output  # 356 key=key-3  mean=1038.0 partition=0 offset=4993 ts=1777941550000 tsType=CreateTime
+output  # 357 key=key-4  mean=1039.0 partition=0 offset=4994 ts=1777941550000 tsType=CreateTime
+output  # 358 key=key-5  mean=1040.0 partition=0 offset=4995 ts=1777941550000 tsType=CreateTime
+output  # 359 key=key-6  mean=1041.0 partition=0 offset=4996 ts=1777941550000 tsType=CreateTime
+output  # 360 key=key-8  mean=1043.0 partition=0 offset=4997 ts=1777941550000 tsType=CreateTime
+output  # 361 key=key-9  mean=1044.0 partition=0 offset=4998 ts=1777941550000 tsType=CreateTime
+output  # 362 key=key-0  mean=1040.0 partition=0 offset=4999 ts=1777941550000 tsType=CreateTime
+output  # 363 key=key-1  mean=1041.0 partition=0 offset=5000 ts=1777941550000 tsType=CreateTime
+output  # 364 key=key-2  mean=1042.0 partition=0 offset=5001 ts=1777941550000 tsType=CreateTime
+output  # 365 key=key-3  mean=1043.0 partition=0 offset=5002 ts=1777941550000 tsType=CreateTime
+output  # 366 key=key-4  mean=1044.0 partition=0 offset=5003 ts=1777941550000 tsType=CreateTime
+output  # 367 key=key-5  mean=1045.0 partition=0 offset=5004 ts=1777941550000 tsType=CreateTime
+output  # 368 key=key-6  mean=1046.0 partition=0 offset=5005 ts=1777941550000 tsType=CreateTime
+output  # 369 key=key-7  mean=1043.25 partition=0 offset=5006 ts=1777941550000 tsType=CreateTime
+output  # 370 key=key-8  mean=1048.0 partition=0 offset=5007 ts=1777941550000 tsType=CreateTime
+output  # 371 key=key-9  mean=1049.0 partition=0 offset=5008 ts=1777941550000 tsType=CreateTime
+output  # 372 key=key-0  mean=1045.0 partition=0 offset=5009 ts=1777941550000 tsType=CreateTime
+output  # 373 key=key-1  mean=1046.0 partition=0 offset=5010 ts=1777941550000 tsType=CreateTime
+output  # 374 key=key-2  mean=1047.0 partition=0 offset=5011 ts=1777941550000 tsType=CreateTime
+output  # 375 key=key-3  mean=1048.0 partition=0 offset=5012 ts=1777941550000 tsType=CreateTime
+output  # 376 key=key-4  mean=1049.0 partition=0 offset=5013 ts=1777941550000 tsType=CreateTime
+output  # 377 key=key-5  mean=1050.0 partition=0 offset=5014 ts=1777941550000 tsType=CreateTime
+output  # 378 key=key-6  mean=1051.0 partition=0 offset=5015 ts=1777941550000 tsType=CreateTime
+output  # 379 key=key-7  mean=1049.2222222222222 partition=0 offset=5016 ts=1777941550000 tsType=CreateTime
+output  # 380 key=key-8  mean=1053.0 partition=0 offset=5017 ts=1777941550000 tsType=CreateTime
+output  # 381 key=key-9  mean=1054.0 partition=0 offset=5018 ts=1777941550000 tsType=CreateTime
+output  # 382 key=key-0  mean=1000.0 partition=0 offset=5019 ts=1777941670000 tsType=CreateTime
+output  # 383 key=key-1  mean=1001.0 partition=0 offset=5020 ts=1777941670000 tsType=CreateTime
+output  # 384 key=key-2  mean=1002.0 partition=0 offset=5021 ts=1777941670000 tsType=CreateTime
+output  # 385 key=key-3  mean=1003.0 partition=0 offset=5022 ts=1777941670000 tsType=CreateTime
+output  # 386 key=key-4  mean=1004.0 partition=0 offset=5023 ts=1777941670000 tsType=CreateTime
+output  # 387 key=key-5  mean=1005.0 partition=0 offset=5024 ts=1777941670000 tsType=CreateTime
+output  # 388 key=key-6  mean=1006.0 partition=0 offset=5025 ts=1777941670000 tsType=CreateTime
+output  # 389 key=key-7  mean=1007.0 partition=0 offset=5026 ts=1777941670000 tsType=CreateTime
+output  # 390 key=key-8  mean=1008.0 partition=0 offset=5027 ts=1777941670000 tsType=CreateTime
+output  # 391 key=key-9  mean=1009.0 partition=0 offset=5028 ts=1777941670000 tsType=CreateTime
+output  # 392 key=key-0  mean=1005.0 partition=0 offset=5029 ts=1777941670000 tsType=CreateTime
+output  # 393 key=key-1  mean=1006.0 partition=0 offset=5030 ts=1777941670000 tsType=CreateTime
+output  # 394 key=key-2  mean=1007.0 partition=0 offset=5031 ts=1777941670000 tsType=CreateTime
+output  # 395 key=key-3  mean=1008.0 partition=0 offset=5032 ts=1777941670000 tsType=CreateTime
+output  # 396 key=key-4  mean=1009.0 partition=0 offset=5033 ts=1777941670000 tsType=CreateTime
+output  # 397 key=key-5  mean=1010.0 partition=0 offset=5034 ts=1777941670000 tsType=CreateTime
+output  # 398 key=key-6  mean=1011.0 partition=0 offset=5035 ts=1777941670000 tsType=CreateTime
+output  # 399 key=key-7  mean=1012.0 partition=0 offset=5036 ts=1777941670000 tsType=CreateTime
+output  # 400 key=key-8  mean=1013.0 partition=0 offset=5037 ts=1777941670000 tsType=CreateTime
+output  # 401 key=key-9  mean=1014.0 partition=0 offset=5038 ts=1777941670000 tsType=CreateTime
+output  # 402 key=key-0  mean=1010.0 partition=0 offset=5039 ts=1777941670000 tsType=CreateTime
+output  # 403 key=key-1  mean=1011.0 partition=0 offset=5040 ts=1777941670000 tsType=CreateTime
+output  # 404 key=key-2  mean=1012.0 partition=0 offset=5041 ts=1777941670000 tsType=CreateTime
+output  # 405 key=key-3  mean=1013.0 partition=0 offset=5042 ts=1777941670000 tsType=CreateTime
+output  # 406 key=key-4  mean=1014.0 partition=0 offset=5043 ts=1777941670000 tsType=CreateTime
+output  # 407 key=key-5  mean=1015.0 partition=0 offset=5044 ts=1777941670000 tsType=CreateTime
+output  # 408 key=key-6  mean=1016.0 partition=0 offset=5045 ts=1777941670000 tsType=CreateTime
+output  # 409 key=key-7  mean=1017.0 partition=0 offset=5046 ts=1777941670000 tsType=CreateTime
+output  # 410 key=key-8  mean=1018.0 partition=0 offset=5047 ts=1777941670000 tsType=CreateTime
+output  # 411 key=key-9  mean=1019.0 partition=0 offset=5048 ts=1777941670000 tsType=CreateTime
+output  # 412 key=key-0  mean=1015.0 partition=0 offset=5049 ts=1777941670000 tsType=CreateTime
+output  # 413 key=key-1  mean=1016.0 partition=0 offset=5050 ts=1777941670000 tsType=CreateTime
+output  # 414 key=key-2  mean=1017.0 partition=0 offset=5051 ts=1777941670000 tsType=CreateTime
+output  # 415 key=key-3  mean=1018.0 partition=0 offset=5052 ts=1777941670000 tsType=CreateTime
+output  # 416 key=key-4  mean=1019.0 partition=0 offset=5053 ts=1777941670000 tsType=CreateTime
+output  # 417 key=key-5  mean=1020.0 partition=0 offset=5054 ts=1777941670000 tsType=CreateTime
+output  # 418 key=key-6  mean=1021.0 partition=0 offset=5055 ts=1777941670000 tsType=CreateTime
+output  # 419 key=key-7  mean=1022.0 partition=0 offset=5056 ts=1777941670000 tsType=CreateTime
+output  # 420 key=key-8  mean=1023.0 partition=0 offset=5057 ts=1777941670000 tsType=CreateTime
+output  # 421 key=key-9  mean=1024.0 partition=0 offset=5058 ts=1777941670000 tsType=CreateTime
+output  # 422 key=key-0  mean=1020.0 partition=0 offset=5059 ts=1777941670000 tsType=CreateTime
+output  # 423 key=key-1  mean=1021.0 partition=0 offset=5060 ts=1777941670000 tsType=CreateTime
+output  # 424 key=key-2  mean=1022.0 partition=0 offset=5061 ts=1777941670000 tsType=CreateTime
+output  # 425 key=key-3  mean=1023.0 partition=0 offset=5062 ts=1777941670000 tsType=CreateTime
+output  # 426 key=key-4  mean=1024.0 partition=0 offset=5063 ts=1777941670000 tsType=CreateTime
+output  # 427 key=key-5  mean=1025.0 partition=0 offset=5064 ts=1777941670000 tsType=CreateTime
+output  # 428 key=key-6  mean=1026.0 partition=0 offset=5065 ts=1777941670000 tsType=CreateTime
+output  # 429 key=key-7  mean=1027.0 partition=0 offset=5066 ts=1777941670000 tsType=CreateTime
+output  # 430 key=key-8  mean=1028.0 partition=0 offset=5067 ts=1777941670000 tsType=CreateTime
+output  # 431 key=key-9  mean=1029.0 partition=0 offset=5068 ts=1777941670000 tsType=CreateTime
+output  # 432 key=key-0  mean=1025.0 partition=0 offset=5069 ts=1777941670000 tsType=CreateTime
+output  # 433 key=key-1  mean=1026.0 partition=0 offset=5070 ts=1777941670000 tsType=CreateTime
+output  # 434 key=key-2  mean=1027.0 partition=0 offset=5071 ts=1777941670000 tsType=CreateTime
+output  # 435 key=key-3  mean=1028.0 partition=0 offset=5072 ts=1777941670000 tsType=CreateTime
+output  # 436 key=key-4  mean=1029.0 partition=0 offset=5073 ts=1777941670000 tsType=CreateTime
+output  # 437 key=key-5  mean=1030.0 partition=0 offset=5074 ts=1777941670000 tsType=CreateTime
+output  # 438 key=key-6  mean=1031.0 partition=0 offset=5075 ts=1777941670000 tsType=CreateTime
+output  # 439 key=key-7  mean=1032.0 partition=0 offset=5076 ts=1777941670000 tsType=CreateTime
+output  # 440 key=key-8  mean=1033.0 partition=0 offset=5077 ts=1777941670000 tsType=CreateTime
+output  # 441 key=key-9  mean=1034.0 partition=0 offset=5078 ts=1777941670000 tsType=CreateTime
+output  # 442 key=key-0  mean=1030.0 partition=0 offset=5079 ts=1777941670000 tsType=CreateTime
+output  # 443 key=key-1  mean=1031.0 partition=0 offset=5080 ts=1777941670000 tsType=CreateTime
+output  # 444 key=key-2  mean=1032.0 partition=0 offset=5081 ts=1777941670000 tsType=CreateTime
+output  # 445 key=key-3  mean=1033.0 partition=0 offset=5082 ts=1777941670000 tsType=CreateTime
+output  # 446 key=key-4  mean=1034.0 partition=0 offset=5083 ts=1777941670000 tsType=CreateTime
+output  # 447 key=key-5  mean=1035.0 partition=0 offset=5084 ts=1777941670000 tsType=CreateTime
+output  # 448 key=key-6  mean=1036.0 partition=0 offset=5085 ts=1777941670000 tsType=CreateTime
+output  # 449 key=key-7  mean=1037.0 partition=0 offset=5086 ts=1777941670000 tsType=CreateTime
+output  # 450 key=key-8  mean=1038.0 partition=0 offset=5087 ts=1777941670000 tsType=CreateTime
+output  # 451 key=key-9  mean=1039.0 partition=0 offset=5088 ts=1777941670000 tsType=CreateTime
+output  # 452 key=key-0  mean=1035.0 partition=0 offset=5089 ts=1777941670000 tsType=CreateTime
+output  # 453 key=key-1  mean=1036.0 partition=0 offset=5090 ts=1777941670000 tsType=CreateTime
+output  # 454 key=key-2  mean=1037.0 partition=0 offset=5091 ts=1777941670000 tsType=CreateTime
+output  # 455 key=key-3  mean=1038.0 partition=0 offset=5092 ts=1777941670000 tsType=CreateTime
+output  # 456 key=key-4  mean=1039.0 partition=0 offset=5093 ts=1777941670000 tsType=CreateTime
+output  # 457 key=key-5  mean=1040.0 partition=0 offset=5094 ts=1777941670000 tsType=CreateTime
+output  # 458 key=key-6  mean=1041.0 partition=0 offset=5095 ts=1777941670000 tsType=CreateTime
+output  # 459 key=key-8  mean=1043.0 partition=0 offset=5096 ts=1777941670000 tsType=CreateTime
+output  # 460 key=key-9  mean=1044.0 partition=0 offset=5097 ts=1777941670000 tsType=CreateTime
+output  # 461 key=key-0  mean=1040.0 partition=0 offset=5098 ts=1777941670000 tsType=CreateTime
+output  # 462 key=key-1  mean=1041.0 partition=0 offset=5099 ts=1777941670000 tsType=CreateTime
+output  # 463 key=key-2  mean=1042.0 partition=0 offset=5100 ts=1777941670000 tsType=CreateTime
+output  # 464 key=key-3  mean=1043.0 partition=0 offset=5101 ts=1777941670000 tsType=CreateTime
+output  # 465 key=key-4  mean=1044.0 partition=0 offset=5102 ts=1777941670000 tsType=CreateTime
+output  # 466 key=key-5  mean=1045.0 partition=0 offset=5103 ts=1777941670000 tsType=CreateTime
+output  # 467 key=key-6  mean=1046.0 partition=0 offset=5104 ts=1777941670000 tsType=CreateTime
+output  # 468 key=key-7  mean=1043.25 partition=0 offset=5105 ts=1777941670000 tsType=CreateTime
+output  # 469 key=key-8  mean=1048.0 partition=0 offset=5106 ts=1777941670000 tsType=CreateTime
+output  # 470 key=key-9  mean=1049.0 partition=0 offset=5107 ts=1777941670000 tsType=CreateTime
+output  # 471 key=key-0  mean=1045.0 partition=0 offset=5108 ts=1777941670000 tsType=CreateTime
+output  # 472 key=key-1  mean=1046.0 partition=0 offset=5109 ts=1777941670000 tsType=CreateTime
+output  # 473 key=key-2  mean=1047.0 partition=0 offset=5110 ts=1777941670000 tsType=CreateTime
+output  # 474 key=key-3  mean=1048.0 partition=0 offset=5111 ts=1777941670000 tsType=CreateTime
+output  # 475 key=key-4  mean=1049.0 partition=0 offset=5112 ts=1777941670000 tsType=CreateTime
+output  # 476 key=key-5  mean=1050.0 partition=0 offset=5113 ts=1777941670000 tsType=CreateTime
+output  # 477 key=key-6  mean=1051.0 partition=0 offset=5114 ts=1777941670000 tsType=CreateTime
+output  # 478 key=key-7  mean=1049.2222222222222 partition=0 offset=5115 ts=1777941670000 tsType=CreateTime
+output  # 479 key=key-8  mean=1053.0 partition=0 offset=5116 ts=1777941670000 tsType=CreateTime
+output  # 480 key=key-9  mean=1054.0 partition=0 offset=5117 ts=1777941670000 tsType=CreateTime
+========== TRACE: output end (final running mean matches batch average per key) ==========
+  final key=key-0 mean=1045.0
+  final key=key-1 mean=1046.0
+  final key=key-2 mean=1047.0
+  final key=key-3 mean=1048.0
+  final key=key-4 mean=1049.0
+  final key=key-5 mean=1050.0
+  final key=key-6 mean=1051.0
+  final key=key-7 mean=1049.2222222222222
+  final key=key-8 mean=1053.0
+  final key=key-9 mean=1054.0
+
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+]]></system-err>
+  </testcase>
+</testsuite>
