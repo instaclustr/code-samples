@@ -12,7 +12,7 @@ Local notes and a **frozen wiki export** for [KIP-1034](https://cwiki.apache.org
 |------|-------------|
 | [`docs/kip-1034-wiki-export.md`](docs/kip-1034-wiki-export.md) | Confluence export (saved from the wiki; includes motivation, API sketches, compatibility, test plan). |
 
-## Executive summary
+## Summary
 
 - **Problem:** Built-in Streams exception paths are mostly **log-and-continue** or **fail the app**—both are awkward in production compared to a **DLQ topic** (replay, alerting, retention, rich metadata), similar to Kafka Connect.
 - **Config:** `errors.dead.letter.queue.topic.name` — when set, default exception handlers can emit DLQ records; when `null`, no DLQ from defaults. **Custom handlers** ignore this setting unless they choose to use it.
@@ -206,10 +206,4 @@ The integration test creates (once, RF=1): **`kip1034-dlq-input`**, **`kip1034-d
 
 ---
 
-## Project location (example)
 
-```text
-/Users/pbrebner/Applications/Experiments/kip-1034-kafka-streams-dlq
-```
-
-Use your own clone path in place of the above.
