@@ -1,0 +1,27 @@
+flowchart TB
+  subgraph edge[Per-record deserialization]
+    V[demo-news-ff-raw value bytes]
+    V --> D{JsonNewsItemSerde}
+    D -->|OK| KS[KStream String NewsItem]
+    D -->|SerializationException| KIP[KIP-1034 DLQ emit]
+    KIP --> SD["demo-news-ff-streams-dlq"]
+  end
+
+  R[demo-news-ff-raw] --> MERGE
+  RP[demo-news-ff-repaired] --> MERGE
+  KS -.-> MERGE
+  MERGE["merge"]
+
+  MERGE --> SP["split Named ff-"]
+  SP --> MC["ff-missing-categories"]
+  SP --> OKB["ff-ok default"]
+
+  MC --> APPENV["mapValues → envelope"]
+  APPENV --> AD["demo-news-ff-app-dlq"]
+
+  OKB --> FM["flatMap by category"]
+  FM --> GBK["groupByKey"]
+  GBK --> W["1 min tumbling"]
+  W --> AGG["aggregate '|'"]
+  AGG --> FMT["start:end:value"]
+  FMT --> WIN["demo-news-ff-by-category-minute"]

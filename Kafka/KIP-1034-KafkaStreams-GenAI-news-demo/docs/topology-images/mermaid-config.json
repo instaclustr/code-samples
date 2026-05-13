@@ -1,0 +1,8 @@
+{
+  "theme": "neutral",
+  "flowchart": { "curve": "basis" },
+  "themeVariables": {
+    "fontSize": "20px",
+    "fontFamily": "ui-sans-serif, system-ui, sans-serif"
+  }
+}

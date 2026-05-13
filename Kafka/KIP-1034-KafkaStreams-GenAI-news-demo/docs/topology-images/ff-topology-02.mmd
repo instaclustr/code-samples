@@ -1,0 +1,18 @@
+flowchart LR
+  PROD[NewsFreeformProducerMain] --> RAW[demo-news-ff-raw]
+  RAND[NewsFreeformRandomLlmProducerMain] --> RAW
+  SLLM[NewsFreeformStreamingLlmProducerMain] --> RAW
+
+  RAW --> STREAMS[NewsFreeformStreamsApplication]
+  RP[demo-news-ff-repaired] --> STREAMS
+  STREAMS --> SDLQ[demo-news-ff-streams-dlq]
+  STREAMS --> ADLQ[demo-news-ff-app-dlq]
+  STREAMS --> WOUT[demo-news-ff-by-category-minute]
+
+  SDLQ --> KR[NewsFreeformKip1034RepairMain]
+  KR --> O1[Ollama structurePlainTextToNewsItemJson]
+  O1 --> RP
+
+  ADLQ --> AR[NewsFreeformAppDlqRepairMain]
+  AR --> O2[Ollama inferCategoriesJson]
+  O2 --> RP

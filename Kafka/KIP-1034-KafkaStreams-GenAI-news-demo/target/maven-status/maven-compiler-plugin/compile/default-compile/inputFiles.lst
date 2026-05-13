@@ -1,0 +1,16 @@
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/NewsItem.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/NewsJson.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/NewsLlmClient.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/NewsStreamPayload.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/FreeformSampleProse.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/JsonNewsItemSerde.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformAppDlqRepairMain.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformBootstrap.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformFixtureEdgeCases.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformKip1034RepairMain.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformProducerMain.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformRandomLlmProducerMain.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformStreamingLlmProducerMain.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformStreamsApplication.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformTopics.java
+/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/src/main/java/local/kip1034/dlq/news/freeform/NewsFreeformTopology.java

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="local.kip1034.dlq.news.freeform.NewsFreeformTopologyIT" time="1.191" tests="2" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/target/test-classes:/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/target/classes:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-streams/4.2.0/kafka-streams-4.2.0.jar:/Users/pbrebner/.m2/repository/org/rocksdb/rocksdbjni/10.1.3/rocksdbjni-10.1.3.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.19.2/jackson-annotations-2.19.2.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-clients/4.2.0/kafka-clients-4.2.0.jar:/Users/pbrebner/.m2/repository/com/github/luben/zstd-jni/1.5.6-10/zstd-jni-1.5.6-10.jar:/Users/pbrebner/.m2/repository/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/pbrebner/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.7/snappy-java-1.1.10.7.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/Users/pbrebner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/Users/pbrebner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-streams-test-utils/4.2.0/kafka-streams-test-utils-4.2.0.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Australia/Sydney"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="AU"/>
+    <property name="sun.boot.library.path" value="/Users/pbrebner/.sdkman/candidates/java/25-open/lib"/>
+    <property name="sun.java.command" value="/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/target/surefire/surefirebooter-20260513130237779_3.jar /Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/target/surefire 2026-05-13T13-02-37_726-jvmRun1 surefire-20260513130237779_1tmp surefire_0-20260513130237779_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/target/test-classes:/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/target/classes:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-streams/4.2.0/kafka-streams-4.2.0.jar:/Users/pbrebner/.m2/repository/org/rocksdb/rocksdbjni/10.1.3/rocksdbjni-10.1.3.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.19.2/jackson-annotations-2.19.2.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-clients/4.2.0/kafka-clients-4.2.0.jar:/Users/pbrebner/.m2/repository/com/github/luben/zstd-jni/1.5.6-10/zstd-jni-1.5.6-10.jar:/Users/pbrebner/.m2/repository/at/yawk/lz4/lz4-java/1.10.1/lz4-java-1.10.1.jar:/Users/pbrebner/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.7/snappy-java-1.1.10.7.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/Users/pbrebner/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/Users/pbrebner/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/Users/pbrebner/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/Users/pbrebner/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/Users/pbrebner/.m2/repository/org/apache/kafka/kafka-streams-test-utils/4.2.0/kafka-streams-test-utils-4.2.0.jar:/Users/pbrebner/.m2/repository/org/slf4j/slf4j-simple/1.7.36/slf4j-simple-1.7.36.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/pbrebner"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-09-16"/>
+    <property name="java.home" value="/Users/pbrebner/.sdkman/candidates/java/25-open"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq/target/surefire/surefirebooter-20260513130237779_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25+36-3489"/>
+    <property name="user.name" value="pbrebner"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.4.1"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/pbrebner/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/lm/yxvs_0pj12g40wrd917qlxr00000gn/T/"/>
+    <property name="java.version" value="25"/>
+    <property name="user.dir" value="/Users/pbrebner/Applications/Experiments/kip-1034-news-freeform-dlq"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/pbrebner/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25+36-3489"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="missingCategoriesGoToAppDlqAndValidItemWindowed" classname="local.kip1034.dlq.news.freeform.NewsFreeformTopologyIT" time="1.18">
+    <system-err><![CDATA[[main] WARN org.apache.kafka.streams.processor.internals.InternalTopologyBuilder - Explicit naming for internal resources is currently disabled. If you want to enforce user-defined names for all internal resources, set ensure.explicit.internal.resource.naming to true. Note: Changing internal resource names may require a full streams application reset for an already deployed application. Consult the documentation on naming operators for more details. Following changelog topic(s) has not been named: KSTREAM-AGGREGATE-STATE-STORE-0000000009-changelog
+Following state store(s) has not been named: KSTREAM-AGGREGATE-STATE-STORE-0000000009
+Following repartition topic(s) has not been named: KSTREAM-AGGREGATE-STATE-STORE-0000000009-repartition
+
+[main] WARN org.apache.kafka.streams.processor.internals.StateDirectory - Using an OS temp directory in the state.dir property can cause failures with writing the checkpoint file due to the fact that this directory can be cleared by the OS. Resolved state.dir: [/var/folders/lm/yxvs_0pj12g40wrd917qlxr00000gn/T//kafka-streams]
+[main] INFO org.apache.kafka.streams.processor.internals.ProcessorStateManager - topology-test-driver State store KSTREAM-AGGREGATE-STATE-STORE-0000000009 did not find checkpoint offset, hence would default to the starting offset at changelog news-ff-topology-test-KSTREAM-AGGREGATE-STATE-STORE-0000000009-changelog-0
+[main] INFO org.apache.kafka.streams.processor.internals.StreamTask - stream-thread [main] task [0_0] Initialized
+[main] INFO org.apache.kafka.streams.processor.internals.StreamTask - stream-thread [main] task [0_0] Restored and ready to run
+[main] INFO org.apache.kafka.streams.state.internals.RocksDBTimestampedStore - Opening store KSTREAM-AGGREGATE-STATE-STORE-0000000009.1767268800000 in regular mode
+[main] INFO org.apache.kafka.streams.processor.internals.StreamTask - stream-thread [main] task [0_0] Suspended from RUNNING
+[main] INFO org.apache.kafka.streams.processor.internals.RecordCollectorImpl - topology-test-driver Closing record collector clean
+[main] INFO org.apache.kafka.streams.processor.internals.StreamTask - stream-thread [main] task [0_0] Closed clean
+[main] INFO org.apache.kafka.streams.processor.internals.StateDirectory - stream-thread [main] Deleting task directory 0_0 for 0_0 as user calling cleanup.
+]]></system-err>
+  </testcase>
+  <testcase name="jsonNewsItemDeserializerRejectsPlainProse" classname="local.kip1034.dlq.news.freeform.NewsFreeformTopologyIT" time="0.002"/>
+</testsuite>
