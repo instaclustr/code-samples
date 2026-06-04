@@ -86,7 +86,7 @@ public final class NewsFreeformTopology {
                             return out;
                         })
                 .groupByKey(Grouped.with(Serdes.String(), Serdes.String()))
-                .windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofMinutes(1)))
+                .windowedBy(TimeWindows.ofSizeAndGrace(Duration.ofMinutes(1), Duration.ofSeconds(10)))
                 .aggregate(
                         () -> "",
                         (catKey, payload, agg) -> agg.isEmpty() ? payload : agg + "|" + payload,
