@@ -77,18 +77,12 @@ uv run streamlit run src/shoe_bot/app.py
 Open the app in your browser and try:
 
 - *"Show me my recent orders."* → the agent calls `get_orders` and lists the
-  blue Sneakers, brown Boots, and black Shoes.
+  blue sneakers, brown boots, and black shoes.
 - *"My black shoes (order 3) don't fit, please log a return request."* → the agent
   calls `submit_request` to publish a support ticket to the Kafka backend.
 
 Each prompt triggers the matching tool automatically — you don't specify tool
 names or routing.
-
-## Local testing without a Gateway (optional)
-
-`example_mcp_server.py` is a minimal stdio MCP server (`echo` / `add` tools) you
-can point the client at to verify the MCP wiring before connecting to a real
-Gateway.
 
 ## Project structure
 
