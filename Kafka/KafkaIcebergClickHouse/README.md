@@ -38,7 +38,7 @@ downstream with ClickHouse.
    python produce_events_aio.py
 
 ## Additional Materials
-<!-- TODO: add link to the related blog post / YouTube video / talk -->
+Blog: [Kafka to Iceberg: Build a queryable data lake with ClickHouse](https://www.instaclustr.com/blog/kafka-to-iceberg-build-a-queryable-data-lake-with-clickhouse/)
 
 ## Notes
 - All credentials are placeholders - replace them before running, and never commit
