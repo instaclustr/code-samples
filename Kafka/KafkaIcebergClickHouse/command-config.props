@@ -1,0 +1,10 @@
+# command-config.props
+# Kafka CLI credentials file for kafka-topics.sh and kafka-acls.sh commands.
+# Used when creating the control topic and setting ACLs.
+#
+# Replace the placeholders with your actual Kafka credentials from
+# Instaclustr: Kafka cluster -> Connection Info -> Default Credentials
+
+security.protocol=SASL_PLAINTEXT
+sasl.mechanism=SCRAM-SHA-256
+sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username="<your-kafka-username>" password="<your-kafka-password>";

@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "GlueAccess",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetTable",
+        "glue:GetDatabase"
+      ],
+      "Resource": [
+        "arn:aws:glue:<your-aws-region>:<your-aws-account-id>:catalog",
+        "arn:aws:glue:<your-aws-region>:<your-aws-account-id>:database/analytics",
+        "arn:aws:glue:<your-aws-region>:<your-aws-account-id>:table/analytics/*"
+      ]
+    }
+  ]
+}
