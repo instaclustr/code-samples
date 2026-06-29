@@ -32,6 +32,39 @@ AI agent (this app)  ──Streamable HTTP──▶  MCP Gateway (supportchatbot
 - An **AWS account** with **Amazon Bedrock** model access enabled in `us-east-1`.
 - **Python 3.11+** and the [uv](https://docs.astral.sh/uv/) package manager.
 
+## MCP Gateway setup
+
+Before running the chatbot, provision the MCP Gateway and configure the two
+backends in the [Instaclustr console](https://console.instaclustr.com) (Terraform
+and the Instaclustr API are equally supported).
+
+**1. Provision the MCP Gateway cluster**
+Create a new MCP Gateway cluster from the Instaclustr console the same way you
+would any other cluster.
+
+**2. Create the virtual server**
+Inside the cluster, create an MCP virtual server:
+- Name: `supportchatbot`
+- Endpoint URL: `/chatbot`
+
+Copy the full Endpoint URL from the Details page
+(e.g. `https://mcp-gateway.<id>.cnodes.io/chatbot`) — you'll paste it into
+`config.json` in the next section.
+
+**3. Add the HTTP server backend**
+Create a backend named `ordersapi` (type: HTTP Server), then add one tool:
+- Name: `get_orders` · Type: HTTP Operation · Method: GET
+
+**4. Add the Kafka backend**
+First create a Kafka user (`supportmcg`, SASL/SCRAM SHA-256) in your Instaclustr
+Kafka cluster. Then create a backend named `supporttickets` (type: Kafka), using
+that user's credentials and your Kafka cluster ID. Add one tool:
+- Name: `submit_request` · Type: Publish Message · Topic: `support-requests`
+
+**5. Verify**
+The `supportchatbot` virtual server should now list two backends —
+`ordersapi` (1 tool) and `supporttickets` (1 tool).
+
 ## Configuration
 
 This sample reads its settings from a local `config.json`. Start from the provided
