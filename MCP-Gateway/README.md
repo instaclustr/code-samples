@@ -8,7 +8,7 @@ The following folders contain code samples related to the MCP Gateway on NetApp 
 
 | Project | Description |
 |---------|-------------|
-
+| [shoe-store-support-chatbot](./shoe-store-support-chatbot) | A Streamlit + AWS Bedrock chatbot that connects an AI agent to an HTTP Server backend (recent orders) and an Apache Kafka backend (support tickets) through a single, secured MCP Gateway endpoint. |
 
 ## Getting Started
 
@@ -25,7 +25,7 @@ Each README will also include a link to a blog post, YouTube video, or conferenc
 
 ## Authors
 
-* **[Ramya Ravi]** - [NetApp Instaclustr](https://github.com/Instaclustr)
+* **[Ramya Ravi](https://github.com/ramyaravi1)** - [NetApp Instaclustr](https://github.com/Instaclustr)
 
 See also the list of [MAINTAINERS](https://github.com/instaclustr/code-samples/blob/main/Maintainer.md) who participated in projects in this repository.
 

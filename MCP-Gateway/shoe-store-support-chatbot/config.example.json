@@ -1,0 +1,19 @@
+{
+  "bedrock": {
+    "region": "us-east-1",
+    "model_id": "us.anthropic.claude-haiku-4-5-20251001-v1:0",
+    "system_prompt": "You are a shoe store support assistant. Use the available tools to look up customer orders, order status, and order events. Be concise and accurate.",
+    "max_tokens": 4096,
+    "temperature": 0.5,
+    "max_tool_rounds": 10
+  },
+  "mcp": {
+    "enabled": true,
+    "servers": {
+      "shoestore": {
+        "transport": "streamable-http",
+        "url": "https://mcp-gateway.<id>.cnodes.io/chatbot"
+      }
+    }
+  }
+}
