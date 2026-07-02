@@ -1,0 +1,54 @@
+classDiagram
+  direction LR
+
+  class AgentCard {
+    +name
+    +skills[]
+    +capabilities
+  }
+
+  class Task {
+    +id
+    +status
+    +artifacts[]
+  }
+
+  class Message {
+    +messageId
+    +role
+    +parts[]
+  }
+
+  class Part {
+    +kind
+  }
+
+  class Artifact {
+    +artifactId
+    +parts[]
+  }
+
+  class TaskStatusUpdateEvent {
+    +taskId
+    +status
+  }
+
+  class TaskArtifactUpdateEvent {
+    +taskId
+    +artifact
+  }
+
+  class SendMessageRequest {
+    +message
+    +configuration
+  }
+
+  AgentCard ..> SendMessageRequest : enables invocation
+  SendMessageRequest --> Message : payload
+  Task o-- Message : history
+  Task o-- Artifact : outputs
+  Message *-- Part : contains
+  Artifact *-- Part : contains
+  TaskStatusUpdateEvent --> Task : for
+  TaskArtifactUpdateEvent --> Task : for
+  TaskArtifactUpdateEvent --> Artifact : carries

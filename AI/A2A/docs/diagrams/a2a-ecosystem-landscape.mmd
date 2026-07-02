@@ -1,0 +1,58 @@
+flowchart TB
+  H["How widespread is support for the Agent2Agent (A2A) Protocol?"]
+
+  subgraph ROW[" "]
+    direction LR
+
+    subgraph P["① Open standard"]
+      direction TB
+      P1["A2A Protocol v1.x"]
+      P2["Linux Foundation · a2aproject"]
+    end
+
+    subgraph B["② Backers"]
+      direction TB
+      B1["TSC: AWS · Cisco · Google"]
+      B2["IBM · Microsoft · Salesforce"]
+      B3["SAP · ServiceNow"]
+    end
+
+    subgraph S["③ SDKs"]
+      direction TB
+      S1["Python · JS/TS · Java"]
+      S2["Go · .NET"]
+    end
+
+    subgraph F["④ Frameworks & platforms"]
+      direction TB
+      F1["Native: Google ADK"]
+      F2["LangGraph · MS Agent Framework"]
+      F3["CrewAI · Semantic Kernel · LlamaIndex"]
+      F4["AutoGen · Azure Foundry samples"]
+    end
+
+    subgraph A["⑤ Reality check"]
+      direction TB
+      A1["Any agent via SDK + bindings"]
+      A2["MCP complements · tools not agents"]
+      A3["Uneven: no std registry · verify claims"]
+    end
+
+    P --> B --> S --> F --> A
+  end
+
+  H --> ROW
+
+  classDef head fill:#0b2a4a,color:#ffffff,stroke:#0b2a4a,stroke-width:2px,font-size:18px;
+  classDef core fill:#0b2a4a,color:#ffffff,stroke:#0b2a4a,stroke-width:1px;
+  classDef mid fill:#1a5276,color:#ffffff,stroke:#1a5276,stroke-width:1px;
+  classDef sdk fill:#1a6b4a,color:#ffffff,stroke:#1a6b4a,stroke-width:1px;
+  classDef fw fill:#eef3f8,color:#111111,stroke:#3b4d63,stroke-width:1px;
+  classDef gap fill:#fdebd0,color:#111111,stroke:#e67e22,stroke-width:1px;
+
+  class H head;
+  class P1,P2 core;
+  class B1,B2,B3 mid;
+  class S1,S2 sdk;
+  class F1,F2,F3,F4 fw;
+  class A1,A2,A3 gap;

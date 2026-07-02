@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">How widespread is A2A support?</title>
+  <desc id="desc">Visual adoption landscape for the Agent2Agent protocol: strong at the standard and SDK layer, growing framework integration, uneven in production deployment.</desc>
+
+  <rect width="1200" height="680" fill="#fafbfc"/>
+
+  <!-- Title -->
+  <text x="600" y="52" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" fill="#0b2a4a">How widespread is A2A support?</text>
+  <text x="600" y="82" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#5c6b7a">Agent2Agent protocol · landscape view · mid-2026</text>
+
+  <!-- Central hub visual -->
+  <circle cx="600" cy="340" r="118" fill="#eef3f8" stroke="#3b4d63" stroke-width="2"/>
+  <circle cx="600" cy="340" r="88" fill="#0b2a4a"/>
+  <text x="600" y="332" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="700" fill="#ffffff">A2A</text>
+  <text x="600" y="362" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#c8d6e5">agent ” agent</text>
+
+  <!-- Orbit ring -->
+  <circle cx="600" cy="340" r="200" fill="none" stroke="#d0dae4" stroke-width="2" stroke-dasharray="8 6"/>
+  <circle cx="600" cy="340" r="268" fill="none" stroke="#d0dae4" stroke-width="1.5" stroke-dasharray="6 8"/>
+
+  <!-- Orbit nodes - SDKs (inner) -->
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="600">
+    <circle cx="600" cy="140" r="36" fill="#1a6b4a"/>
+    <text x="600" y="136" text-anchor="middle" fill="#fff">Python</text>
+    <text x="600" y="152" text-anchor="middle" fill="#d5efe3" font-size="10">SDK</text>
+
+    <circle cx="772" cy="220" r="36" fill="#1a6b4a"/>
+    <text x="772" y="224" text-anchor="middle" fill="#fff">JS/TS</text>
+
+    <circle cx="800" cy="390" r="36" fill="#1a6b4a"/>
+    <text x="800" y="394" text-anchor="middle" fill="#fff">Java</text>
+
+    <circle cx="428" cy="390" r="36" fill="#1a6b4a"/>
+    <text x="428" y="386" text-anchor="middle" fill="#fff">Go</text>
+    <text x="428" y="402" text-anchor="middle" fill="#d5efe3" font-size="10">.NET</text>
+
+    <circle cx="428" cy="220" r="36" fill="#1a6b4a"/>
+    <text x="428" y="224" text-anchor="middle" fill="#fff">SDKs</text>
+  </g>
+
+  <!-- Orbit nodes - frameworks (outer) -->
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="600">
+    <rect x="548" y="56" width="104" height="34" rx="17" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="600" y="78" text-anchor="middle" fill="#0b2a4a">Google ADK</text>
+
+    <rect x="860" y="150" width="110" height="34" rx="17" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="915" y="172" text-anchor="middle" fill="#0b2a4a">LangGraph</text>
+
+    <rect x="920" y="330" width="100" height="34" rx="17" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="970" y="352" text-anchor="middle" fill="#0b2a4a">CrewAI</text>
+
+    <rect x="860" y="500" width="130" height="34" rx="17" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="925" y="522" text-anchor="middle" fill="#0b2a4a">Semantic Kernel</text>
+
+    <rect x="180" y="500" width="110" height="34" rx="17" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="235" y="522" text-anchor="middle" fill="#0b2a4a">LlamaIndex</text>
+
+    <rect x="120" y="330" width="100" height="34" rx="17" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="170" y="352" text-anchor="middle" fill="#0b2a4a">AutoGen</text>
+
+    <rect x="180" y="150" width="130" height="34" rx="17" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="245" y="172" text-anchor="middle" fill="#0b2a4a">Azure Foundry</text>
+  </g>
+
+  <!-- Spokes -->
+  <g stroke="#b8c5d1" stroke-width="1.5" opacity="0.7">
+    <line x1="600" y1="340" x2="600" y2="176"/>
+    <line x1="600" y1="340" x2="736" y2="220"/>
+    <line x1="600" y1="340" x2="764" y2="390"/>
+    <line x1="600" y1="340" x2="464" y2="390"/>
+    <line x1="600" y1="340" x2="464" y2="220"/>
+    <line x1="600" y1="340" x2="915" y2="167"/>
+    <line x1="600" y1="340" x2="970" y2="347"/>
+    <line x1="600" y1="340" x2="170" y2="347"/>
+    <line x1="600" y1="340" x2="245" y2="167"/>
+  </g>
+
+  <!-- Adoption bars -->
+  <g transform="translate(80, 560)">
+    <text x="0" y="0" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="#0b2a4a">Adoption depth (qualitative)</text>
+
+    <!-- bar helper: label, track, fill -->
+    <text x="0" y="36" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#334">Open standard + LF governance</text>
+    <rect x="280" y="22" width="720" height="18" rx="9" fill="#e8edf2"/>
+    <rect x="280" y="22" width="684" height="18" rx="9" fill="#0b2a4a"/>
+    <text x="1010" y="36" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#1a6b4a" font-weight="700">Strong</text>
+
+    <text x="0" y="68" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#334">Official SDKs (5 languages)</text>
+    <rect x="280" y="54" width="720" height="18" rx="9" fill="#e8edf2"/>
+    <rect x="280" y="54" width="612" height="18" rx="9" fill="#1a5276"/>
+    <text x="1010" y="68" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#1a5276" font-weight="700">Strong</text>
+
+    <text x="0" y="100" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#334">Framework / platform integration</text>
+    <rect x="280" y="86" width="720" height="18" rx="9" fill="#e8edf2"/>
+    <rect x="280" y="86" width="468" height="18" rx="9" fill="#1a6b4a"/>
+    <text x="1010" y="100" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#1a6b4a" font-weight="700">Growing</text>
+
+    <text x="0" y="132" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#334">Production agents enabled end-to-end</text>
+    <rect x="280" y="118" width="720" height="18" rx="9" fill="#e8edf2"/>
+    <rect x="280" y="118" width="252" height="18" rx="9" fill="#e67e22"/>
+    <text x="1010" y="132" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#e67e22" font-weight="700">Uneven</text>
+  </g>
+
+  <!-- Legend chips -->
+  <g transform="translate(80, 120)" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#0b2a4a"/>
+    <text x="22" y="12" fill="#334">Protocol core</text>
+    <rect x="130" y="0" width="14" height="14" rx="3" fill="#1a6b4a"/>
+    <text x="152" y="12" fill="#334">SDK layer</text>
+    <rect x="240" y="0" width="14" height="14" rx="3" fill="#eef3f8" stroke="#3b4d63"/>
+    <text x="262" y="12" fill="#334">Frameworks &amp; samples</text>
+    <rect x="420" y="0" width="14" height="14" rx="3" fill="#fdebd0" stroke="#e67e22"/>
+    <text x="442" y="12" fill="#334">Still early / verify claims</text>
+  </g>
+
+  <!-- TSC note -->
+  <text x="600" y="668" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8898a8">TSC backers include AWS · Cisco · Google · IBM · Microsoft · Salesforce · SAP · ServiceNow · MCP complements A2A for tools</text>
+</svg>

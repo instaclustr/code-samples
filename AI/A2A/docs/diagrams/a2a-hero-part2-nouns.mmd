@@ -1,0 +1,36 @@
+flowchart LR
+  %% Hero diagram — Part 2 blog: A2A object model (high level)
+
+  CLIENT(("Client Agent"))
+
+  subgraph DISCOVER["Discovery"]
+    AC["Agent Card"]
+  end
+
+  subgraph DIALOGUE["Dialogue"]
+    MSG["Message"]
+    P1["Part"]
+    MSG --- P1
+  end
+
+  subgraph OUTPUT["Work & deliverable"]
+    TASK["Task"]
+    ART["Artifact"]
+    P2["Part"]
+    TASK --> ART
+    ART --- P2
+  end
+
+  CLIENT -->|"fetch"| AC
+  AC -->|"SendMessage"| MSG
+  MSG -->|"or"| TASK
+
+  classDef dark fill:#0b2a4a,color:#ffffff,stroke:#0b2a4a,stroke-width:2px;
+  classDef light fill:#eef3f8,color:#111111,stroke:#3b4d63,stroke-width:1px;
+  classDef accent fill:#1a6b4a,color:#ffffff,stroke:#1a6b4a,stroke-width:1px;
+  classDef hub fill:#ffffff,color:#111111,stroke:#0b2a4a,stroke-width:2px;
+
+  class CLIENT dark;
+  class AC,MSG,P1,TASK light;
+  class ART accent;
+  class P2 hub;

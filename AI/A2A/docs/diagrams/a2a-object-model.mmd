@@ -1,0 +1,150 @@
+classDiagram
+  direction LR
+
+  class AgentCard {
+    +name: string
+    +description: string
+    +url: string
+    +version: string
+    +capabilities: AgentCapabilities
+    +securitySchemes: map
+    +defaultInputModes: string[]
+    +defaultOutputModes: string[]
+  }
+
+  class AgentSkill {
+    +id: string
+    +name: string
+    +description: string
+    +tags: string[]
+    +examples: string[]
+  }
+
+  class Task {
+    +id: string
+    +contextId: string
+    +status: TaskStatus
+    +artifacts: Artifact[]
+    +history: Message[]
+    +createdAt: datetime
+    +lastModified: datetime
+  }
+
+  class TaskStatus {
+    +state: TaskState
+    +message: Message
+    +timestamp: datetime
+  }
+
+  class TaskState {
+    <<enumeration>>
+    submitted
+    working
+    input-required
+    completed
+    failed
+    canceled
+    rejected
+  }
+
+  class Message {
+    +messageId: string
+    +role: MessageRole
+    +parts: Part[]
+    +contextId: string
+    +taskId: string?
+    +metadata: map
+  }
+
+  class MessageRole {
+    <<enumeration>>
+    user
+    agent
+  }
+
+  class Part {
+    <<abstract>>
+    +kind: string
+    +metadata: map
+  }
+
+  class TextPart {
+    +text: string
+  }
+
+  class FilePart {
+    +fileName: string
+    +mimeType: string
+    +bytesOrUri: string
+  }
+
+  class DataPart {
+    +data: json
+  }
+
+  class Artifact {
+    +artifactId: string
+    +name: string
+    +description: string
+    +parts: Part[]
+    +index: int
+  }
+
+  class TaskStatusUpdateEvent {
+    +taskId: string
+    +status: TaskStatus
+    +final: bool
+  }
+
+  class TaskArtifactUpdateEvent {
+    +taskId: string
+    +artifact: Artifact
+    +append: bool
+    +lastChunk: bool
+  }
+
+  class SendMessageRequest {
+    +message: Message
+    +configuration: SendMessageConfiguration
+    +metadata: map
+  }
+
+  class SendMessageConfiguration {
+    +acceptedOutputModes: string[]
+    +historyLength: int
+    +blocking: bool
+    +pushNotificationConfig: TaskPushNotificationConfig
+  }
+
+  class TaskPushNotificationConfig {
+    +url: string
+    +token: string?
+    +authentication: map?
+  }
+
+  %% Core model relationships
+  AgentCard "1" o-- "*" AgentSkill : advertises
+  AgentCard "1" o-- "1" SendMessageConfiguration : supports modes
+
+  Task "1" *-- "1" TaskStatus : current status
+  TaskStatus "1" --> "1" TaskState : uses
+  Task "1" o-- "*" Artifact : outputs
+  Task "1" o-- "*" Message : history
+
+  Message "1" *-- "*" Part : contains
+  Part <|-- TextPart
+  Part <|-- FilePart
+  Part <|-- DataPart
+
+  Artifact "1" *-- "*" Part : contains
+  Message "1" --> "1" MessageRole : role
+
+  %% Runtime events and operations
+  SendMessageRequest "1" *-- "1" Message : payload
+  SendMessageRequest "1" o-- "1" SendMessageConfiguration : options
+  SendMessageConfiguration "1" o-- "0..1" TaskPushNotificationConfig : async updates
+
+  TaskStatusUpdateEvent "1" --> "1" Task : for
+  TaskStatusUpdateEvent "1" --> "1" TaskStatus : carries
+  TaskArtifactUpdateEvent "1" --> "1" Task : for
+  TaskArtifactUpdateEvent "1" --> "1" Artifact : carries

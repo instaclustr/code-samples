@@ -1,0 +1,65 @@
+flowchart LR
+  %% A2A protocol component-level view (UML-style)
+
+  U("User / Calling App")
+
+  subgraph CLIENT["A2A Client Side"]
+    C1("A2A Client Agent")
+    C2("A2A Client SDK / Binding")
+    C3("MCP Tool Adapters")
+    C1 --> C2
+    C1 --> C3
+  end
+
+  subgraph SERVER["Remote A2A Server Side"]
+    S1("Agent Card Endpoint")
+    S2("A2A API Surface")
+    S3("Task Manager")
+    S4("Artifact Store")
+    S5("Push/Stream Notifier")
+    S6("Server Agent Runtime")
+    S7("MCP Tool Adapters")
+
+    S2 --> S3
+    S3 --> S4
+    S3 --> S5
+    S3 --> S6
+    S6 --> S7
+  end
+
+  subgraph BINDINGS["Protocol Bindings"]
+    B1("JSON-RPC")
+    B2("HTTP/REST")
+    B3("gRPC")
+  end
+
+  subgraph SECURITY["Security Boundary"]
+    A1("AuthN/AuthZ")
+    A2("Policy / ACLs")
+  end
+
+  U --> C1
+  C2 -->|Discover| S1
+  C2 -->|SendMessage / Stream| S2
+  S5 -->|SSE / Webhook updates| C2
+  C2 -->|GetTask / ListTasks / CancelTask| S2
+  S4 -->|Artifacts| C2
+
+  C2 --- B1
+  C2 --- B2
+  C2 --- B3
+  S2 --- B1
+  S2 --- B2
+  S2 --- B3
+
+  C2 --- A1
+  S2 --- A1
+  S2 --- A2
+
+  classDef dark fill:#0b2a4a,color:#ffffff,stroke:#0b2a4a,stroke-width:1px;
+  classDef light fill:#eef3f8,color:#111111,stroke:#3b4d63,stroke-width:1px;
+  classDef white fill:#ffffff,color:#111111,stroke:#3b4d63,stroke-width:1px;
+
+  class C1,S6 dark;
+  class C2,C3,S1,S2,S3,S4,S5,S7 light;
+  class U,B1,B2,B3,A1,A2 white;

@@ -1,0 +1,36 @@
+flowchart TB
+  %% Hero diagram — Part 3 blog: runtime fork + update paths
+
+  subgraph DISCOVER["Discovery"]
+    direction LR
+    WK["Well-known URI"]
+    REG["Registry"]
+    CFG["Direct config"]
+    WK & REG & CFG --> CARD["Agent Card"]
+  end
+
+  CARD --> SM["SendMessage"]
+
+  SM --> MSG["Message\ninstant reply"]
+  SM --> TASK["Task\nlong-running work"]
+
+  subgraph UPDATES["How the client tracks a task"]
+    direction LR
+    POLL["Poll\nGetTask"]
+    SSE["Stream\nSSE"]
+    PUSH["Push\nWebhook"]
+  end
+
+  TASK --> UPDATES
+  UPDATES --> CLIENT(("Client Agent"))
+  MSG --> CLIENT
+
+  classDef dark fill:#0b2a4a,color:#ffffff,stroke:#0b2a4a,stroke-width:2px;
+  classDef light fill:#eef3f8,color:#111111,stroke:#3b4d63,stroke-width:1px;
+  classDef accent fill:#1a6b4a,color:#ffffff,stroke:#1a6b4a,stroke-width:1px;
+  classDef path fill:#ffffff,color:#111111,stroke:#3b4d63,stroke-width:1px;
+
+  class CLIENT,CARD dark;
+  class WK,REG,CFG,SM,TASK light;
+  class MSG accent;
+  class POLL,SSE,PUSH path;

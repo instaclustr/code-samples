@@ -1,0 +1,21 @@
+stateDiagram-v2
+  direction LR
+
+  [*] --> submitted
+
+  submitted --> working: task accepted
+  state "input-required" as input_required
+  working --> input_required: missing user input
+  input_required --> working: follow-up input received
+
+  working --> completed: success + artifacts ready
+  working --> failed: unrecoverable error
+  submitted --> canceled: cancel accepted
+  working --> canceled: cancel accepted
+  input_required --> canceled: cancel accepted
+  submitted --> rejected: policy/validation reject
+
+  completed --> [*]
+  failed --> [*]
+  canceled --> [*]
+  rejected --> [*]

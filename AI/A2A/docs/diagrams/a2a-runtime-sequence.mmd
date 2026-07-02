@@ -1,0 +1,56 @@
+sequenceDiagram
+  autonumber
+  actor U as User / Calling App
+  participant C as A2A Client Agent
+  participant D as Agent Card Endpoint (.well-known)
+  participant S as Remote A2A Server (Agent API)
+  participant T as Task Manager
+  participant P as Push/Stream Channel
+  participant A as Artifact Store
+
+  U->>C: Ask for delegated task
+  C->>D: Discover agent card
+  D-->>C: AgentCard (+ capabilities/security)
+  opt Protected metadata
+    C->>S: GetExtendedAgentCard
+    S-->>C: Extended card details
+  end
+  C->>S: SendMessage(message, configuration)
+
+  alt Immediate/short operation
+    S-->>C: Message (final)
+    C-->>U: Return response
+  else Long-running operation
+    S->>T: Create task
+    S-->>C: Task(submitted/working)
+
+    par Streaming/push updates
+      T->>S: Status/message updates
+      S->>P: Publish TaskStatusUpdateEvent
+      P-->>C: Status/message events (stream/subscription/webhook)
+    and Polling fallback (non-streaming clients)
+      loop Optional polling
+        C->>S: GetTask(taskId)
+        S-->>C: Task(current state)
+      end
+    end
+
+    opt Input required
+      T-->>C: Task(input-required + message)
+      C->>S: SendMessage (follow-up input)
+      S->>T: Resume task
+    end
+
+    T->>A: Persist final artifact(s)
+    A-->>T: Artifact reference(s)
+    T-->>S: Final task result prepared
+    S-->>C: Final Task(completed/failed/rejected/canceled) + artifact output
+    C-->>U: Deliver final result (artifact/message)
+  end
+
+  opt User cancels
+    U->>C: Cancel request
+    C->>S: CancelTask(taskId)
+    S->>T: Transition to canceled (if possible)
+    S-->>C: Task(canceled or terminal state)
+  end
