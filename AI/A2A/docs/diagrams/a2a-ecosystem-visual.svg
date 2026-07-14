@@ -6,13 +6,13 @@
 
   <!-- Title -->
   <text x="600" y="52" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" fill="#0b2a4a">How widespread is A2A support?</text>
-  <text x="600" y="82" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#5c6b7a">Agent2Agent protocol · landscape view · mid-2026</text>
+  <text x="600" y="82" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" fill="#5c6b7a">Agent2Agent protocol ï¿½ landscape view ï¿½ mid-2026</text>
 
   <!-- Central hub visual -->
   <circle cx="600" cy="340" r="118" fill="#eef3f8" stroke="#3b4d63" stroke-width="2"/>
   <circle cx="600" cy="340" r="88" fill="#0b2a4a"/>
   <text x="600" y="332" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="700" fill="#ffffff">A2A</text>
-  <text x="600" y="362" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#c8d6e5">agent ” agent</text>
+  <text x="600" y="362" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#c8d6e5">agent ï¿½ agent</text>
 
   <!-- Orbit ring -->
   <circle cx="600" cy="340" r="200" fill="none" stroke="#d0dae4" stroke-width="2" stroke-dasharray="8 6"/>
@@ -114,5 +114,5 @@
   </g>
 
   <!-- TSC note -->
-  <text x="600" y="668" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8898a8">TSC backers include AWS · Cisco · Google · IBM · Microsoft · Salesforce · SAP · ServiceNow · MCP complements A2A for tools</text>
+  <text x="600" y="668" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="11" fill="#8898a8">TSC backers include AWS ï¿½ Cisco ï¿½ Google ï¿½ IBM ï¿½ Microsoft ï¿½ Salesforce ï¿½ SAP ï¿½ ServiceNow ï¿½ MCP complements A2A for tools</text>
 </svg>

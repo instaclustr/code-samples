@@ -4,6 +4,7 @@ This repo includes practical A2A protocol materials:
 
 - Intro/blog drafts and diagrams in `docs/`
 - A minimal **Clockwork Agent** demo (plain Java A2A) in `src/main/java/local/a2a/examples/`
+- **Part 6 bridge** — blog: **Quartz Chronometer Agent**; Part 7: **Atomic Timekeeper** ([`docs/SERIES-NAMING.md`](docs/SERIES-NAMING.md)) — in [`bridge/`](bridge/)
 
 ## The Clockwork Agent — three examples
 
@@ -18,10 +19,17 @@ This repo includes practical A2A protocol materials:
 
 Detailed docs:
 
+- `docs/SERIES-NAMING.md` — **blog names**: Clockwork → Quartz Chronometer Agent → Atomic Timekeeper
+- `docs/examples/README.md` — **index**: why bridge, what's done, what's next
+- `docs/examples/BRIDGE-OVERVIEW.md` — **bridge overview**: demonstrates, how it works, limitations
 - `docs/examples/01-time-service.md`
 - `docs/examples/02-async-countdown.md`
 - `docs/examples/03-input-required-countdown.md`
-- `docs/examples/trace.md` (captured request/response traces)
+- `docs/examples/04-sdk-countdown-poll.md` — bridge Phase A (SDK + poll)
+- `docs/examples/05-sse-countdown.md` — bridge Phase B (SDK + SSE)
+- `docs/examples/06-push-webhook.md` — bridge Phase C (push webhook)
+- `docs/scenarios/README.md` — **roadmap**: AI agents, orchestration, live scenarios (Parts 8+)
+- `docs/examples/trace.md` — Clockwork captured traces
 
 ## Run
 
@@ -47,6 +55,19 @@ The client will:
 - run the synchronous time example,
 - run the async countdown example and print task status until terminal state,
 - run an `input-required` example and then continue the same task with a confirmation message.
+
+## Bridge agent (Part 6 — Phases A–C)
+
+Official `a2a-java` SDK on port **8081**: countdown task with **poll**, **SSE**, and **push webhook** clients. See [`docs/examples/BRIDGE-OVERVIEW.md`](docs/examples/BRIDGE-OVERVIEW.md).
+
+```bash
+cd bridge && mvn -q package -DskipTests && java -jar target/quarkus-app/quarkus-run.jar
+cd bridge && mvn exec:java -Dexec.mainClass=local.a2a.bridge.client.PollCountdownClient    # A
+cd bridge && mvn exec:java -Dexec.mainClass=local.a2a.bridge.client.SseCountdownClient     # B
+cd bridge && mvn exec:java -Dexec.mainClass=local.a2a.bridge.client.PushCountdownClient    # C
+```
+
+**Next:** Part 7 — Kafka task-event topic. See [`docs/examples/README.md`](docs/examples/README.md).
 
 ## Notes
 
@@ -75,19 +96,16 @@ The server separates request handling from background execution:
 4. Background timer updates task fields (`state`, `statusMessage`, `remainingSeconds`, final artifact).
 5. `GetTask` reads the current task snapshot and returns it to the client.
 
-## Current limitations (intentional for intro/demo)
+## Current limitations
 
-- In-memory task state only (lost on restart).
-- No persistent queue/scheduler recovery.
-- Single-node process model (no shared task store).
-- Polling only (no `SendStreamingMessage`/SSE/webhook push path yet).
+**Clockwork:** in-memory tasks, polling only, hand-rolled JSON-RPC.
 
-## Resume checklist (next steps)
+**Bridge:** Phases A–C done (poll, SSE, push); in-memory state; no Kafka yet (Part 7). See [`docs/examples/BRIDGE-OVERVIEW.md`](docs/examples/BRIDGE-OVERVIEW.md#whats-missing-or-simplified).
 
-When you pick this project up again, likely next improvements are:
+## Roadmap (bridge → Kafka)
 
-1. Add true server->client update transport (SSE or webhook push).
-2. Add durable task persistence (DB/KV) and restart recovery.
-3. Add cleanup/retention for completed tasks.
-4. Add stricter protocol envelope validation and richer error mapping.
-5. Add a second client mode that uses streaming updates instead of polling.
+1. ~~Phase A: SDK + poll baseline~~ **done**
+2. ~~Phase B: SSE streaming client~~ **done**
+3. ~~Phase C: push webhook receiver~~ **done**
+4. Part 7: Kafka task-event topic + consumers — [`docs/kafka/README.md`](docs/kafka/README.md)
+5. Parts 8+: AI agents & orchestration — [`docs/scenarios/README.md`](docs/scenarios/README.md)

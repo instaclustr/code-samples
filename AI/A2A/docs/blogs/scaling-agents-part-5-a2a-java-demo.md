@@ -124,7 +124,7 @@ The card advertises three skills — `current-time`, `countdown`, and `countdown
 
 **What it does:**
 
-1. `SendMessage` creates a countdown `Task` and returns it immediately (`state: working`).
+1. `SendMessage` creates a countdown `Task` and returns it immediately (`state: working`). The constructor may set `submitted` internally, but `createCountdownTask()` calls `start()` before responding — so the first client-visible snapshot is already `working` (see [`trace.md`](../examples/trace.md)).
 2. A background `ScheduledExecutorService` decrements the timer every 10 seconds.
 3. The client loops on `GetTask(taskId)` every 5 seconds until a terminal state.
 4. On completion, the task carries a final **`Artifact`** with the completion text.
@@ -135,7 +135,7 @@ The card advertises three skills — `current-time`, `countdown`, and `countdown
 |---|---|
 | **`SendMessage` → `Task`** | Runtime sequence, **else: Long-running operation**; Part 3 hero — right branch |
 | Polling fallback | Runtime sequence, **loop: GetTask**; Part 3 hero — **Poll** lane only |
-| `submitted` → `working` → `completed` | [Task lifecycle (strict)](../diagrams/a2a-task-lifecycle-strict.svg) |
+| `working` → `completed` | [Task lifecycle (strict)](../diagrams/a2a-task-lifecycle-strict.svg) |
 | Progress via `Task.status.message` | Object model — `Task` owns nested `Message` for status |
 | Final output via `Task.artifacts[]` | Object model — `Task` → `Artifact` → `Part` |
 
@@ -163,7 +163,7 @@ The card advertises three skills — `current-time`, `countdown`, and `countdown
 
 **What it does:**
 
-1. First `SendMessage` returns a `Task` in **`input-required`** with a prompt in `status.message`.
+1. First `SendMessage` returns a `Task` already in **`input-required`** with a prompt in `status.message`. `createConfirmRequiredCountdownTask()` sets that state in the constructor and does **not** call `start()` first — so the client never sees a prior `working` snapshot (see [`trace.md`](../examples/trace.md) Example 3).
 2. Second `SendMessage` includes `params.taskId` plus the user's confirmation text.
 3. Server calls `confirmAndStart()`, transitions to `working`, runs the same countdown logic as Example 2.
 4. Client polls `GetTask` until `completed` + artifact.
@@ -172,17 +172,18 @@ The card advertises three skills — `current-time`, `countdown`, and `countdown
 
 | Concept | Diagram reference |
 |---|---|
-| **`input-required` state** | Task lifecycle — `working → input-required → working` |
+| **`input-required` state** | Task lifecycle — client-visible path is `input-required` → `working` → `completed` (not `working` first) |
 | Follow-up input on existing task | Runtime sequence, **opt: Input required** — second `SendMessage` |
 | Same task context across turns | Detailed object model — `SendMessageRequest` with optional `taskId` |
 
 **What it does *not* illustrate:**
 
+- A task entering `input-required` from `working` mid-flight — this demo creates the task **directly** in `input-required`; the first client response is already there
 - Rich conversational history — the demo does not populate a full `Task.history` array; it only needs enough state to gate the countdown
 - Client-side UX for gathering input — the client blindly sends `"confirm"`; a real app would render the agent's prompt and collect structured input
 - Cancellation mid `input-required` — supported by lifecycle diagram and server handler, not exercised in the default client run
 
-**Why it matters:** Many agent workflows need clarification before execution continues — policy confirmation, missing parameters, disambiguation. Example 3 shows the protocol-native pattern: **stay on the same `taskId`**, move state to `input-required`, resume when the client sends follow-up input. This is cleaner than starting a new task and trying to correlate IDs in application code.
+**Why it matters:** Many agent workflows need clarification before execution continues — policy confirmation, missing parameters, disambiguation. Example 3 shows the protocol-native pattern: **stay on the same `taskId`**, create or reach **`input-required`**, then resume when the client sends follow-up input. This is cleaner than starting a new task and trying to correlate IDs in application code.
 
 **Code pointers:** `createConfirmRequiredCountdownTask(...)`, `sendMessageForTask(...)` (client), `CountdownTask.confirmAndStart()`.
 

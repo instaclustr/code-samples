@@ -14,9 +14,12 @@ This folder contains a layered set of diagrams for explaining the A2A protocol f
 | — | `a2a-hero-part2-nouns` | **Blog hero** — Part 2 object model (discovery → dialogue → deliverable) |
 | — | `a2a-hero-part3-runtime-fork` | **Blog hero** — Part 3 runtime (discovery → Message/Task fork → poll/stream/push) |
 | — | `a2a-hero-part5-java-three-examples` | **Blog hero** — Part 5 Clockwork Agent (three examples: time, countdown, confirm) |
+| — | `a2a-bridge-event-paths` | **Blog hero** — Part 6 / Quartz Chronometer (poll, SSE, push, Kafka behind protocol) |
 | — | `a2a-ecosystem-landscape` | **LinkedIn / reference** — A2A support breadth (standard → backers → SDKs → frameworks → gaps) |
 
-**Word / print exports:** use `*-word.png` (3–4× scale). Insert via **Insert → Pictures** — avoid pasting from clipboard, which recompresses. SVG also works in recent Word if inserted as a file.
+**PNG exports:** each `.mmd` diagram has `name.png` (2× scale) and `name-word.png` (4×, for Word/print). Regenerate: `docs/diagrams/export-png.sh`.
+
+**Word / print exports:** use `*-word.png` (4× scale). Insert via **Insert → Pictures** — avoid pasting from clipboard, which recompresses. SVG also works in recent Word if inserted as a file.
 
 ---
 

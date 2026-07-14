@@ -6,7 +6,7 @@ This example demonstrates a multi-turn task that first returns `input-required`,
 
 - `input-required` state semantics
 - Continuing an existing task with `taskId` in `SendMessage` params
-- Transition from `input-required` -> `working` -> terminal state
+- Transition from `input-required` → `working` → `completed` on the wire (task is **created** in `input-required`; no prior `working` snapshot)
 
 ## Client prompts
 

@@ -1,0 +1,48 @@
+flowchart TB
+  %% Hero diagram — Part 6: poll vs SSE vs push → Kafka
+
+  subgraph CLIENT["Client"]
+    CA(("Client Agent"))
+  end
+
+  subgraph AGENT["A2A Agent (SDK)"]
+    API["A2A API Surface"]
+    TM["Task Manager"]
+    API --> TM
+  end
+
+  subgraph DELIVER["How updates reach the client"]
+    direction TB
+    POLL["Poll — GetTask"]
+    SSE["Stream — SSE"]
+    WH["Push — Webhook POST"]
+  end
+
+  subgraph KAFKA["Behind the protocol (Part 7)"]
+    T["Topic: a2a.task.events"]
+    C1["Consumer — orchestrator"]
+    C2["Consumer — audit / replay"]
+  end
+
+  CA -->|"SendMessage"| API
+  TM --> POLL
+  TM --> SSE
+  TM --> WH
+
+  POLL --> CA
+  SSE --> CA
+  WH -->|"HTTP POST"| PNS["Push Notification Service"]
+  PNS -->|"produce"| T
+  TM -.->|"also publish task events"| T
+  T --> C1
+  T --> C2
+
+  classDef dark fill:#0b2a4a,color:#ffffff,stroke:#0b2a4a,stroke-width:2px;
+  classDef light fill:#eef3f8,color:#111111,stroke:#3b4d63,stroke-width:1px;
+  classDef accent fill:#1a6b4a,color:#ffffff,stroke:#1a6b4a,stroke-width:1px;
+  classDef kafka fill:#ffffff,color:#111111,stroke:#3b4d63,stroke-width:1px;
+
+  class CA dark;
+  class API,TM,PNS light;
+  class SSE,WH accent;
+  class T,C1,C2,POLL kafka;

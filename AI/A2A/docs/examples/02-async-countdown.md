@@ -8,7 +8,7 @@ This example demonstrates the long-running A2A pattern:
 
 ## What it teaches
 
-- Task-oriented workflow (`submitted`/`working`/`completed`)
+- Task-oriented workflow (`working` → `completed` on the wire; `createCountdownTask()` calls `start()` before the first response, so clients never see `submitted`)
 - Polling-based progress tracking
 - Final artifact delivery
 
