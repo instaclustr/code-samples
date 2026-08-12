@@ -9,6 +9,7 @@ The following folders contain code samples related to the MCP Gateway on NetApp 
 | Project | Description |
 |---------|-------------|
 | [shoe-store-support-chatbot](./shoe-store-support-chatbot) | A Streamlit + AWS Bedrock chatbot that connects an AI agent to an HTTP Server backend (recent orders) and an Apache Kafka backend (support tickets) through a single, secured MCP Gateway endpoint. |
+| [shoe-store-support-chatbot-rbac](./shoe-store-support-chatbot-rbac) | A follow-up to the sample above, adding Auth0 login, role-based access control across three personas, and a Cassandra backend exposing product catalog and supplier cost data. |
 
 ## Getting Started
 
