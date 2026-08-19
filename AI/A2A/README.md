@@ -4,7 +4,7 @@ This repo includes practical A2A protocol materials:
 
 - Intro/blog drafts and diagrams in `docs/`
 - A minimal **Clockwork Agent** demo (plain Java A2A) in `src/main/java/local/a2a/examples/`
-- **Part 6 bridge** — blog: **Quartz Chronometer Agent**;  — in [`bridge/`](bridge/)
+- **Part 6 bridge** — blog: **Quartz Chronometer Agent**;  — in [`part6/`](part6/)
 
 ## The Clockwork Agent — three examples
 
