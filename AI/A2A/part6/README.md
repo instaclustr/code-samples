@@ -2,7 +2,7 @@
 
 This module is the **Part 6** implementation: a protocol-faithful step beyond the [Clockwork Agent](../README.md) (hand-rolled JSON-RPC + polling only).
 
-**Blog name:** **Quartz Chronometer Agent** (repo folder remains `bridge/`). **Part 7 Kafka:** **Atomic Timekeeper**. Glossary: [`docs/SERIES-NAMING.md`](../docs/SERIES-NAMING.md).
+**Blog name:** **Quartz Chronometer Agent** (repo folder remains `bridge/`).
 
 **Example index:** [`docs/examples/README.md`](../docs/examples/README.md) — why, what's done, what's next.
 
