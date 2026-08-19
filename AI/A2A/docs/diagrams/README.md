@@ -14,8 +14,15 @@ This folder contains a layered set of diagrams for explaining the A2A protocol f
 | — | `a2a-hero-part2-nouns` | **Blog hero** — Part 2 object model (discovery → dialogue → deliverable) |
 | — | `a2a-hero-part3-runtime-fork` | **Blog hero** — Part 3 runtime (discovery → Message/Task fork → poll/stream/push) |
 | — | `a2a-hero-part5-java-three-examples` | **Blog hero** — Part 5 Clockwork Agent (three examples: time, countdown, confirm) |
-| — | `a2a-bridge-event-paths` | **Blog hero** — Part 6 / Quartz Chronometer (poll, SSE, push, Kafka behind protocol) |
+| — | `a2a-hero-part6-quartz-chronometer` | **Blog hero** — Part 6 Quartz Chronometer (official SDK; Message + SSE per example) |
+| — | `a2a-bridge-event-paths` | **Bridge lab** — poll, SSE, push, Kafka behind protocol (legacy Part 6 teaching split) |
+| — | `a2a-kafka-transport-poc` | **Compare** — a2a-kafka POC: Kafka **as** A2A transport (topics replace HTTP) |
+| — | `a2a-part8-kafka-backbone` | **Compare** — Part 8: HTTP A2A + Kafka **behind** push webhook |
+| — | `a2a-kafka-transport-vs-backbone` | **Compare** — side-by-side protocol split (transport vs backbone) |
+| — | `a2a-countdown-four-paths` | All four countdown delivery paths on one timeline (poll, SSE, push+Kafka, Kafka transport) |
 | — | `a2a-ecosystem-landscape` | **LinkedIn / reference** — A2A support breadth (standard → backers → SDKs → frameworks → gaps) |
+| — | `drone-sar-phase2-a2a-narrator` | **Drone SAR Phase 2** — flock coordinator + mission narrator + Ollama (component view) |
+| — | `drone-sar-phase2-narrator-sequence` | **Drone SAR Phase 2** — runtime sequence (mission SSE + async narrator Tasks) |
 
 **PNG exports:** each `.mmd` diagram has `name.png` (2× scale) and `name-word.png` (4×, for Word/print). Regenerate: `docs/diagrams/export-png.sh`.
 
@@ -115,6 +122,27 @@ Use as a blueprint for class design, schema mapping, serialization, and test fix
 
 ---
 
+### 7) `drone-sar-phase2-a2a-narrator`
+**Meaning**  
+Component architecture for Drone SAR Phase 2: mission client talks to **two** A2A agents (flock coordinator + mission narrator); Ollama sits outside the protocol.
+
+**How to interpret**  
+Green = A2A wire. Blue = deterministic sim. Orange = local LLM HTTP (not A2A).
+
+**How it helps understand A2A**  
+Shows multi-agent orchestration from one client without putting LLM in the flight loop.
+
+---
+
+### 8) `drone-sar-phase2-narrator-sequence`
+**Meaning**  
+Numbered timeline: long mission Task with SSE telemetry, async short narrator Tasks on significant events, post-mission AAR.
+
+**How to interpret**  
+Green box = mission path. Amber box = narrator/Ollama path (human-facing only).
+
+---
+
 ## Which Diagram to Use Where
 
 | Audience / Section | Best Diagram(s) |
@@ -123,7 +151,7 @@ Use as a blueprint for class design, schema mapping, serialization, and test fix
 | “How it works at runtime” | `a2a-runtime-sequence` |
 | “Task semantics / state transitions” | `a2a-task-lifecycle-strict` |
 | “Data model quick view” | `a2a-object-model-simple` |
-| “Implementation deep dive / appendix” | `a2a-object-model` |
+| **Drone SAR Phase 2 A2A** | `drone-sar-phase2-a2a-narrator` + `drone-sar-phase2-narrator-sequence` |
 
 ---
 

@@ -1,0 +1,42 @@
+flowchart LR
+  %% Hero diagram — Part 6 blog: Quartz Chronometer (official JSON-RPC + SSE)
+
+  CLIENT(("Quartz\nClient"))
+  SERVER(("Quartz Chronometer\nAgent :8085"))
+
+  CLIENT -->|"1 fetch"| CARD["Agent Card\nstreaming: true"]
+  CARD --> SM["SendMessage"]
+
+  SM --> E1
+  SM --> E2
+  SM --> E3
+
+  subgraph E1["Ex 1 · Time"]
+    direction TB
+    E1P["What time?"] --> E1R["Message\nno Task"]
+  end
+
+  subgraph E2["Ex 2 · Countdown"]
+    direction TB
+    E2P["Count down 60s"] --> E2T["Task"] --> E2S["SSE statusUpdate"] --> E2A["Artifact"]
+  end
+
+  subgraph E3["Ex 3 · Confirm"]
+    direction TB
+    E3P["Count down + confirm"] --> E3I["input-required"]
+    E3I --> E3C["confirm + taskId"]
+    E3C --> E3S["SSE countdown"]
+  end
+
+  E1R & E2A & E3S --> CLIENT
+  SM --> SERVER
+
+  classDef dark fill:#0b2a4a,color:#ffffff,stroke:#0b2a4a,stroke-width:2px;
+  classDef light fill:#eef3f8,color:#111111,stroke:#3b4d63,stroke-width:1px;
+  classDef accent fill:#1a6b4a,color:#ffffff,stroke:#1a6b4a,stroke-width:1px;
+  classDef ex fill:#ffffff,color:#111111,stroke:#3b4d63,stroke-width:1px;
+
+  class CLIENT,SERVER dark;
+  class CARD,SM light;
+  class E1R,E2A,E3S accent;
+  class E1P,E2P,E2T,E2S,E3P,E3I,E3C ex;
