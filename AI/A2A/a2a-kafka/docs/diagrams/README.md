@@ -4,9 +4,9 @@ Mermaid sources and PNG/SVG exports for the Kafka transport POC.
 
 ## Diagrams
 
-### RR · stream · notify on Kafka (`bench:rr`, `bench:stream`, `bench:notify`)
+### RR · stream · notify on Kafka
 
-How the benchmark agent maps the three standard A2A interaction shapes onto **`a2a.requests`** and **`a2a.updates`** (or per-worker reply topics). Kafka **notify** is async consume — not HTTP webhook POST.
+How the three standard A2A interaction shapes map onto **`a2a.requests`** and **`a2a.updates`** (or a dedicated reply topic per client). Kafka **notifications** are async consume — not HTTP webhook POST.
 
 | Format | File |
 |--------|------|

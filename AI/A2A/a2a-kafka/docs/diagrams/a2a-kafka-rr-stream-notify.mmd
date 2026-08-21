@@ -1,5 +1,5 @@
 flowchart LR
-  subgraph RR["1 — Request/response · bench:rr"]
+  subgraph RR["1 — Request/response"]
     direction TB
     RR1["Client: produce message/send"]
     RR2["Agent: consume a2a.requests"]
@@ -10,18 +10,18 @@ flowchart LR
     RR1 --> RR2 --> RR3 --> RR4 --> RR5 --> RR6
   end
 
-  subgraph STR["2 — Streaming · bench:stream"]
+  subgraph STR["2 — Streaming"]
     direction TB
     S1["Client: produce message/send"]
     S2["Agent: consume a2a.requests"]
     S3["Agent: produce status-update WORKING"]
-    S4["Agent: produce 3× artifact-update chunks"]
+    S4["Agent: produce multiple artifact-update chunks"]
     S5["Agent: produce status-update COMPLETED"]
     S6["Client: consume events in order"]
     S1 --> S2 --> S3 --> S4 --> S5 --> S6
   end
 
-  subgraph NTF["3 — Notifications · bench:notify"]
+  subgraph NTF["3 — Notifications"]
     direction TB
     N1["Client: produce message/send"]
     N2["Agent: consume a2a.requests"]
@@ -37,7 +37,7 @@ flowchart LR
   subgraph NOTE["Kafka notify ≠ HTTP webhook"]
     direction TB
     N7["HTTP: agent POSTs to client webhook URL"]
-    N8["Kafka: client consumes reply topic / a2a.updates"]
+    N8["Kafka: client consumes a2a.updates or reply topic"]
   end
 
   classDef phase fill:#eef3f8,color:#111,stroke:#3b4d63,stroke-width:1px;
