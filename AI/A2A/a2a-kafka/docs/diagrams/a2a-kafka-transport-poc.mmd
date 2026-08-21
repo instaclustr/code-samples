@@ -1,0 +1,36 @@
+sequenceDiagram
+  autonumber
+
+  participant C as KafkaCountdownClient
+  participant B as Kafka broker
+  participant A as CountdownKafkaAgent
+  participant AU as AuditEventConsumer
+
+  Note over C,AU: a2a-kafka POC — orange = Kafka carries all A2A wire traffic
+
+  rect rgb(255, 248, 240)
+    Note right of A: Optional discovery topic
+    A->>B: produce a2a.agent-cards
+    C->>B: consume agent-card
+  end
+
+  rect rgb(255, 243, 224)
+    Note right of C: Kafka replaces SendMessage RPC
+    C->>B: produce a2a.requests (message/send)
+    B->>A: consume request
+  end
+
+  rect rgb(255, 243, 224)
+    Note right of A: Kafka replaces SSE, push, and GetTask
+    loop Countdown ticks
+      A->>B: produce a2a.updates (status-update)
+      B->>C: consume update
+      B->>AU: consume update (audit group)
+    end
+    A->>B: produce artifact-update
+    B->>C: consume artifact
+    A->>B: produce task completed
+    B->>C: consume final task
+  end
+
+  Note over C,A: JSON-RPC envelopes on Kafka topics<br/>Client and agent are both producers and consumers

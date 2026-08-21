@@ -19,6 +19,17 @@ Each Kafka record value is a **JSON envelope** (JSON-RPC 2.0 style) with:
 
 This preserves A2A’s request/response and event semantics while using Kafka for transport.
 
+## Diagrams
+
+| Diagram | PNG | SVG | Word (4×) | Source |
+|---------|-----|-----|-----------|--------|
+| **Kafka transport POC** — countdown on topics (`requests` → `updates` → audit) | [PNG](docs/diagrams/a2a-kafka-transport-poc.png) | [SVG](docs/diagrams/a2a-kafka-transport-poc.svg) | [Word PNG](docs/diagrams/a2a-kafka-transport-poc-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-transport-poc.mmd) |
+| **Transport vs backbone** — this POC (Kafka **is** the wire) vs Part 8 (Kafka **behind** HTTP push) | [PNG](docs/diagrams/a2a-kafka-transport-vs-backbone.png) | [SVG](docs/diagrams/a2a-kafka-transport-vs-backbone.svg) | [Word PNG](docs/diagrams/a2a-kafka-transport-vs-backbone-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-transport-vs-backbone.mmd) |
+
+Index: [`docs/diagrams/README.md`](docs/diagrams/README.md) · Regenerate: [`docs/diagrams/export-png.sh`](docs/diagrams/export-png.sh)
+
+Same diagram sources are mirrored in the series repo: [`scaling-agent-systems-kafka-a2a/docs/diagrams/`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/docs/diagrams/) (relative path from a sibling clone may differ).
+
 ## Spec positioning — custom binding (not standard HTTP streaming)
 
 This POC is an **experimental Kafka transport binding**: A2A-shaped **semantics** on Kafka **topics**, not the normative **HTTP + SSE / webhook** binding used by `a2a-java` and the bridge module.
@@ -51,7 +62,7 @@ This POC is an **experimental Kafka transport binding**: A2A-shaped **semantics*
 | **B — Declared binding** (`supportedInterfaces` + your `protocolBinding`) | Yes, when fully specified and implemented both sides |
 | **C — Generic interop** (any `a2a-java` / HTTP SSE client) | **No** |
 
-Full write-up: `scaling-agent-systems-kafka-a2a/docs/kafka/bindings-and-compliance.md` → section **Custom Kafka binding on Agent Cards**.
+Full write-up: [`scaling-agent-systems-kafka-a2a/docs/kafka/bindings-and-compliance.md`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/docs/kafka/bindings-and-compliance.md) → section **Custom Kafka binding on Agent Cards** (adjust path if your clone location differs).
 
 ---
 
@@ -376,7 +387,7 @@ The code in this repo implements **Pattern 1** only (shared topics, no targeting
 
 HTTP A2A vs this Kafka POC is compared in the **scaling-agent-systems** repo:
 
-`/Users/pbrebner/Applications/Experiments/scaling-agent-systems-kafka-a2a/benchmark/`
+[`benchmark/README.md`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/benchmark/README.md) (adjust path if your clone location differs)
 
 | v1 choice | Detail |
 |-----------|--------|
@@ -488,5 +499,26 @@ To add this project under `pbrebner/` in [instaclustr/devrel-internal-code-sampl
 
 ## References
 
+### A2A protocol
+
 - [A2A Protocol Specification](https://a2a-protocol.org/latest/)
 - [A2A Key Concepts](https://a2a-protocol.org/topics/key-concepts/) (Task, Message, Artifact, Agent Card)
+- [Streaming and async](https://a2a-protocol.org/latest/topics/streaming-and-async/) (HTTP SSE / push — contrast with this POC)
+
+### This repo
+
+- [Diagrams](docs/diagrams/README.md) — PNG, SVG, Mermaid sources
+- [Talk outline](TALK_OUTLINE.md)
+
+### Related series repo (`scaling-agent-systems-kafka-a2a`)
+
+Paths below assume a sibling clone at `../Applications/Experiments/scaling-agent-systems-kafka-a2a/` (adjust if yours differs).
+
+| Topic | Doc |
+|-------|-----|
+| HTTP vs Kafka transport vs backbone | [`docs/kafka/bindings-and-compliance.md`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/docs/kafka/bindings-and-compliance.md) |
+| Part 8 Atomic Timekeeper (Kafka behind push) | [`part8/README.md`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/part8/README.md) |
+| HTTP vs Kafka benchmark | [`benchmark/README.md`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/benchmark/README.md) |
+| Default A2A on official SDK (Quartz Chronometer) | [`quartz-chronometer/README.md`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/quartz-chronometer/README.md) |
+| Series naming | [`docs/SERIES-NAMING.md`](../Applications/Experiments/scaling-agent-systems-kafka-a2a/docs/SERIES-NAMING.md) |
+

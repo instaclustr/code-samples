@@ -1,0 +1,50 @@
+flowchart LR
+  subgraph POC["a2a-kafka POC — Kafka as transport"]
+    direction TB
+    PC(("Client"))
+    PB[("Kafka broker")]
+    PA(("Agent"))
+    PC -->|"Kafka produce<br/>a2a.requests"| PB
+    PB -->|"Kafka consume"| PA
+    PA -->|"Kafka produce<br/>a2a.updates"| PB
+    PB -->|"Kafka consume"| PC
+    PO["Optional: a2a.agent-cards"]
+    PA -.-> PO
+    PB -.-> PO
+  end
+
+  subgraph P8["Part 8 — Kafka as backbone"]
+    direction TB
+    BC(("Client"))
+    BA(("Bridge Agent"))
+    BW["Webhook receiver"]
+    BK[("topic<br/>a2a.task.events")]
+    BO(("Audit / replay<br/>consumers"))
+    BC -->|"HTTP JSON-RPC<br/>SendMessage, GetTask"| BA
+    BA -->|"HTTP POST<br/>A2A push webhook"| BW
+    BW -->|"Kafka produce<br/>TaskEventRecord"| BK
+    BK -->|"Kafka consume"| BO
+  end
+
+  subgraph LEG["Protocol legend"]
+    direction TB
+    L1["Green — HTTP: A2A RPC and push on the wire"]
+    L2["Orange — Kafka replaces HTTP for all A2A traffic (POC)"]
+    L3["Blue — Kafka for durability / fan-out after HTTP push (Part 8)"]
+  end
+
+  classDef http fill:#e8f5e9,color:#1b5e20,stroke:#2e7d32,stroke-width:2px;
+  classDef kTransport fill:#fff3e0,color:#e65100,stroke:#ef6c00,stroke-width:2px;
+  classDef kBackbone fill:#e3f2fd,color:#0d47a1,stroke:#1565c0,stroke-width:2px;
+  classDef broker fill:#fafafa,color:#333,stroke:#666,stroke-width:1px;
+  classDef actor fill:#0b2a4a,color:#fff,stroke:#0b2a4a,stroke-width:2px;
+
+  class PC,PA,BC,BA,BO actor;
+  class PB,BK broker;
+  class BW http;
+
+  linkStyle 0,1,2,3 stroke:#ef6c00,stroke-width:3px;
+  linkStyle 4,5 stroke:#2e7d32,stroke-width:3px;
+  linkStyle 6 stroke:#2e7d32,stroke-width:3px;
+  linkStyle 7 stroke:#1565c0,stroke-width:3px;
+  linkStyle 8 stroke:#1565c0,stroke-width:3px;
