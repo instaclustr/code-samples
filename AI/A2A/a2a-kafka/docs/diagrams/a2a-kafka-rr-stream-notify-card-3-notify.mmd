@@ -1,0 +1,16 @@
+sequenceDiagram
+  autonumber
+  title 3 — Notifications
+
+  participant C as Client
+  participant BR as Kafka broker
+  participant A as Agent
+
+  C->>BR: produce message/send → a2a.requests
+  BR->>A: consume
+  A->>BR: produce status-update WORKING
+  A->>BR: produce artifact-update
+  A->>BR: produce status-update COMPLETED
+  BR->>C: consume when ready
+
+  Note over C,A: Async delivery on a2a.updates — not HTTP POST to webhook URL

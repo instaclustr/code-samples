@@ -1,0 +1,19 @@
+sequenceDiagram
+  autonumber
+  title 2 — Streaming
+
+  participant C as Client
+  participant BR as Kafka broker
+  participant A as Agent
+
+  C->>BR: produce message/send → a2a.requests
+  BR->>A: consume
+  A->>BR: produce status-update WORKING
+  loop Progress over time
+    A->>BR: produce artifact-update
+    BR->>C: consume chunk
+  end
+  A->>BR: produce status-update COMPLETED
+  BR->>C: consume final
+
+  Note over C,A: Many ordered events — replaces HTTP SSE on this binding

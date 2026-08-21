@@ -1,0 +1,55 @@
+flowchart TB
+  subgraph AXIS["time →"]
+    direction LR
+    AX0[" "] --- AX1[" "] --- AX2[" "] --- AX3[" "] --- AX4[" "] --- AX5[" "] --- AX6[" "]
+  end
+
+  subgraph RR["1 — Request/response"]
+    direction LR
+    RR1["Client<br/>produce message/send<br/>→ a2a.requests"]
+    RR2["Broker<br/>route request"]
+    RR3["Agent<br/>consume"]
+    RR4["Agent<br/>produce artifact-update<br/>→ a2a.updates"]
+    RR5["Agent<br/>produce status COMPLETED<br/>+ task snapshot"]
+    RR6["Client<br/>consume until terminal"]
+    RR1 --> RR2 --> RR3 --> RR4 --> RR5 --> RR6
+  end
+
+  subgraph STR["2 — Streaming"]
+    direction LR
+    S1["Client<br/>produce message/send<br/>→ a2a.requests"]
+    S2["Broker<br/>route request"]
+    S3["Agent<br/>consume"]
+    S4["Agent<br/>produce status WORKING"]
+    S5["Agent<br/>produce artifact-update<br/>× N chunks"]
+    S6["Agent<br/>produce status COMPLETED"]
+    S7["Client<br/>consume events in order"]
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7
+  end
+
+  subgraph NTF["3 — Notifications"]
+    direction LR
+    N1["Client<br/>produce message/send<br/>→ a2a.requests"]
+    N2["Broker<br/>route request"]
+    N3["Agent<br/>consume"]
+    N4["Agent<br/>produce status WORKING"]
+    N5["Agent<br/>produce artifact-update"]
+    N6["Agent<br/>produce status COMPLETED"]
+    N7["Client<br/>consume when ready<br/>(async observer)"]
+    N1 --> N2 --> N3 --> N4 --> N5 --> N6 --> N7
+  end
+
+  subgraph NOTE["Kafka notify ≠ HTTP webhook"]
+    direction LR
+    N8["HTTP A2A: agent POSTs to client webhook URL"]
+    N9["Kafka A2A: client consumes a2a.updates<br/>or per-client reply topic"]
+  end
+
+  AXIS ~~~ RR ~~~ STR ~~~ NTF ~~~ NOTE
+
+  classDef phase fill:#eef3f8,color:#111,stroke:#3b4d63,stroke-width:1px;
+  classDef accent fill:#fff3e0,color:#5d4037,stroke:#ef6c00,stroke-width:1px;
+  classDef axis fill:#ffffff,color:#666,stroke:#ccc,stroke-width:0px;
+  class RR1,RR2,RR3,RR4,RR5,RR6,S1,S2,S3,S4,S5,S6,S7,N1,N2,N3,N4,N5,N6,N7 phase;
+  class N8,N9 accent;
+  class AX0,AX1,AX2,AX3,AX4,AX5,AX6 axis;

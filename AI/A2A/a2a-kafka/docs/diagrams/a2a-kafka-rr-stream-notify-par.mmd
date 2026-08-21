@@ -1,0 +1,43 @@
+sequenceDiagram
+  autonumber
+
+  participant C as Client
+  participant BR as Kafka broker
+  participant A as Kafka agent
+
+  Note over C,A: Kafka A2A transport — three interaction patterns<br/>Same topics · compare below · one per task, not concurrent
+
+  rect rgb(238, 243, 248)
+    Note over C,A: Pattern 1 — Request/response · short path, one logical result
+    C->>BR: produce message/send → a2a.requests
+    BR->>A: consume request
+    A->>BR: produce artifact-update → a2a.updates
+    A->>BR: produce status-update COMPLETED
+    A->>BR: produce task snapshot
+    BR->>C: consume until terminal
+  end
+
+  rect rgb(245, 248, 252)
+    Note over C,A: Pattern 2 — Streaming · many ordered events over time
+    C->>BR: produce message/send → a2a.requests
+    BR->>A: consume request
+    A->>BR: produce status-update WORKING
+    loop Multiple chunks over time
+      A->>BR: produce artifact-update
+      BR->>C: consume chunk
+    end
+    A->>BR: produce status-update COMPLETED
+    BR->>C: consume final
+    Note over C: Kafka consumer replaces HTTP SSE on this binding
+  end
+
+  rect rgb(238, 243, 248)
+    Note over C,A: Pattern 3 — Notifications · async observer (not HTTP webhook)
+    C->>BR: produce message/send → a2a.requests
+    BR->>A: consume request
+    A->>BR: produce status-update WORKING
+    A->>BR: produce artifact-update
+    A->>BR: produce status-update COMPLETED
+    BR->>C: consume when ready
+    Note over C: Same a2a.updates topic as stream — no POST to client URL
+  end

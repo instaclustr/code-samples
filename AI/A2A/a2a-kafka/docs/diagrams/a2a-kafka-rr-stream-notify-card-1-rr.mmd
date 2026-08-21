@@ -1,0 +1,16 @@
+sequenceDiagram
+  autonumber
+  title 1 — Request/response
+
+  participant C as Client
+  participant BR as Kafka broker
+  participant A as Agent
+
+  C->>BR: produce message/send → a2a.requests
+  BR->>A: consume
+  A->>BR: produce artifact-update
+  A->>BR: produce status-update COMPLETED
+  A->>BR: produce task snapshot
+  BR->>C: consume until terminal
+
+  Note over C,A: One-shot result — minimal events on a2a.updates
