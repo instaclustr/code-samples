@@ -1,0 +1,14 @@
+# Kafka client config for A2A demo (consumer and producer).
+# Copy to producer.properties and set bootstrap.servers and auth.
+
+bootstrap.servers=localhost:9092
+key.serializer=org.apache.kafka.common.serialization.StringSerializer
+value.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+# If using SASL (e.g. Instaclustr):
+# security.protocol=SASL_PLAINTEXT
+# sasl.mechanism=SCRAM-SHA-256
+# sasl.jaas.config=org.apache.kafka.common.security.scram.ScramLoginModule required username="<user>" password="<password>";
+
+max.block.ms=5000
+request.timeout.ms=3000

@@ -1,0 +1,6 @@
+# Local Kafka (no SASL). Use for countdown demo — NOT for Instaclustr.
+bootstrap.servers=localhost:9092
+key.serializer=org.apache.kafka.common.serialization.StringSerializer
+value.serializer=org.apache.kafka.common.serialization.StringSerializer
+max.block.ms=5000
+request.timeout.ms=3000
