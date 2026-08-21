@@ -23,7 +23,9 @@ This preserves A2A’s request/response and event semantics while using Kafka fo
 
 | Diagram | PNG | SVG | Word (4×) | Source |
 |---------|-----|-----|-----------|--------|
-| **RR · stream · notify on Kafka** — three standard A2A interaction shapes on topics | [PNG](docs/diagrams/a2a-kafka-rr-stream-notify.png) | [SVG](docs/diagrams/a2a-kafka-rr-stream-notify.svg) | [Word PNG](docs/diagrams/a2a-kafka-rr-stream-notify-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-rr-stream-notify.mmd) |
+| **RR · stream · notify — parallel sequence** (recommended) | [PNG](docs/diagrams/a2a-kafka-rr-stream-notify-par.png) | [SVG](docs/diagrams/a2a-kafka-rr-stream-notify-par.svg) | [Word PNG](docs/diagrams/a2a-kafka-rr-stream-notify-par-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-rr-stream-notify-par.mmd) |
+| **RR · stream · notify — slide cards** (3 mini sequences) | [1 RR](docs/diagrams/a2a-kafka-rr-stream-notify-card-1-rr.png) · [2 stream](docs/diagrams/a2a-kafka-rr-stream-notify-card-2-stream.png) · [3 notify](docs/diagrams/a2a-kafka-rr-stream-notify-card-3-notify.png) | — | — | [`docs/diagrams/README.md`](docs/diagrams/README.md) |
+| **RR · stream · notify — column flowchart** (alternate) | [PNG](docs/diagrams/a2a-kafka-rr-stream-notify.png) | [SVG](docs/diagrams/a2a-kafka-rr-stream-notify.svg) | [Word PNG](docs/diagrams/a2a-kafka-rr-stream-notify-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-rr-stream-notify.mmd) |
 | **Kafka transport POC** — countdown on topics (`requests` → `updates` → audit) | [PNG](docs/diagrams/a2a-kafka-transport-poc.png) | [SVG](docs/diagrams/a2a-kafka-transport-poc.svg) | [Word PNG](docs/diagrams/a2a-kafka-transport-poc-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-transport-poc.mmd) |
 | **Transport vs backbone** — this POC (Kafka **is** the wire) vs Part 8 (Kafka **behind** HTTP push) | [PNG](docs/diagrams/a2a-kafka-transport-vs-backbone.png) | [SVG](docs/diagrams/a2a-kafka-transport-vs-backbone.svg) | [Word PNG](docs/diagrams/a2a-kafka-transport-vs-backbone-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-transport-vs-backbone.mmd) |
 
