@@ -23,7 +23,7 @@ This preserves A2A’s request/response and event semantics while using Kafka fo
 
 | Diagram | PNG | SVG | Word (4×) | Source |
 |---------|-----|-----|-----------|--------|
-| **RR · stream · notify on Kafka** — `bench:rr`, `bench:stream`, `bench:notify` on topics | [PNG](docs/diagrams/a2a-kafka-rr-stream-notify.png) | [SVG](docs/diagrams/a2a-kafka-rr-stream-notify.svg) | [Word PNG](docs/diagrams/a2a-kafka-rr-stream-notify-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-rr-stream-notify.mmd) |
+| **RR · stream · notify on Kafka** — three standard A2A interaction shapes on topics | [PNG](docs/diagrams/a2a-kafka-rr-stream-notify.png) | [SVG](docs/diagrams/a2a-kafka-rr-stream-notify.svg) | [Word PNG](docs/diagrams/a2a-kafka-rr-stream-notify-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-rr-stream-notify.mmd) |
 | **Kafka transport POC** — countdown on topics (`requests` → `updates` → audit) | [PNG](docs/diagrams/a2a-kafka-transport-poc.png) | [SVG](docs/diagrams/a2a-kafka-transport-poc.svg) | [Word PNG](docs/diagrams/a2a-kafka-transport-poc-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-transport-poc.mmd) |
 | **Transport vs backbone** — this POC (Kafka **is** the wire) vs Part 8 (Kafka **behind** HTTP push) | [PNG](docs/diagrams/a2a-kafka-transport-vs-backbone.png) | [SVG](docs/diagrams/a2a-kafka-transport-vs-backbone.svg) | [Word PNG](docs/diagrams/a2a-kafka-transport-vs-backbone-word.png) | [`.mmd`](docs/diagrams/a2a-kafka-transport-vs-backbone.mmd) |
 
