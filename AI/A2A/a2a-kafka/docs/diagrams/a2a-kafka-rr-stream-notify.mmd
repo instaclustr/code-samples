@@ -1,17 +1,11 @@
-flowchart TB
-  subgraph LEG["Legend"]
-    direction LR
-    L1["produce → a2a.requests (message/send)"]
-    L2["consume ← reply topic / a2a.updates"]
-  end
-
+flowchart LR
   subgraph RR["1 — Request/response · bench:rr"]
     direction TB
     RR1["Client: produce message/send"]
-    RR2["Agent: consume request"]
+    RR2["Agent: consume a2a.requests"]
     RR3["Agent: produce artifact-update"]
     RR4["Agent: produce status-update COMPLETED"]
-    RR5["Agent: produce task (full snapshot)"]
+    RR5["Agent: produce task snapshot"]
     RR6["Client: consume until terminal"]
     RR1 --> RR2 --> RR3 --> RR4 --> RR5 --> RR6
   end
@@ -19,7 +13,7 @@ flowchart TB
   subgraph STR["2 — Streaming · bench:stream"]
     direction TB
     S1["Client: produce message/send"]
-    S2["Agent: consume request"]
+    S2["Agent: consume a2a.requests"]
     S3["Agent: produce status-update WORKING"]
     S4["Agent: produce 3× artifact-update chunks"]
     S5["Agent: produce status-update COMPLETED"]
@@ -30,18 +24,20 @@ flowchart TB
   subgraph NTF["3 — Notifications · bench:notify"]
     direction TB
     N1["Client: produce message/send"]
-    N2["Agent: consume request"]
+    N2["Agent: consume a2a.requests"]
     N3["Agent: produce status-update WORKING"]
     N4["Agent: produce artifact-update"]
     N5["Agent: produce status-update COMPLETED"]
-    N6["Client: consume async (no HTTP webhook)"]
+    N6["Client: consume async updates"]
     N1 --> N2 --> N3 --> N4 --> N5 --> N6
   end
 
-  subgraph NOTE["Kafka vs HTTP push"]
+  RR ~~~ STR ~~~ NTF
+
+  subgraph NOTE["Kafka notify ≠ HTTP webhook"]
     direction TB
-    N7["HTTP notify: agent POSTs to client webhook URL"]
-    N8["Kafka notify: same updates topic — client is a consumer"]
+    N7["HTTP: agent POSTs to client webhook URL"]
+    N8["Kafka: client consumes reply topic / a2a.updates"]
   end
 
   classDef phase fill:#eef3f8,color:#111,stroke:#3b4d63,stroke-width:1px;
