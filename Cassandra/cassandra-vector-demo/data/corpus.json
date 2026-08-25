@@ -1,0 +1,86 @@
+[
+  {
+    "id": "summit-1500-2024-tow",
+    "title": "Tow ratings by configuration, 2024 model year",
+    "category": "towing",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Ratings for the 2024 Summit 1500 vary by driveline. With the 3.5L V6, 3.73 axle, and Max Tow Package, the published maximum is 11,300 lb against a GCWR of 17,000 lb. Lower axle ratios and the base cooling package derate this figure."
+  },
+  {
+    "id": "summit-1500-2023-tow",
+    "title": "How much can the Summit 1500 tow?",
+    "category": "towing",
+    "model": "1500",
+    "model_year": 2023,
+    "body": "How much can the Summit 1500 tow? The Summit 1500 tows up to 9,100 lb with the towing package, which covers most travel trailers and a two-car open trailer. Figures on this page describe the 2023 model year."
+  },
+  {
+    "id": "summit-2500-2024-tow",
+    "title": "2024 Summit 2500 heavy duty towing capacity",
+    "category": "towing",
+    "model": "2500",
+    "model_year": 2024,
+    "body": "The 2024 Summit 2500 tows up to 17,600 lb with the gooseneck prep package. Heavy duty ratings are not interchangeable with the 1500; the frame, axle ratio, and cooling package differ."
+  },
+  {
+    "id": "summit-1500-2024-payload",
+    "title": "2024 Summit 1500 payload capacity",
+    "category": "specs",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Maximum payload for the 2024 Summit 1500 is 1,750 lb. Payload counts passengers, cargo, and trailer tongue weight. Payload and towing are separate limits and are often confused."
+  },
+  {
+    "id": "trailer-brake-controller",
+    "title": "When a trailer brake controller is required",
+    "category": "towing",
+    "body": "An integrated trailer brake controller is required for trailers over 5,000 lb. Without it you are limited regardless of the truck's published tow rating, and in many states you are out of compliance."
+  },
+  {
+    "id": "hitch-classes",
+    "title": "Hitch receiver classes and weight distribution",
+    "category": "towing",
+    "body": "A Class III receiver handles up to 6,000 lb; Class IV goes higher. Above 6,000 lb a weight-distributing hitch is recommended. The receiver, not the engine, is often the real limit on an older truck."
+  },
+  {
+    "id": "recall-24v-113",
+    "title": "Recall 24V-113 tailgate latch",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Recall 24V-113 covers 2024 Summit 1500 trucks built before March 2024. The tailgate latch can release under load. Dealers replace the latch assembly at no cost. Check your VIN before hauling."
+  },
+  {
+    "id": "recall-23v-088",
+    "title": "Recall 23V-088 backup camera",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2023,
+    "body": "Owners often ask what a recall covers and whether their truck is affected. Recall 23V-088 covers 2023 Summit trucks with a backup camera that can display a blank screen in reverse. The remedy is a software update at the dealer at no cost."
+  },
+  {
+    "id": "oil-change-interval",
+    "title": "Oil change interval when towing",
+    "category": "maintenance",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Normal service interval is 7,500 miles. Drop to 5,000 miles if you tow regularly, idle heavily, or drive in sustained heat. The oil life monitor assumes normal duty and does not know you towed a trailer."
+  },
+  {
+    "id": "tire-pressure-towing",
+    "title": "Tire pressure when loaded or towing",
+    "category": "maintenance",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Inflate rear tires to 45 psi when loaded near payload or towing near the rating. Underinflated rear tires are the most common cause of poor trailer stability at highway speed."
+  },
+  {
+    "id": "warranty-powertrain",
+    "title": "Powertrain warranty coverage",
+    "category": "warranty",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Powertrain coverage runs 5 years or 60,000 miles. Towing above the published rating for your model year and configuration can be grounds for denying a driveline claim."
+  }
+]

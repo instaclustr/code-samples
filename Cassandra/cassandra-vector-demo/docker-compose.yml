@@ -1,0 +1,25 @@
+name: cassandra-vector-demo
+
+services:
+  cassandra:
+    image: cassandra:5.0.8
+    container_name: cassandra-vector-demo
+    ports:
+      - "127.0.0.1:9042:9042"
+    environment:
+      MAX_HEAP_SIZE: 1G
+      HEAP_NEWSIZE: 256M
+      JVM_OPTS: >-
+        -Dcassandra.skip_wait_for_gossip_to_settle=0
+        -Djava.net.preferIPv4Stack=true
+    volumes:
+      - cassandra_vector_data:/var/lib/cassandra
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'SELECT now() FROM system.local' || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 40s
+
+volumes:
+  cassandra_vector_data:
