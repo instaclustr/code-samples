@@ -39,7 +39,7 @@ cd cassandra-vector-demo
 docker compose up -d
 docker compose ps          # wait until cassandra is healthy (1–2 min on first boot)
 
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 

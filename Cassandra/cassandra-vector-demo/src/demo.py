@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Print vector ANN neighbors for one question or the scripted set."""
 
 from __future__ import annotations

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Create the vector demo keyspace, table, and ANN index."""
 
 from common import ensure_schema, wait_for_cassandra

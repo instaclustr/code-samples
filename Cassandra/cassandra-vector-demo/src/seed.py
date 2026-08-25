@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """Embed the sample corpus and load it into the vector demo table."""
 
 from __future__ import annotations
