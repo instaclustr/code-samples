@@ -26,9 +26,9 @@ Cassandra 5  ── SAI / JVector ──▶  ORDER BY embedding ANN OF ?
 ## Prerequisites
 
 - **Docker / Docker Compose**
-- **Python 3.10+** (Python 3.14 may fail installing the embedding stack)
+- **Python 3.10+** (Python 3.14 may fail installing the embedding stack). The `python3` shipped with macOS command line tools is 3.9 and is too old — `truststore` has no 3.9 wheel, so `pip install` fails with `No matching distribution found`. Name a newer interpreter explicitly, e.g. `python3.13 -m venv .venv`.
 - About **4GB** RAM and **2GB** free disk for Cassandra, Python packages, and the first-run model download
-- Internet access the first time `seed.py` downloads `sentence-transformers/all-MiniLM-L6-v2`
+- Internet access the first time `seed.py` downloads `sentence-transformers/all-MiniLM-L6-v2` (a Hugging Face Hub token reminder is optional; set `HF_TOKEN` only if you want higher Hub rate limits)
 
 
 
@@ -39,9 +39,9 @@ cd cassandra-vector-demo
 docker compose up -d
 docker compose ps          # wait until cassandra is healthy (1–2 min on first boot)
 
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+python3.13 -m venv .venv    # any 3.10-3.13 interpreter works
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python -m pip install -r requirements.txt
 
 python src/setup_schema.py
 python src/seed.py

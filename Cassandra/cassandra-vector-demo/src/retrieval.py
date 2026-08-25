@@ -3,14 +3,21 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from weakref import WeakKeyDictionary
 
-from common import embed_query, vector_literal
+from common import TABLE, embed_query
 
 DEFAULT_QUERIES = [
     "Is there a recall on the tailgate?",
     "What is recall 24V-113?",
     "How much can the Summit 1500 tow?",
 ]
+
+MAX_LIMIT = 10
+
+# Preparing costs a round trip, so keep one statement per session without
+# keeping the session itself alive.
+_ANN_STATEMENTS: WeakKeyDictionary = WeakKeyDictionary()
 
 
 @dataclass
@@ -27,17 +34,29 @@ class Hit:
         return asdict(self)
 
 
+def _ann_statement(session):
+    statement = _ANN_STATEMENTS.get(session)
+    if statement is None:
+        statement = session.prepare(
+            f"""
+            SELECT id, title, category, body, model, model_year,
+                   similarity_cosine(embedding, ?) AS score
+            FROM {TABLE}
+            ORDER BY embedding ANN OF ?
+            LIMIT ?
+            """
+        )
+        _ANN_STATEMENTS[session] = statement
+    return statement
+
+
 def vector_search(session, query: str, limit: int = 5) -> list[Hit]:
     """Return semantic neighbors ordered by Cassandra ANN."""
-    literal = vector_literal(embed_query(query))
+    bounded_limit = max(1, min(int(limit), MAX_LIMIT))
+    embedding = embed_query(query)
     rows = session.execute(
-        f"""
-        SELECT id, title, category, body, model, model_year,
-               similarity_cosine(embedding, {literal}) AS score
-        FROM docs
-        ORDER BY embedding ANN OF {literal}
-        LIMIT {limit}
-        """
+        _ann_statement(session),
+        (embedding, embedding, bounded_limit),
     )
     return [
         Hit(

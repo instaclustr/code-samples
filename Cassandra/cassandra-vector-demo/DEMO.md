@@ -8,9 +8,9 @@ This app has its own virtual environment. Create it once before the first demo:
 
 ```bash
 cd cassandra-vector-demo
-python -m venv .venv
+python3.13 -m venv .venv   # macOS system python3 is 3.9 and is too old
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ## Before the demo

@@ -11,7 +11,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from common import ensure_schema, wait_for_cassandra
-from retrieval import DEFAULT_QUERIES, vector_search
+from retrieval import DEFAULT_QUERIES, MAX_LIMIT, vector_search
 
 PRESENTER_HTML = Path(__file__).resolve().parents[1] / "static" / "presenter.html"
 LOGGER = logging.getLogger(__name__)
@@ -19,7 +19,7 @@ LOGGER = logging.getLogger(__name__)
 
 class QueryRequest(BaseModel):
     query: str = Field(min_length=1, max_length=500)
-    limit: int = Field(default=5, ge=1, le=10)
+    limit: int = Field(default=5, ge=1, le=MAX_LIMIT)
 
 
 @asynccontextmanager

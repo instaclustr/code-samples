@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import os
 import time
 from functools import lru_cache
@@ -38,6 +39,13 @@ os.environ.setdefault(
     str(MODEL_CACHE / "sentence-transformers"),
 )
 os.environ.setdefault("HF_HUB_CACHE", str(MODEL_CACHE / "hub"))
+
+# MiniLM is public; huggingface_hub still logs a token reminder on anonymous
+# downloads. That is optional, not a failure. A real HF_TOKEN in the environment
+# is used automatically if you want higher Hub rate limits.
+logging.getLogger("huggingface_hub").addFilter(
+    lambda record: "unauthenticated requests to the HF Hub" not in record.getMessage()
+)
 
 
 def wait_for_cassandra(timeout_sec: int = 180) -> Session:
@@ -98,7 +106,10 @@ def ensure_schema(session: Session) -> None:
 def get_embedder():
     from sentence_transformers import SentenceTransformer
 
-    return SentenceTransformer(MODEL_NAME)
+    try:
+        return SentenceTransformer(MODEL_NAME, local_files_only=True)
+    except Exception:
+        return SentenceTransformer(MODEL_NAME)
 
 
 def embed_texts(texts: Sequence[str]) -> list[list[float]]:
@@ -108,7 +119,3 @@ def embed_texts(texts: Sequence[str]) -> list[list[float]]:
 
 def embed_query(text: str) -> list[float]:
     return embed_texts([text])[0]
-
-
-def vector_literal(vector: Sequence[float]) -> str:
-    return "[" + ", ".join(f"{value:.8f}" for value in vector) + "]"
