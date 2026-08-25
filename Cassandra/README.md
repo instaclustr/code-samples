@@ -8,6 +8,7 @@ The following folders contain code samples related to [Apache Cassandra](https:/
 
 | Project | Description |
 |---------|-------------|
+| [cassandra-vector-demo](./cassandra-vector-demo/) | Local Cassandra 5 ANN retrieval demo (JVector, no LLM) |
 
 ## Getting Started
 

@@ -12,6 +12,7 @@ Each technology has its own folder hierarchy. Multi-tech demos that span multipl
 |------------|---------|-------------|
 | **Cadence** | [CadenceKafka](./Cadence/CadenceKafka/) | Cadence-Kafka integration using signals and activity completions |
 | **Cadence** | [CadenceKafkaDroneDeliveryDemo](./Cadence/CadenceKafkaDroneDeliveryDemo/) | Drone delivery demo with Cadence workflows and Kafka messaging |
+| **Cassandra** | [cassandra-vector-demo](./Cassandra/cassandra-vector-demo/) | Local Cassandra 5 ANN retrieval demo (JVector, no LLM) |
 | **ClickHouse** | [Stream Processing Part 1](./ClickHouse/stream%20processing/part%201/) | ClickHouse as a stream processor with SQL joins and time windows |
 | **Kafka** | [KafkaConnectPostgresqlSinkConnector](./Kafka/KafkaConnectPostgresqlSinkConnector/) | Custom Kafka Connect sink connector for JSON to PostgreSQL |
 | **Kafka** | [KafkaML](./Kafka/KafkaML/) | Streaming CSV data for incremental ML experiments with concept drift |

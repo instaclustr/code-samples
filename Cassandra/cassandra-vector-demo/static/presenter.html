@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cassandra Vector Search</title>
+  <style>
+    :root {
+      --bg: #f4f2ed;
+      --ink: #1c1b19;
+      --muted: #5c574f;
+      --line: #d6d0c4;
+      --panel: #fffdf8;
+      --accent: #8a3b12;
+      --warn: #7a2e2e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+    }
+    main { max-width: 840px; margin: 0 auto; padding: 32px 20px 48px; }
+    h1 { margin: 0 0 6px; font-size: 1.9rem; }
+    .sub { color: var(--muted); line-height: 1.5; margin: 0 0 22px; }
+    .presets { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    button {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 9px 12px;
+      background: var(--panel);
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+    }
+    .query-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+    input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 12px 14px;
+      background: var(--panel);
+      color: var(--ink);
+      font: inherit;
+    }
+    .run { background: var(--accent); border-color: var(--accent); color: white; }
+    .status { min-height: 1.4em; margin: 12px 0; color: var(--muted); }
+    .results {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+    }
+    .results header {
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--line);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .hint { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 400; }
+    .hits { padding: 8px; }
+    .hit { padding: 11px; border-bottom: 1px solid var(--line); }
+    .hit:last-child { border-bottom: 0; }
+    .rank { color: var(--muted); font-size: 0.78rem; }
+    .title { margin: 3px 0; font-weight: 600; }
+    .vehicle, .snippet { color: var(--muted); font-size: 0.82rem; line-height: 1.4; }
+    .error {
+      margin: 12px 0;
+      padding: 10px 12px;
+      border: 1px solid var(--warn);
+      border-radius: 4px;
+      color: var(--warn);
+    }
+    @media (max-width: 640px) {
+      .query-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Vector search retrieves neighbors</h1>
+    <p class="sub">
+      Ask a support question and inspect the nearest chunks Cassandra returns.
+      This app uses only vector ANN retrieval. It does not run keyword search,
+      metadata filtering, fusion, or an LLM.
+    </p>
+
+    <div class="presets" id="presets"></div>
+    <div class="query-row">
+      <input id="query" type="text" placeholder="Ask a question…" />
+      <button class="run" id="run">Run ANN</button>
+    </div>
+    <div class="status" id="status"></div>
+    <div id="error"></div>
+
+    <section class="results">
+      <header>
+        Vector ANN neighbors
+        <span class="hint">ORDER BY embedding ANN OF · cosine similarity</span>
+      </header>
+      <div class="hits" id="hits">
+        <div class="hit">Choose a preset or enter a question.</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    function snippet(body) {
+      const clean = String(body || "").replace(/\s+/g, " ").trim();
+      return clean.length > 220 ? clean.slice(0, 217) + "…" : clean;
+    }
+
+    function renderHits(hits) {
+      const box = document.getElementById("hits");
+      if (!hits || !hits.length) {
+        box.innerHTML = '<div class="hit">No neighbors returned.</div>';
+        return;
+      }
+      box.innerHTML = hits.map((hit, index) => `
+        <article class="hit">
+          <div class="rank">${index + 1}. [${escapeHtml(hit.category)}] ${escapeHtml(hit.id)}
+            · cosine ${Number(hit.score).toFixed(4)}</div>
+          <div class="title">${escapeHtml(hit.title)}</div>
+          <div class="vehicle">model ${escapeHtml(hit.model || "general")}
+            · year ${escapeHtml(hit.model_year || "general")}</div>
+          <div class="snippet">${escapeHtml(snippet(hit.body))}</div>
+        </article>
+      `).join("");
+    }
+
+    async function runQuery() {
+      const query = document.getElementById("query").value.trim();
+      if (!query) return;
+      const button = document.getElementById("run");
+      const error = document.getElementById("error");
+      error.innerHTML = "";
+      button.disabled = true;
+      document.getElementById("status").textContent = "Embedding and searching…";
+      try {
+        const response = await fetch("/api/query", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query, limit: 5 }),
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || "Query failed");
+        renderHits(data.hits);
+        document.getElementById("status").textContent =
+          `${data.hits.length} nearest documents · no LLM call`;
+      } catch (err) {
+        error.innerHTML = `<div class="error">${escapeHtml(err.message)}</div>`;
+        document.getElementById("status").textContent = "";
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    async function loadPresets() {
+      const response = await fetch("/api/presets");
+      const data = await response.json();
+      const box = document.getElementById("presets");
+      (data.queries || []).forEach((query) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = query;
+        button.addEventListener("click", () => {
+          document.getElementById("query").value = query;
+          runQuery();
+        });
+        box.appendChild(button);
+      });
+    }
+
+    document.getElementById("run").addEventListener("click", runQuery);
+    document.getElementById("query").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") runQuery();
+    });
+    loadPresets().catch((error) => {
+      document.getElementById("error").innerHTML =
+        `<div class="error">Could not load presets: ${escapeHtml(error.message)}</div>`;
+    });
+  </script>
+</body>
+</html>
