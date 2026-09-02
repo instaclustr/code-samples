@@ -16,7 +16,7 @@ class VectorDemoTests(unittest.TestCase):
     def test_scripted_queries_cover_three_vector_failure_modes(self) -> None:
         self.assertEqual(len(DEFAULT_QUERIES), 3)
         self.assertIn("tailgate", DEFAULT_QUERIES[0])
-        self.assertIn("24V-113", DEFAULT_QUERIES[1])
+        self.assertIn("24V-330", DEFAULT_QUERIES[1])
         self.assertIn("tow", DEFAULT_QUERIES[2])
 
     def test_hit_serializes_for_the_presenter(self) -> None:
@@ -43,8 +43,14 @@ class VectorDemoTests(unittest.TestCase):
     def test_corpus_has_unique_documents(self) -> None:
         docs = json.loads((ROOT / "data" / "corpus.json").read_text())
         ids = [doc["id"] for doc in docs]
-        self.assertEqual(len(ids), 11)
         self.assertEqual(len(ids), len(set(ids)))
+
+    def test_corpus_has_enough_recalls_to_show_the_failure(self) -> None:
+        """Below roughly eight similar recalls, ANN ranks identifiers correctly
+        every time and the demo's central point disappears."""
+        docs = json.loads((ROOT / "data" / "corpus.json").read_text())
+        recalls = [doc for doc in docs if doc["category"] == "recalls"]
+        self.assertGreaterEqual(len(recalls), 8)
 
 
 if __name__ == "__main__":

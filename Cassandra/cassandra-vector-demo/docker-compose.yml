@@ -2,7 +2,7 @@ name: cassandra-vector-demo
 
 services:
   cassandra:
-    image: cassandra:5.0.8
+    image: cassandra:5.0.9
     container_name: cassandra-vector-demo
     ports:
       - "127.0.0.1:9042:9042"

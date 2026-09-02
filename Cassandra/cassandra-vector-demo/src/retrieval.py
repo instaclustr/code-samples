@@ -9,7 +9,7 @@ from common import TABLE, embed_query
 
 DEFAULT_QUERIES = [
     "Is there a recall on the tailgate?",
-    "What is recall 24V-113?",
+    "What is recall 24V-330?",
     "How much can the Summit 1500 tow?",
 ]
 

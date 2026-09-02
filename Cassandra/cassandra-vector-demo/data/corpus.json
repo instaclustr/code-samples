@@ -9,11 +9,11 @@
   },
   {
     "id": "summit-1500-2023-tow",
-    "title": "How much can the Summit 1500 tow?",
+    "title": "Tow ratings by configuration, 2023 model year",
     "category": "towing",
     "model": "1500",
     "model_year": 2023,
-    "body": "How much can the Summit 1500 tow? The Summit 1500 tows up to 9,100 lb with the towing package, which covers most travel trailers and a two-car open trailer. Figures on this page describe the 2023 model year."
+    "body": "The Summit 1500 tows up to 9,100 lb with the towing package, which covers most travel trailers and a two-car open trailer. Figures on this page describe the 2023 model year."
   },
   {
     "id": "summit-2500-2024-tow",
@@ -49,7 +49,7 @@
     "category": "recalls",
     "model": "1500",
     "model_year": 2024,
-    "body": "Recall 24V-113 covers 2024 Summit 1500 trucks built before March 2024. The tailgate latch can release under load. Dealers replace the latch assembly at no cost. Check your VIN before hauling."
+    "body": "Recall 24V-113 covers 2024 Summit 1500 trucks. The tailgate latch may release while the tailgate is under load. Dealers will replace the latch assembly at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
   },
   {
     "id": "recall-23v-088",
@@ -57,7 +57,87 @@
     "category": "recalls",
     "model": "1500",
     "model_year": 2023,
-    "body": "Owners often ask what a recall covers and whether their truck is affected. Recall 23V-088 covers 2023 Summit trucks with a backup camera that can display a blank screen in reverse. The remedy is a software update at the dealer at no cost."
+    "body": "Recall 23V-088 covers 2023 Summit 1500 trucks. The backup camera may display a blank screen when the truck is in reverse. Dealers will update the camera software at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-24v-207",
+    "title": "Recall 24V-207 fuel pump relay",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Recall 24V-207 covers 2024 Summit 1500 trucks. The fuel pump relay may fail and cause the engine to stall. Dealers will replace the relay at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-23v-145",
+    "title": "Recall 23V-145 brake booster",
+    "category": "recalls",
+    "model": "2500",
+    "model_year": 2023,
+    "body": "Recall 23V-145 covers 2023 Summit 2500 trucks. The brake booster may lose vacuum assist during braking. Dealers will replace the booster at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-24v-019",
+    "title": "Recall 24V-019 seat belt pretensioner",
+    "category": "recalls",
+    "model": "2500",
+    "model_year": 2024,
+    "body": "Recall 24V-019 covers 2024 Summit 2500 trucks. The seat belt pretensioner may deploy without a crash event. Dealers will replace the pretensioner at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-22v-311",
+    "title": "Recall 22V-311 headlight wiring harness",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2022,
+    "body": "Recall 22V-311 covers 2022 Summit 1500 trucks. The headlight wiring harness may chafe and short against the frame. Dealers will reroute and secure the harness at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-24v-402",
+    "title": "Recall 24V-402 steering column bolt",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Recall 24V-402 covers 2024 Summit 1500 trucks. The steering column bolt may loosen over time. Dealers will torque the bolt to specification at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-23v-256",
+    "title": "Recall 23V-256 transmission cooler line",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2023,
+    "body": "Recall 23V-256 covers 2023 Summit 1500 trucks. The transmission cooler line may leak fluid onto hot exhaust. Dealers will replace the cooler line at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-22v-078",
+    "title": "Recall 22V-078 trailer brake module",
+    "category": "recalls",
+    "model": "2500",
+    "model_year": 2022,
+    "body": "Recall 22V-078 covers 2022 Summit 2500 trucks. The trailer brake module may stop responding to controller input. Dealers will reflash the module at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-24v-330",
+    "title": "Recall 24V-330 rear axle seal",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2024,
+    "body": "Recall 24V-330 covers 2024 Summit 1500 trucks. The rear axle seal may weep oil onto the brake surface. Dealers will replace the axle seal at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-23v-011",
+    "title": "Recall 23V-011 instrument cluster",
+    "category": "recalls",
+    "model": "1500",
+    "model_year": 2023,
+    "body": "Recall 23V-011 covers 2023 Summit 1500 trucks. The instrument cluster may go blank at startup. Dealers will update the cluster firmware at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
+  },
+  {
+    "id": "recall-24v-155",
+    "title": "Recall 24V-155 glow plug controller",
+    "category": "recalls",
+    "model": "2500",
+    "model_year": 2024,
+    "body": "Recall 24V-155 covers 2024 Summit 2500 trucks. The glow plug controller may overheat during cold starts. Dealers will replace the controller at no cost to the owner. Owners can check their VIN to confirm whether a specific truck is affected."
   },
   {
     "id": "oil-change-interval",
