@@ -1,0 +1,48 @@
+flowchart TB
+  MC["Mission client"]
+
+  subgraph mission ["Long mission Task · JSON-RPC + SSE"]
+    SM1["SendMessage<br/>mission:search-rescue"]
+    SSE["SSE stream<br/>flocks · telemetry · summary"]
+  end
+
+  DC["Distributed coordinator<br/>:8093<br/>tick barrier · flock assign"]
+
+  subgraph drones ["One A2A agent per drone · sync Tasks"]
+    D1["d-01 :8085"]
+    D2["d-02 :8086"]
+    D3["d-03 :8087"]
+    D4["d-04 :8088"]
+  end
+
+  SIM["SimDrone physics<br/>(deterministic, in each worker)"]
+
+  subgraph optional ["Optional — not in tick loop"]
+    NA["Mission narrator :8084"]
+    OL["Ollama :11434"]
+  end
+
+  VIZ[("replay.json<br/>snapshot.png")]
+
+  MC --> SM1 --> DC
+  DC --> SSE --> MC
+
+  DC -->|"drone:init · tick · reassign · rtb"| D1 & D2 & D3 & D4
+  D1 & D2 & D3 & D4 -->|"TickResponse JSON"| DC
+
+  D1 & D2 & D3 & D4 --> SIM
+
+  MC -.->|"narrate:event (async)"| NA
+  NA -.-> OL
+
+  MC --> VIZ
+
+  classDef a2a fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20
+  classDef sim fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
+  classDef opt fill:#fff3e0,stroke:#ef6c00,color:#e65100
+  classDef store fill:#f3e5f5,stroke:#7b1fa2,color:#4a148c
+
+  class SM1,SSE,DC,D1,D2,D3,D4 a2a
+  class SIM sim
+  class NA,OL opt
+  class VIZ store

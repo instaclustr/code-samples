@@ -1,0 +1,73 @@
+flowchart TB
+  subgraph client ["Mission client — two A2A peers"]
+    MC["SarMissionClient"]
+    DET["SarSignificantEventDetector"]
+    NC["SarMissionNarratorClient<br/>(async, single-thread)"]
+    VIZ["SarVizExporter<br/>(post-mission)"]
+    MC --> DET
+    DET -->|"TARGET_FOUND, DRONE_TRANSFER, …"| NC
+    MC --> VIZ
+  end
+
+  subgraph wireMission ["A2A JSON-RPC + SSE — long mission Task"]
+    SM1["SendMessage<br/>mission:search-rescue"]
+    SSE["SSE stream<br/>sar-telemetry (~1 Hz)<br/>sar-mission-summary"]
+  end
+
+  subgraph coord ["Flock coordinator agent — :8083"]
+    SKILL1["skill sar:flock-coordinator"]
+    FC["SarFlockAgentExecutor"]
+    SR["SarSimulationRunner"]
+    SE["SimulationEngine"]
+    SKILL1 --- FC
+    FC --> SR --> SE
+  end
+
+  subgraph sim ["Phase 1 sim — in-process, deterministic"]
+    SD["SimDrone × N<br/>sectors · detours · RTB · geofence"]
+    SE --> SD
+  end
+
+  subgraph wireNarrator ["A2A JSON-RPC + SSE — short narrator Tasks"]
+    SM2["SendMessage<br/>narrate:event · narrate:summary"]
+    NART["sar-narrative artifact<br/>(plain text)"]
+  end
+
+  subgraph narratorAgent ["Mission narrator agent — :8084"]
+    SKILL2["skill sar:mission-narrator"]
+    NA["SarNarratorAgentExecutor"]
+    NS["SarNarratorService"]
+    TPL["SarEventTemplates<br/>(fallback)"]
+    SKILL2 --- NA
+    NA --> NS
+    NS --> TPL
+  end
+
+  subgraph llm ["Local LLM — outside A2A wire"]
+    OL["Ollama :11434<br/>llama3:latest"]
+  end
+
+  OUT[("viz/out/<br/>replay.json · snapshot.png")]
+
+  MC --> SM1
+  SM1 --> FC
+  FC --> SSE
+  SSE --> MC
+
+  NC --> SM2
+  SM2 --> NA
+  NA --> NART
+  NART --> NC
+
+  NS -->|"HTTP /api/generate<br/>(optional)"| OL
+  VIZ --> OUT
+
+  classDef a2a fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20
+  classDef sim fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
+  classDef llm fill:#fff3e0,stroke:#ef6c00,color:#e65100
+  classDef store fill:#f3e5f5,stroke:#7b1fa2,color:#4a148c
+
+  class SM1,SSE,SM2,NART,SKILL1,SKILL2 a2a
+  class SE,SD,TPL sim
+  class OL llm
+  class OUT store

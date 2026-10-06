@@ -1,0 +1,53 @@
+flowchart TB
+  MC["Mission client"]
+
+  subgraph mission ["Long mission Task · JSON-RPC + SSE"]
+    SM1["SendMessage<br/>mission:search-rescue"]
+    SSE["SSE stream<br/>flocks · telemetry · patches · safety · summary"]
+  end
+
+  subgraph patch ["Mid-mission patch · optional"]
+    SM2["SendMessage<br/>mission:patch"]
+  end
+
+  AC["Autonomous coordinator<br/>:8096<br/>patch queue · tick barrier"]
+
+  subgraph safetyWire ["Sync safety check"]
+    SC["safety:check"]
+    SV["Violation → hold drone"]
+  end
+
+  SA["Safety / airspace agent<br/>:8094"]
+
+  subgraph drones ["Autonomous drone workers · DroneTask lifecycle"]
+    D1["d-01 :8105"]
+    D2["d-02 :8106"]
+    D3["d-03 :8107"]
+    D4["d-04 :8108"]
+  end
+
+  SIM["SimDrone + local autonomy<br/>hold · auto-RTB · reject stale patch"]
+
+  VIZ[("replay.json<br/>snapshot.png")]
+
+  MC --> SM1 --> AC
+  AC --> SSE --> MC
+  MC -.-> SM2 -.-> AC
+
+  AC --> SC --> SA
+  SA --> SV --> AC
+  AC -->|"drone:init/tick/hold/cancel"| D1 & D2 & D3 & D4
+  D1 & D2 & D3 & D4 -->|"TickResponse + DroneTaskState"| AC
+
+  D1 & D2 & D3 & D4 --> SIM
+  MC --> VIZ
+
+  classDef a2a fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20
+  classDef sim fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
+  classDef safety fill:#fce4ec,stroke:#c2185b,color:#880e4f
+  classDef store fill:#f3e5f5,stroke:#7b1fa2,color:#4a148c
+
+  class SM1,SSE,SM2,AC,D1,D2,D3,D4,SC,SV,SA a2a
+  class SIM sim
+  class safety safety
+  class VIZ store

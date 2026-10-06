@@ -1,0 +1,44 @@
+sequenceDiagram
+  autonumber
+
+  participant MC as Mission client
+  participant FC as Flock coordinator :8083
+  participant SE as SimulationEngine
+  participant NA as Mission narrator :8084
+  participant OL as Ollama :11434
+
+  Note over MC,OL: Phase 2 + narrator — green = mission path · amber = LLM copilot path
+
+  rect rgb(232, 245, 233)
+    Note right of MC: Long-running mission Task (JSON-RPC + SSE)
+    MC->>FC: GET Agent Card
+    FC-->>MC: sar:flock-coordinator
+    MC->>FC: SendMessage mission:search-rescue
+    FC->>SE: SarSimulationRunner.run()
+    loop Each sim tick (~1 Hz)
+      SE-->>FC: DroneTelemetry
+      FC-->>MC: SSE artifact sar-telemetry
+      MC->>MC: detect significant event
+      opt TARGET_FOUND / DRONE_TRANSFER / MISSION_START
+        MC->>NA: SendMessage narrate:event (async)
+        NA->>OL: POST /api/generate
+        OL-->>NA: prose briefing
+        NA-->>MC: sar-narrative artifact + Task complete
+        MC->>MC: log narrator: …
+      end
+    end
+    SE-->>FC: SimulationResult
+    FC-->>MC: SSE artifact sar-mission-summary
+    FC-->>MC: Task COMPLETED
+  end
+
+  rect rgb(255, 243, 224)
+    Note right of NA: After-action summary (one short Task)
+    MC->>NA: SendMessage narrate:summary
+    NA->>OL: POST /api/generate
+    OL-->>NA: AAR paragraph
+    NA-->>MC: sar-narrative + COMPLETED
+    MC->>MC: SarVizExporter → replay.json
+  end
+
+  Note over FC,SE: Flock physics stay deterministic — LLM never drives motors or sectors

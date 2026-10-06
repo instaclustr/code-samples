@@ -1,6 +1,6 @@
 # Phase 1 design check — Drone SAR sim
 
-Maps [DRONE-SAR-A2A-DESIGN.md](../../docs/scenarios/DRONE-SAR-A2A-DESIGN.md) Phase 1 deliverables to this implementation.
+Maps [DRONE-SAR-A2A-DESIGN.md](docs/DRONE-SAR-A2A-DESIGN.md) Phase 1 deliverables to this implementation.
 
 | Design §10 deliverable | Status | Implementation |
 |------------------------|--------|----------------|

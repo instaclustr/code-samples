@@ -1,0 +1,83 @@
+sequenceDiagram
+  autonumber
+
+  participant MC as Mission client
+  participant DC as Distributed coordinator :8093
+  participant DSE as DistributedSimulationEngine
+  participant D1 as drone-worker d-01 :8085
+  participant D2 as drone-worker d-02 :8086
+  participant D3 as drone-worker d-03 :8087
+  participant D4 as drone-worker d-04 :8088
+  participant NA as Mission narrator :8084
+  participant OL as Ollama :11434
+
+  Note over MC,OL: Phase 2b — green = mission path · blue = per-drone sync Tasks · amber = optional copilot
+
+  rect rgb(232, 245, 233)
+    Note right of MC: Long-running mission Task (JSON-RPC + SSE)
+    MC->>DC: GET Agent Card
+    DC-->>MC: sar:distributed-flock-coordinator
+    MC->>DC: SendMessage mission:search-rescue
+    DC->>DSE: DistributedSimulationRunner.run()
+    DSE->>DSE: SectorAllocator + Flock.fromMissionTargets()
+    DC-->>MC: SSE artifact sar-flock-assignment
+  end
+
+  rect rgb(227, 242, 253)
+    Note right of DSE: Init — one short A2A Task per drone (remote mode)
+    par Parallel init RPCs
+      DSE->>D1: SendMessage drone:init JSON
+      D1-->>DSE: Task COMPLETED (ack)
+      DSE->>D2: SendMessage drone:init JSON
+      D2-->>DSE: Task COMPLETED (ack)
+      DSE->>D3: SendMessage drone:init JSON
+      D3-->>DSE: Task COMPLETED (ack)
+      DSE->>D4: SendMessage drone:init JSON
+      D4-->>DSE: Task COMPLETED (ack)
+    end
+  end
+
+  rect rgb(232, 245, 233)
+    loop Each sim tick until all landed or maxTicks
+      Note over DSE: Tick barrier — coordinator merges searched matrix
+      DSE->>DSE: copySearchedMatrix()
+      par One sync Task per drone this tick
+        DSE->>D1: SendMessage drone:tick + searchedMatrix
+        D1->>D1: SimDrone.step()
+        D1-->>DSE: TickResponse JSON + updated matrix
+        DSE->>D2: SendMessage drone:tick
+        D2-->>DSE: TickResponse JSON
+        DSE->>D3: SendMessage drone:tick
+        D3-->>DSE: TickResponse JSON
+        DSE->>D4: SendMessage drone:tick
+        D4-->>DSE: TickResponse JSON
+      end
+      DSE->>DSE: applySearchedMatrix() · transfer flocks on target found
+      opt target found → reassign searchers
+        DSE->>D2: SendMessage drone:reassign
+        D2-->>DSE: Task COMPLETED
+      end
+      opt all targets found
+        DSE->>D1: SendMessage drone:rtb
+        D1-->>DSE: Task COMPLETED
+      end
+      DSE-->>DC: DroneTelemetry × N
+      DC-->>MC: SSE artifact sar-telemetry
+      MC->>MC: detect significant event
+    end
+    DSE-->>DC: SimulationResult
+    DC-->>MC: SSE artifact sar-mission-summary
+    DC-->>MC: Task COMPLETED
+  end
+
+  rect rgb(255, 243, 224)
+    opt SAR_NARRATOR_URL set — async copilot (same as Phase 2)
+      MC->>NA: SendMessage narrate:event
+      NA->>OL: POST /api/generate
+      OL-->>NA: prose briefing
+      NA-->>MC: sar-narrative + COMPLETED
+    end
+    MC->>MC: SarVizExporter → replay.json
+  end
+
+  Note over DSE,D4: Flock physics stay deterministic — LLM never in tick loop

@@ -1,0 +1,134 @@
+flowchart TB
+  subgraph missionJson ["Mission data — file system"]
+    MJ[("missions/*.json<br/>targets · drones · rules")]
+  end
+
+  subgraph client ["Mission client — Phase 2 reused"]
+    MC["SarMissionClient"]
+    DET["SarSignificantEventDetector"]
+    NC["SarMissionNarratorClient<br/>(async, optional)"]
+    KPub["SarKafkaEventPublisher<br/>(optional)"]
+    VIZ["SarVizExporter<br/>(post-mission)"]
+    MC --> DET
+    DET -->|"TARGET_FOUND, DRONE_TRANSFER, …"| NC
+    MC --> KPub
+    MC --> VIZ
+  end
+
+  subgraph wireMission ["A2A JSON-RPC + SSE — long mission Task"]
+    SM1["SendMessage<br/>mission:search-rescue"]
+    SSE["SSE stream<br/>sar-flock-assignment<br/>sar-telemetry (~4× per tick)<br/>sar-mission-summary"]
+  end
+
+  subgraph coord ["Distributed flock coordinator — :8093"]
+    SKILL1["skill sar:distributed-flock-coordinator"]
+    FC["SarDistributedCoordinatorAgentExecutor"]
+    DSR["DistributedSimulationRunner"]
+    DSE["DistributedSimulationEngine"]
+    GW["GridWorld<br/>(coordinator-owned<br/>searched-cell matrix)"]
+    FL["Flock registry<br/>(one flock per target)"]
+    SKILL1 --- FC
+    FC --> DSR --> DSE
+    DSE --> GW
+    DSE --> FL
+  end
+
+  subgraph wireWorkers ["A2A JSON-RPC + SSE — short sync Tasks per drone RPC"]
+    RPC["Per drone, per tick barrier:<br/>drone:init · drone:tick · drone:reassign · drone:rtb"]
+    RSP["Task COMPLETED<br/>JSON TickResponse / ack"]
+  end
+
+  subgraph workers ["Drone-worker agents — one JVM each"]
+    subgraph w1 ["d-01 :8085"]
+      SK1["sar:drone-worker"]
+      RT1["DroneWorkerRuntime"]
+      SD1["SimDrone"]
+      SK1 --- RT1 --> SD1
+    end
+    subgraph w2 ["d-02 :8086"]
+      SK2["sar:drone-worker"]
+      RT2["DroneWorkerRuntime"]
+      SD2["SimDrone"]
+      SK2 --- RT2 --> SD2
+    end
+    subgraph w3 ["d-03 :8087"]
+      SK3["sar:drone-worker"]
+      RT3["DroneWorkerRuntime"]
+      SD3["SimDrone"]
+      SK3 --- RT3 --> SD3
+    end
+    subgraph w4 ["d-04 :8088"]
+      SK4["sar:drone-worker"]
+      RT4["DroneWorkerRuntime"]
+      SD4["SimDrone"]
+      SK4 --- RT4 --> SD4
+    end
+  end
+
+  subgraph localMode ["LOCAL mode — tests / CI smoke"]
+    LDW["LocalDroneWorker × N<br/>(in-process, no A2A wire)"]
+    DSE -.->|"sar.phase2b.worker-mode=local"| LDW
+  end
+
+  subgraph wireNarrator ["A2A JSON-RPC + SSE — optional copilot Tasks"]
+    SM2["SendMessage<br/>narrate:event · narrate:summary"]
+    NART["sar-narrative artifact"]
+  end
+
+  subgraph narratorAgent ["Mission narrator — :8084 optional"]
+    SKILL2["skill sar:mission-narrator"]
+    NA["SarNarratorAgentExecutor"]
+    SKILL2 --- NA
+  end
+
+  subgraph kafkaPath ["Kafka — optional Phase 2.5"]
+    KTOP[("sar.events topic")]
+    SA["Safety analyst<br/>(Kafka consumer)"]
+    KAssess[("sar.assessments topic")]
+  end
+
+  subgraph llm ["Local LLM — outside A2A wire"]
+    OL["Ollama :11434<br/>(optional)"]
+  end
+
+  OUT[("viz/out/sar-phase2b<br/>replay.json · snapshot.png")]
+
+  MJ --> MC
+  MJ --> DSE
+
+  MC --> SM1
+  SM1 --> FC
+  FC --> SSE
+  SSE --> MC
+
+  DSE -->|"A2aDroneWorkerClient<br/>(remote mode)"| RPC
+  RPC --> w1 & w2 & w3 & w4
+  w1 & w2 & w3 & w4 --> RSP
+  RSP --> DSE
+
+  NC --> SM2
+  SM2 --> NA
+  NA --> NART
+  NART --> NC
+  NA -->|"HTTP /api/generate"| OL
+
+  KPub --> KTOP
+  KTOP --> SA
+  SA --> KAssess
+  SA -->|"assessments"| MC
+
+  VIZ --> OUT
+
+  classDef a2a fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20
+  classDef sim fill:#e3f2fd,stroke:#1565c0,color:#0d47a1
+  classDef llm fill:#fff3e0,stroke:#ef6c00,color:#e65100
+  classDef store fill:#f3e5f5,stroke:#7b1fa2,color:#4a148c
+  classDef kafka fill:#fce4ec,stroke:#c2185b,color:#880e4f
+  classDef local fill:#eceff1,stroke:#546e7a,color:#263238
+
+  class SM1,SSE,SM2,NART,SKILL1,SKILL2,SK1,SK2,SK3,SK4,RPC,RSP a2a
+  class DSE,GW,FL,RT1,RT2,RT3,RT4,SD1,SD2,SD3,SD4 sim
+  class OL llm
+  class MJ,OUT store
+  class KTOP,KAssess,SA,KPub kafka
+  class LDW local

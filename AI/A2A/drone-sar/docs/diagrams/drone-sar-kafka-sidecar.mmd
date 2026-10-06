@@ -1,0 +1,36 @@
+sequenceDiagram
+  autonumber
+
+  participant MC as Mission client
+  participant FC as Flock coordinator :8083
+  participant DET as SarSignificantEventDetector
+  participant K as sar.telemetry.events
+  participant SA as Safety analyst JAR
+  participant K2 as sar.violation-assessments
+  participant CP as SarCopilotRecorder
+
+  Note over MC,CP: Drone SAR Phase 2.5 — green = HTTP A2A · purple = domain Kafka sidecar
+
+  rect rgb(232, 245, 233)
+    Note right of FC: Control plane — standard HTTP JSON-RPC + SSE
+    MC->>FC: GET agent-card
+    FC-->>MC: AgentCard (pushNotifications: false)
+    MC->>FC: SendMessage (start mission)
+    FC-->>MC: Task submitted
+    loop Mission ticks
+      FC-->>MC: SSE statusUpdate / artifactUpdate
+      MC->>DET: evaluate telemetry from stream
+    end
+  end
+
+  rect rgb(243, 229, 245)
+    Note right of K: Sidecar — NOT mirrored from A2A push
+    DET-->>MC: GEOFENCE_VIOLATION / LOW_BATTERY / …
+    MC->>K: produce SarTelemetryEvent
+    K->>SA: consume (safety-analyst group)
+    SA->>SA: template or Ollama assessment
+    SA->>K2: produce SarViolationAssessment
+    MC->>CP: record narration + assessment for replay
+  end
+
+  Note over MC,K2: No PushNotificationReceiver · no a2a.task.events<br/>Phase 2d AI coordinator does not add Part 8 wiring
