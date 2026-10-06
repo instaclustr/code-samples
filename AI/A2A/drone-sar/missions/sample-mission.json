@@ -1,0 +1,45 @@
+{
+  "missionId": "sar-2026-001",
+  "rulesetId": "airspace-v1",
+  "base": {
+    "cellX": 10,
+    "cellY": 10,
+    "altM": 0,
+    "mobile": true
+  },
+  "targets": [
+    {
+      "id": "t1",
+      "type": "person",
+      "priority": 1,
+      "searchArea": {
+        "polygon": [[20, 20], [100, 20], [100, 100], [20, 100]]
+      },
+      "lastKnownCell": { "x": 72, "y": 58 }
+    }
+  ],
+  "searchPattern": "grid-lanes",
+  "drones": [
+    { "id": "d-01", "sensors": ["rgb", "ir"] },
+    { "id": "d-02", "sensors": ["rgb"] },
+    { "id": "d-03", "sensors": ["rgb"] }
+  ],
+  "sim": {
+    "tickHz": 1,
+    "gridCells": 128,
+    "cellSizeM": 2
+  },
+  "geofence": {
+    "noFlyZones": [
+      { "polygon": [[45, 45], [55, 45], [55, 55], [45, 55]] }
+    ]
+  },
+  "rules": {
+    "minAglM": 15,
+    "maxAglM": 120,
+    "cruiseSpeedMs": 8,
+    "rtbBatteryPct": 30,
+    "batteryDrainSearchPctPerTick": 0.12,
+    "batteryDrainRtbPctPerTick": 0.18
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "missionId": "sar-three-target-001",
+  "rulesetId": "airspace-v1",
+  "base": { "cellX": 5, "cellY": 5, "altM": 0, "mobile": false },
+  "targets": [
+    {
+      "id": "t1",
+      "type": "person",
+      "priority": 1,
+      "searchArea": { "polygon": [[10, 10], [35, 10], [35, 35], [10, 35]] },
+      "lastKnownCell": { "x": 22, "y": 22 }
+    },
+    {
+      "id": "t2",
+      "type": "vehicle",
+      "priority": 2,
+      "searchArea": { "polygon": [[40, 40], [60, 40], [60, 60], [40, 60]] },
+      "lastKnownCell": { "x": 50, "y": 50 }
+    },
+    {
+      "id": "t3",
+      "type": "person",
+      "priority": 3,
+      "searchArea": { "polygon": [[10, 40], [35, 40], [35, 58], [10, 58]] },
+      "lastKnownCell": { "x": 22, "y": 49 }
+    }
+  ],
+  "searchPattern": "grid-lanes",
+  "drones": [
+    { "id": "d-01", "sensors": ["rgb"] },
+    { "id": "d-02", "sensors": ["rgb"] },
+    { "id": "d-03", "sensors": ["rgb"] },
+    { "id": "d-04", "sensors": ["rgb"] },
+    { "id": "d-05", "sensors": ["rgb"] },
+    { "id": "d-06", "sensors": ["rgb"] }
+  ],
+  "sim": { "tickHz": 1, "gridCells": 64, "cellSizeM": 2 },
+  "geofence": {
+    "noFlyZones": [{ "polygon": [[2, 58], [6, 58], [6, 62], [2, 62]] }]
+  },
+  "rules": {
+    "minAglM": 15,
+    "maxAglM": 120,
+    "cruiseSpeedMs": 10,
+    "rtbBatteryPct": 15,
+    "batteryDrainSearchPctPerTick": 0.35,
+    "batteryDrainRtbPctPerTick": 0.5
+  }
+}

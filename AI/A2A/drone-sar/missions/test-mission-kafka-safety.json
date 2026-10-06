@@ -1,0 +1,36 @@
+{
+  "missionId": "sar-kafka-safety-demo",
+  "rulesetId": "airspace-v1",
+  "demoViolations": true,
+  "base": { "cellX": 5, "cellY": 5, "altM": 0, "mobile": false },
+  "targets": [
+    {
+      "id": "t1",
+      "type": "person",
+      "priority": 1,
+      "searchArea": { "polygon": [[10, 10], [40, 10], [40, 40], [10, 40]] },
+      "lastKnownCell": { "x": 20, "y": 20 }
+    }
+  ],
+  "searchPattern": "grid-lanes",
+  "drones": [
+    { "id": "d-01", "sensors": ["rgb"] },
+    { "id": "d-02", "sensors": ["rgb"] },
+    { "id": "d-03", "sensors": ["rgb"], "initialBatteryPct": 45 }
+  ],
+  "sim": { "tickHz": 1, "gridCells": 64, "cellSizeM": 2 },
+  "geofence": {
+    "noFlyZones": [
+      { "polygon": [[22, 22], [28, 22], [28, 28], [22, 28]] },
+      { "polygon": [[34, 18], [38, 18], [38, 22], [34, 22]] }
+    ]
+  },
+  "rules": {
+    "minAglM": 15,
+    "maxAglM": 120,
+    "cruiseSpeedMs": 10,
+    "rtbBatteryPct": 40,
+    "batteryDrainSearchPctPerTick": 0.55,
+    "batteryDrainRtbPctPerTick": 1.1
+  }
+}

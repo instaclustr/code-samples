@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drone SAR — mission replay</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f172a;
+      --panel: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #3b82f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 12px 16px;
+      background: var(--panel);
+      border-bottom: 1px solid #334155;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      flex: 1;
+    }
+    button, input[type="file"], select {
+      background: #334155;
+      color: var(--text);
+      border: 1px solid #475569;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+    button:hover { background: #475569; cursor: pointer; }
+    input[type="range"] { width: 180px; }
+    #status { color: var(--muted); font-size: 13px; }
+    main { flex: 1; display: flex; justify-content: center; align-items: stretch; padding: 12px; gap: 12px; }
+    canvas {
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      max-width: min(68vw, 900px);
+      max-height: calc(100vh - 140px);
+      width: 900px;
+      height: 900px;
+      flex-shrink: 0;
+    }
+    #statePanel {
+      width: 320px;
+      max-height: calc(100vh - 140px);
+      overflow-y: auto;
+      background: var(--panel);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 12px;
+    }
+    #statePanel h2 { margin: 0 0 8px; font-size: 13px; color: var(--text); }
+    #statePanel section { margin-bottom: 14px; }
+    .card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+    }
+    .card.found { border-color: #22c55e; }
+    .card.searching { border-color: #3b82f6; }
+    .card.missed { border-color: #ef4444; }
+    .card .label { color: var(--muted); font-size: 11px; }
+    .card .value { color: var(--text); margin-top: 2px; }
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge.found { background: #14532d; color: #86efac; }
+    .badge.searching { background: #1e3a8a; color: #93c5fd; }
+    .badge.missed { background: #7f1d1d; color: #fca5a5; }
+    .badge.lane { background: #713f12; color: #fcd34d; }
+    .badge.rtb { background: #581c87; color: #e9d5ff; }
+    .badge.landed { background: #334155; color: #cbd5e1; }
+    #eventLog { max-height: 180px; overflow-y: auto; }
+    #eventLog div { padding: 4px 0; border-bottom: 1px solid #334155; color: var(--muted); }
+    #eventLog div.active { color: var(--text); background: rgba(59,130,246,0.08); margin: 0 -8px; padding: 4px 8px; }
+    .event-TARGET_FOUND { color: #86efac !important; }
+    .event-TARGET_RTB, .event-ALL_TARGETS_FOUND { color: #fdba74 !important; }
+    .event-BATTERY_RTB { color: #fca5a5 !important; }
+    .event-LANE_COMPLETE { color: #fcd34d !important; }
+    .event-MISSION_END { color: #e2e8f0 !important; font-weight: 600; }
+    .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+    .swatch { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 4px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Drone SAR replay</h1>
+    <div class="controls">
+      <button id="playBtn" type="button">Play</button>
+      <label>Tick <input id="tickSlider" type="range" min="0" max="0" value="0" /></label>
+      <span id="tickLabel">0 / 0</span>
+      <label>Speed
+        <select id="speedSel">
+          <option value="0.25">0.25×</option>
+          <option value="0.5">0.5×</option>
+          <option value="1" selected>1×</option>
+          <option value="2">2×</option>
+          <option value="4">4×</option>
+        </select>
+      </label>
+      <input id="fileInput" type="file" accept="application/json,.json" />
+    </div>
+    <div id="status">Load replay.json or run sim with --viz-out</div>
+  </header>
+  <main>
+    <canvas id="map" width="900" height="900"></canvas>
+    <aside id="statePanel">
+      <section>
+        <h2>Mission</h2>
+        <div id="missionCard" class="card"></div>
+      </section>
+      <section>
+        <h2>Targets</h2>
+        <div id="targetCards"></div>
+      </section>
+      <section>
+        <h2>Drones</h2>
+        <div id="droneCards"></div>
+      </section>
+      <section>
+        <h2>Events</h2>
+        <div id="eventLog"></div>
+      </section>
+    </aside>
+  </main>
+  <script>
+    const COLORS = ["#2563eb", "#dc2626", "#16a34a", "#9333ea", "#ea580c"];
+    const TARGET_STROKES = ["#22c55e", "#06b6d4", "#a855f7", "#f97316"];
+    const TARGET_MARKERS = ["#fb923c", "#f472b6", "#facc15", "#38bdf8"];
+    const canvas = document.getElementById("map");
+    const ctx = canvas.getContext("2d");
+    const playBtn = document.getElementById("playBtn");
+    const tickSlider = document.getElementById("tickSlider");
+    const tickLabel = document.getElementById("tickLabel");
+    const speedSel = document.getElementById("speedSel");
+    const fileInput = document.getElementById("fileInput");
+    const statusEl = document.getElementById("status");
+    const titleEl = document.getElementById("title");
+    const missionCard = document.getElementById("missionCard");
+    const targetCards = document.getElementById("targetCards");
+    const droneCards = document.getElementById("droneCards");
+    const eventLog = document.getElementById("eventLog");
+
+    let replay = null;
+    let layout = null;
+    let frameIdx = 0;
+    let playing = false;
+    let lastTs = 0;
+    let trailByDrone = {};
+
+    function unionBounds(replay) {
+      const polys = replay.targets
+        ? replay.targets.map(t => t.searchPolygon)
+        : [replay.searchPolygon];
+      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      for (const poly of polys) {
+        for (const p of poly) {
+          minX = Math.min(minX, p[0]); minY = Math.min(minY, p[1]);
+          maxX = Math.max(maxX, p[0]); maxY = Math.max(maxY, p[1]);
+        }
+      }
+      const pad = 4;
+      return { minX: minX - pad, minY: minY - pad, maxX: maxX + pad, maxY: maxY + pad };
+    }
+
+    function makeLayout(replay) {
+      const b = unionBounds(replay);
+      const margin = 40;
+      const w = b.maxX - b.minX;
+      const h = b.maxY - b.minY;
+      const scale = Math.min((canvas.width - 2 * margin) / w, (canvas.height - 2 * margin) / h);
+      return { ...b, scale, margin, toPx(cellX, cellY) {
+        return {
+          x: Math.round(margin + (cellX - b.minX) * scale),
+          y: Math.round(canvas.height - margin - (cellY - b.minY) * scale)
+        };
+      }};
+    }
+
+    function metersToCell(xM, yM, cellSizeM) {
+      return { x: xM / cellSizeM, y: yM / cellSizeM };
+    }
+
+    function drawPolygon(poly, stroke, fill, dash) {
+      if (!poly || poly.length < 3) return;
+      ctx.beginPath();
+      poly.forEach((p, i) => {
+        const px = layout.toPx(p[0], p[1]);
+        if (i === 0) ctx.moveTo(px.x, px.y); else ctx.lineTo(px.x, px.y);
+      });
+      ctx.closePath();
+      if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 2;
+      ctx.setLineDash(dash || []);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function drawHeatmapUpTo(frameIdx) {
+      const seen = new Set();
+      for (let i = 0; i <= frameIdx; i++) {
+        const frame = replay.frames[i];
+        for (const d of frame.drones) {
+          const c = metersToCell(d.xM, d.yM, replay.cellSizeM);
+          const key = Math.floor(c.x) + "," + Math.floor(c.y);
+          if (seen.has(key)) continue;
+          seen.add(key);
+          const tl = layout.toPx(Math.floor(c.x), Math.floor(c.y) + 1);
+          const br = layout.toPx(Math.floor(c.x) + 1, Math.floor(c.y));
+          ctx.fillStyle = "rgba(59,130,246,0.35)";
+          ctx.fillRect(tl.x, tl.y, Math.max(1, br.x - tl.x), Math.max(1, br.y - tl.y));
+        }
+      }
+    }
+
+    function drawStaticLayers(frameIdx) {
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const frame = replay.frames[frameIdx];
+      const foundNow = new Set(frame.foundTargetIds || []);
+      if (replay.targets) {
+        replay.targets.forEach((t, i) => {
+          const found = foundNow.has(t.id);
+          drawPolygon(
+            t.searchPolygon,
+            found ? TARGET_STROKES[i % TARGET_STROKES.length] : TARGET_STROKES[i % TARGET_STROKES.length],
+            found ? "rgba(34,197,94,0.08)" : null,
+            found ? null : [8, 4]);
+        });
+      } else {
+        drawPolygon(replay.searchPolygon, "#22c55e", null, [8, 4]);
+      }
+      if (replay.noFlyZones) {
+        for (const z of replay.noFlyZones) drawPolygon(z, "#ef4444", "rgba(239,68,68,0.2)", null);
+      }
+      if (replay.baseCell) {
+        const px = layout.toPx(replay.baseCell.x + 0.5, replay.baseCell.y + 0.5);
+        ctx.fillStyle = "#eab308";
+        ctx.fillRect(px.x - 6, px.y - 6, 12, 12);
+      }
+      const targets = replay.targets || (replay.targetCell ? [{ id: "t1", lastKnownCell: replay.targetCell }] : []);
+      targets.forEach((t, i) => {
+        if (!t.lastKnownCell) return;
+        const px = layout.toPx(t.lastKnownCell.x + 0.5, t.lastKnownCell.y + 0.5);
+        const found = foundNow.has(t.id);
+        ctx.strokeStyle = found ? "#22c55e" : TARGET_MARKERS[i % TARGET_MARKERS.length];
+        ctx.fillStyle = found ? "#22c55e" : TARGET_MARKERS[i % TARGET_MARKERS.length];
+        ctx.beginPath(); ctx.arc(px.x, px.y, 7, 0, Math.PI * 2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(px.x, px.y, 3, 0, Math.PI * 2); ctx.fill();
+        ctx.font = "11px system-ui,sans-serif";
+        ctx.fillText(t.id + (found ? " ✓" : ""), px.x + 10, px.y + 4);
+      });
+    }
+
+    function targetStatusAt(frameIdx, targetId) {
+      const frame = replay.frames[frameIdx];
+      const foundIds = frame.foundTargetIds || [];
+      if (foundIds.includes(targetId)) return "found";
+      const endTick = replay.summary?.ticksRun;
+      if (endTick != null && frame.tick >= endTick) return "missed";
+      return "searching";
+    }
+
+    function droneStatusLabel(d, frame) {
+      if (d.detectionTargetId) return { text: "target detected", cls: "found" };
+      if (d.mode === "rtb") return { text: "returning to base", cls: "rtb" };
+      if (d.mode === "landed") return { text: "landed at base", cls: "landed" };
+      if (d.searchLaneComplete) return { text: "lane complete — holding", cls: "lane" };
+      return { text: "searching", cls: "searching" };
+    }
+
+    function updateStatePanel(frameIdx) {
+      if (!replay) return;
+      const frame = replay.frames[frameIdx];
+      const s = replay.summary || {};
+      const allFound = s.allTargetsFound;
+      const atEnd = s.ticksRun != null && frame.tick >= s.ticksRun;
+      missionCard.className = "card " + (allFound ? "found" : atEnd ? "missed" : "searching");
+      missionCard.innerHTML =
+        `<div class="label">${replay.missionId} · tick ${frame.tick}</div>` +
+        `<div class="value"><span class="badge ${allFound ? "found" : atEnd ? "missed" : "searching"}">` +
+        (allFound ? "all targets found" : atEnd ? "search ended" : "in progress") +
+        `</span></div>` +
+        `<div class="value" style="margin-top:6px;color:#94a3b8">` +
+        `Found: ${(frame.foundTargetIds || []).join(", ") || "none"} · ` +
+        `Drones landed: ${frame.drones.filter(d => d.mode === "landed").length}/${frame.drones.length}` +
+        `</div>`;
+
+      const targets = replay.targets || [];
+      targetCards.innerHTML = targets.map((t, i) => {
+        const status = targetStatusAt(frameIdx, t.id);
+        const foundTick = t.foundAtTick;
+        const drones = (t.assignedDroneIds || []).join(", ") || "—";
+        let detail = status === "found"
+          ? `Found at tick ${foundTick} · drones: ${drones}`
+          : status === "missed"
+            ? `Not found — search ended · drones: ${drones}`
+            : `Searching · drones: ${drones}`;
+        return `<div class="card ${status}"><div class="label">${t.id} (${t.type || "target"})</div>` +
+          `<div class="value"><span class="badge ${status}">${status}</span></div>` +
+          `<div class="value" style="margin-top:4px;color:#94a3b8">${detail}</div></div>`;
+      }).join("") || "<div class='card'>No targets</div>";
+
+      droneCards.innerHTML = frame.drones.map(d => {
+        const st = droneStatusLabel(d, frame);
+        return `<div class="card ${st.cls}"><div class="label">${d.id} → ${d.assignedTargetId || "?"} · ${d.sectorId || ""}</div>` +
+          `<div class="value"><span class="badge ${st.cls}">${st.text}</span> · ${d.mode} · ${d.batteryPct.toFixed(1)}%</div></div>`;
+      }).join("");
+
+      const events = replay.summary?.events || [];
+      const visible = events.filter(e => e.tick <= frame.tick);
+      eventLog.innerHTML = visible.slice(-12).map(e =>
+        `<div class="event-${e.type}${e.tick === frame.tick ? " active" : ""}">` +
+        `t${e.tick} · ${e.type.replace(/_/g, " ")}` +
+        (e.targetId ? ` · ${e.targetId}` : "") +
+        (e.droneId ? ` · ${e.droneId}` : "") +
+        (e.detail ? `<br><span style="opacity:0.85">${e.detail}</span>` : "") +
+        `</div>`
+      ).join("") || "<div>No events yet</div>";
+    }
+
+    function drawTrails(frameIdx) {
+      replay.droneIds.forEach((id, idx) => {
+        const color = COLORS[idx % COLORS.length];
+        const trail = trailByDrone[id] || [];
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.globalAlpha = 0.85;
+        ctx.beginPath();
+        const limit = Math.min(frameIdx, trail.length - 1);
+        for (let i = 0; i <= limit; i++) {
+          const p = trail[i];
+          if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+        if (limit >= 0) {
+          const last = trail[limit];
+          ctx.fillStyle = color;
+          ctx.beginPath(); ctx.arc(last.x, last.y, 5, 0, Math.PI * 2); ctx.fill();
+        }
+      });
+    }
+
+    function drawHud(frameIdx) {
+      const frame = replay.frames[frameIdx];
+      ctx.fillStyle = "rgba(15,23,42,0.75)";
+      ctx.fillRect(12, 12, 280, 56);
+      ctx.fillStyle = "#e2e8f0";
+      ctx.font = "14px system-ui,sans-serif";
+      ctx.fillText(replay.missionId + "  tick " + frame.tick, 20, 32);
+      const found = frame.foundTargetIds || [];
+      if (replay.summary?.allTargetsFound && frame.tick >= (replay.summary.fleetRtbTick || 0)) {
+        ctx.fillStyle = "#4ade80";
+        ctx.font = "bold 12px system-ui,sans-serif";
+        ctx.fillText("ALL TARGETS FOUND", 20, 52);
+      } else if (found.length) {
+        ctx.fillStyle = "#94a3b8";
+        ctx.font = "12px system-ui,sans-serif";
+        ctx.fillText("Found: " + found.join(", "), 20, 52);
+      } else {
+        ctx.fillStyle = "#64748b";
+        ctx.font="12px system-ui,sans-serif";
+        ctx.fillText("No targets found yet", 20, 52);
+      }
+    }
+
+    function renderFrame(idx) {
+      if (!replay || !layout) return;
+      frameIdx = idx;
+      tickSlider.value = String(idx);
+      tickLabel.textContent = idx + " / " + (replay.frames.length - 1) + " (tick " + replay.frames[idx].tick + ")";
+      drawStaticLayers(idx);
+      drawHeatmapUpTo(idx);
+      drawTrails(idx);
+      drawHud(idx);
+      updateStatePanel(idx);
+    }
+
+    function buildTrails() {
+      trailByDrone = {};
+      replay.droneIds.forEach(id => { trailByDrone[id] = []; });
+      replay.frames.forEach(frame => {
+        frame.drones.forEach(d => {
+          const c = metersToCell(d.xM, d.yM, replay.cellSizeM);
+          const px = layout.toPx(c.x, c.y);
+          trailByDrone[d.id].push(px);
+        });
+      });
+    }
+
+    function loadReplay(data) {
+      replay = data;
+      layout = makeLayout(replay);
+      buildTrails();
+      tickSlider.max = String(replay.frames.length - 1);
+      tickSlider.value = "0";
+      const targetCount = replay.targets ? replay.targets.length : (replay.targetCell ? 1 : 0);
+      titleEl.textContent = "Drone SAR — " + replay.missionId;
+      statusEl.textContent = replay.frames.length + " frames · "
+        + (replay.droneIds?.length || 0) + " drones · "
+        + targetCount + " target(s) · "
+        + (replay.searchedCells?.length || 0) + " searched cells";
+      renderFrame(0);
+    }
+
+    function step(ts) {
+      if (!playing || !replay) return;
+      const hz = 1 * parseFloat(speedSel.value);
+      const interval = 1000 / hz;
+      if (ts - lastTs >= interval) {
+        lastTs = ts;
+        if (frameIdx >= replay.frames.length - 1) {
+          playing = false;
+          playBtn.textContent = "Play";
+          return;
+        }
+        renderFrame(frameIdx + 1);
+      }
+      requestAnimationFrame(step);
+    }
+
+    playBtn.addEventListener("click", () => {
+      if (!replay) return;
+      playing = !playing;
+      playBtn.textContent = playing ? "Pause" : "Play";
+      if (playing) { lastTs = 0; requestAnimationFrame(step); }
+    });
+
+    tickSlider.addEventListener("input", () => {
+      playing = false;
+      playBtn.textContent = "Play";
+      renderFrame(parseInt(tickSlider.value, 10));
+    });
+
+    fileInput.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const text = await file.text();
+      loadReplay(JSON.parse(text));
+    });
+
+    fetch("replay.json")
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(loadReplay)
+      .catch(() => {
+        statusEl.textContent = "Load replay.json (file picker) or serve this folder: python3 -m http.server 8765";
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,2282 @@
+{
+  "missionId" : "sar-multi-001",
+  "gridCells" : 64,
+  "cellSizeM" : 2.0,
+  "searchPolygon" : [ [ 10.0, 10.0 ], [ 35.0, 10.0 ], [ 35.0, 35.0 ], [ 10.0, 35.0 ] ],
+  "targets" : [ {
+    "id" : "t1",
+    "type" : "person",
+    "searchPolygon" : [ [ 10.0, 10.0 ], [ 35.0, 10.0 ], [ 35.0, 35.0 ], [ 10.0, 35.0 ] ],
+    "lastKnownCell" : {
+      "x" : 22,
+      "y" : 22
+    },
+    "assignedDroneIds" : [ "d-01", "d-02" ],
+    "foundAtTick" : 14
+  }, {
+    "id" : "t2",
+    "type" : "vehicle",
+    "searchPolygon" : [ [ 40.0, 40.0 ], [ 60.0, 40.0 ], [ 60.0, 60.0 ], [ 40.0, 60.0 ] ],
+    "lastKnownCell" : {
+      "x" : 50,
+      "y" : 50
+    },
+    "assignedDroneIds" : [ "d-03", "d-04" ],
+    "foundAtTick" : 30
+  } ],
+  "noFlyZones" : [ [ [ 2.0, 58.0 ], [ 6.0, 58.0 ], [ 6.0, 62.0 ], [ 2.0, 62.0 ] ] ],
+  "baseCell" : {
+    "x" : 5,
+    "y" : 5
+  },
+  "targetCell" : {
+    "x" : 22,
+    "y" : 22
+  },
+  "droneIds" : [ "d-01", "d-02", "d-03", "d-04" ],
+  "frames" : [ {
+    "tick" : 1,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 17.071067811865476,
+      "yM" : 17.071067811865476,
+      "mode" : "search",
+      "batteryPct" : 99.7,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 21.85460115744348,
+      "yM" : 11.699069165076462,
+      "mode" : "search",
+      "batteryPct" : 99.7,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 20.86012868689002,
+      "yM" : 17.275894061853055,
+      "mode" : "search",
+      "batteryPct" : 99.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 24.29587747619415,
+      "yM" : 15.58376368589991,
+      "mode" : "search",
+      "batteryPct" : 99.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 2,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 20.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 99.3,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 31.70920231488696,
+      "yM" : 13.398138330152925,
+      "mode" : "search",
+      "batteryPct" : 99.3,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 27.720257373780044,
+      "yM" : 24.55178812370611,
+      "mode" : "search",
+      "batteryPct" : 99.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 32.5917549523883,
+      "yM" : 21.16752737179982,
+      "mode" : "search",
+      "batteryPct" : 99.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 3,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 30.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 99.0,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 41.563803472330434,
+      "yM" : 15.097207495229387,
+      "mode" : "search",
+      "batteryPct" : 99.0,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 34.580386060670065,
+      "yM" : 31.827682185559166,
+      "mode" : "search",
+      "batteryPct" : 99.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 40.88763242858245,
+      "yM" : 26.75129105769973,
+      "mode" : "search",
+      "batteryPct" : 99.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 4,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 40.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 98.6,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 51.41840462977392,
+      "yM" : 16.79627666030585,
+      "mode" : "search",
+      "batteryPct" : 98.6,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 41.44051474756009,
+      "yM" : 39.10357624741222,
+      "mode" : "search",
+      "batteryPct" : 98.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 49.1835099047766,
+      "yM" : 32.33505474359964,
+      "mode" : "search",
+      "batteryPct" : 98.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 5,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 45.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 98.3,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 61.2730057872174,
+      "yM" : 18.495345825382312,
+      "mode" : "search",
+      "batteryPct" : 98.3,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 48.30064343445011,
+      "yM" : 46.37947030926527,
+      "mode" : "search",
+      "batteryPct" : 98.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 57.47938738097075,
+      "yM" : 37.91881842949955,
+      "mode" : "search",
+      "batteryPct" : 98.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 6,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 45.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 97.9,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 70.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 97.9,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 55.16077212134013,
+      "yM" : 53.655364371118324,
+      "mode" : "search",
+      "batteryPct" : 97.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 65.7752648571649,
+      "yM" : 43.50258211539946,
+      "mode" : "search",
+      "batteryPct" : 97.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 7,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 35.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 97.6,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 60.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 97.6,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 62.02090080823015,
+      "yM" : 60.931258432971376,
+      "mode" : "search",
+      "batteryPct" : 97.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 74.07114233335905,
+      "yM" : 49.08634580129937,
+      "mode" : "search",
+      "batteryPct" : 97.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 8,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 25.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 97.2,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 50.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 97.2,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 68.88102949512017,
+      "yM" : 68.20715249482443,
+      "mode" : "search",
+      "batteryPct" : 97.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 82.3670198095532,
+      "yM" : 54.670109487199284,
+      "mode" : "search",
+      "batteryPct" : 97.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 9,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 20.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 96.9,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 45.0,
+      "yM" : 20.0,
+      "mode" : "search",
+      "batteryPct" : 96.9,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 75.7411581820102,
+      "yM" : 75.48304655667748,
+      "mode" : "search",
+      "batteryPct" : 96.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 90.66289728574735,
+      "yM" : 60.253873173099194,
+      "mode" : "search",
+      "batteryPct" : 96.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 10,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 20.0,
+      "yM" : 36.0,
+      "mode" : "search",
+      "batteryPct" : 96.5,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 45.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 96.5,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 80.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 96.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 98.9587747619415,
+      "yM" : 65.8376368589991,
+      "mode" : "search",
+      "batteryPct" : 96.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 11,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 30.0,
+      "yM" : 36.0,
+      "mode" : "search",
+      "batteryPct" : 96.2,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 55.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 96.2,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 90.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 96.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 107.25465223813565,
+      "yM" : 71.42140054489902,
+      "mode" : "search",
+      "batteryPct" : 96.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 12,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 40.0,
+      "yM" : 36.0,
+      "mode" : "search",
+      "batteryPct" : 95.8,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 65.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 95.8,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 95.8,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 115.55052971432981,
+      "yM" : 77.00516423079891,
+      "mode" : "search",
+      "batteryPct" : 95.8,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 13,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 45.0,
+      "yM" : 36.0,
+      "mode" : "search",
+      "batteryPct" : 95.5,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 70.0,
+      "yM" : 28.0,
+      "mode" : "search",
+      "batteryPct" : 95.5,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 95.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 95.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ ]
+  }, {
+    "tick" : 14,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 45.0,
+      "yM" : 44.0,
+      "mode" : "search",
+      "batteryPct" : 95.1,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-1",
+      "detectionTargetId" : "t1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 70.0,
+      "yM" : 36.0,
+      "mode" : "search",
+      "batteryPct" : 95.1,
+      "assignedTargetId" : "t1",
+      "sectorId" : "t1-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 90.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 95.1,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 110.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 95.1,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 15,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 51.970783932918074,
+      "yM" : 51.16994918814431,
+      "mode" : "search",
+      "batteryPct" : 94.8,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 75.6333682464151,
+      "yM" : 44.262273428075474,
+      "mode" : "search",
+      "batteryPct" : 94.8,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 97.80868809443031,
+      "yM" : 81.75304952445576,
+      "mode" : "search",
+      "batteryPct" : 94.8,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 94.8,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 16,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 58.94156786583615,
+      "yM" : 58.339898376288616,
+      "mode" : "search",
+      "batteryPct" : 94.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 81.2667364928302,
+      "yM" : 52.52454685615095,
+      "mode" : "search",
+      "batteryPct" : 94.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 94.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 110.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 94.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 17,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 65.91235179875423,
+      "yM" : 65.50984756443292,
+      "mode" : "search",
+      "batteryPct" : 94.1,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 86.90010473924531,
+      "yM" : 60.78682028422643,
+      "mode" : "search",
+      "batteryPct" : 94.1,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 110.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 94.1,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 110.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 94.1,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 18,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 72.8831357316723,
+      "yM" : 72.67979675257723,
+      "mode" : "search",
+      "batteryPct" : 93.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 92.5334729856604,
+      "yM" : 69.04909371230191,
+      "mode" : "search",
+      "batteryPct" : 93.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 110.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 93.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 93.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 19,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 79.85391966459038,
+      "yM" : 79.84974594072153,
+      "mode" : "search",
+      "batteryPct" : 93.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 98.1668412320755,
+      "yM" : 77.31136714037738,
+      "mode" : "search",
+      "batteryPct" : 93.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 93.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 93.4,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 20,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 80.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 93.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 100.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 93.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 93.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 110.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 93.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 21,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 90.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 92.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 90.0,
+      "yM" : 80.0,
+      "mode" : "search",
+      "batteryPct" : 92.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 110.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 92.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 110.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 92.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 22,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 90.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 92.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 90.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 92.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 110.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 92.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 92.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 23,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 80.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 92.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 100.0,
+      "yM" : 88.0,
+      "mode" : "search",
+      "batteryPct" : 92.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 92.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 92.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 24,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 80.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 91.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 100.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 91.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 91.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 110.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 91.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 25,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 90.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 91.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 90.0,
+      "yM" : 96.0,
+      "mode" : "search",
+      "batteryPct" : 91.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 110.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 91.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 110.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 91.3,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 26,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 90.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 90.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 90.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 90.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 110.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 90.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 90.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 27,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 80.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 90.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 100.0,
+      "yM" : 104.0,
+      "mode" : "search",
+      "batteryPct" : 90.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 90.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 90.6,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : true,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 28,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 80.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 90.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 100.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 90.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 90.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : true,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 110.0,
+      "mode" : "search",
+      "batteryPct" : 90.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "expanded",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 29,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 90.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 89.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 90.0,
+      "yM" : 112.0,
+      "mode" : "search",
+      "batteryPct" : 89.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 110.0,
+      "mode" : "search",
+      "batteryPct" : 89.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "searchLaneComplete" : false,
+      "searchPhase" : "expanded",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 100.0,
+      "mode" : "search",
+      "batteryPct" : 89.9,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "expanded",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1" ]
+  }, {
+    "tick" : 30,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 90.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 89.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 90.0,
+      "yM" : 120.0,
+      "mode" : "search",
+      "batteryPct" : 89.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "primary",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 100.0,
+      "yM" : 100.0,
+      "mode" : "search",
+      "batteryPct" : 89.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "expanded",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 120.0,
+      "yM" : 90.0,
+      "mode" : "search",
+      "batteryPct" : 89.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "expanded",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 31,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 84.11828302324953,
+      "yM" : 111.91263915696811,
+      "mode" : "rtb",
+      "batteryPct" : 89.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 84.11828302324953,
+      "yM" : 111.91263915696811,
+      "mode" : "rtb",
+      "batteryPct" : 89.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 92.92893218813452,
+      "yM" : 92.92893218813452,
+      "mode" : "rtb",
+      "batteryPct" : 89.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 111.91263915696811,
+      "yM" : 84.11828302324953,
+      "mode" : "rtb",
+      "batteryPct" : 89.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 32,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 78.23656604649906,
+      "yM" : 103.82527831393622,
+      "mode" : "rtb",
+      "batteryPct" : 88.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 78.23656604649906,
+      "yM" : 103.82527831393622,
+      "mode" : "rtb",
+      "batteryPct" : 88.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 85.85786437626905,
+      "yM" : 85.85786437626905,
+      "mode" : "rtb",
+      "batteryPct" : 88.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 103.82527831393622,
+      "yM" : 78.23656604649906,
+      "mode" : "rtb",
+      "batteryPct" : 88.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 33,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 72.3548490697486,
+      "yM" : 95.73791747090434,
+      "mode" : "rtb",
+      "batteryPct" : 88.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 72.3548490697486,
+      "yM" : 95.73791747090434,
+      "mode" : "rtb",
+      "batteryPct" : 88.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 78.78679656440357,
+      "yM" : 78.78679656440357,
+      "mode" : "rtb",
+      "batteryPct" : 88.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 95.73791747090434,
+      "yM" : 72.3548490697486,
+      "mode" : "rtb",
+      "batteryPct" : 88.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 34,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 66.47313209299813,
+      "yM" : 87.65055662787245,
+      "mode" : "rtb",
+      "batteryPct" : 87.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 66.47313209299813,
+      "yM" : 87.65055662787245,
+      "mode" : "rtb",
+      "batteryPct" : 87.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 71.7157287525381,
+      "yM" : 71.7157287525381,
+      "mode" : "rtb",
+      "batteryPct" : 87.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 87.65055662787245,
+      "yM" : 66.47313209299813,
+      "mode" : "rtb",
+      "batteryPct" : 87.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 35,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 60.59141511624767,
+      "yM" : 79.56319578484056,
+      "mode" : "rtb",
+      "batteryPct" : 87.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 60.59141511624767,
+      "yM" : 79.56319578484056,
+      "mode" : "rtb",
+      "batteryPct" : 87.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 64.64466094067262,
+      "yM" : 64.64466094067262,
+      "mode" : "rtb",
+      "batteryPct" : 87.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 79.56319578484056,
+      "yM" : 60.59141511624767,
+      "mode" : "rtb",
+      "batteryPct" : 87.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 36,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 54.709698139497206,
+      "yM" : 71.47583494180867,
+      "mode" : "rtb",
+      "batteryPct" : 86.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 54.709698139497206,
+      "yM" : 71.47583494180867,
+      "mode" : "rtb",
+      "batteryPct" : 86.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 57.57359312880715,
+      "yM" : 57.57359312880715,
+      "mode" : "rtb",
+      "batteryPct" : 86.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 71.47583494180867,
+      "yM" : 54.709698139497206,
+      "mode" : "rtb",
+      "batteryPct" : 86.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 37,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 48.827981162746745,
+      "yM" : 63.38847409877678,
+      "mode" : "rtb",
+      "batteryPct" : 86.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 48.827981162746745,
+      "yM" : 63.38847409877678,
+      "mode" : "rtb",
+      "batteryPct" : 86.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 50.50252531694167,
+      "yM" : 50.50252531694167,
+      "mode" : "rtb",
+      "batteryPct" : 86.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 63.38847409877678,
+      "yM" : 48.827981162746745,
+      "mode" : "rtb",
+      "batteryPct" : 86.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 38,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 42.946264185996284,
+      "yM" : 55.301113255744895,
+      "mode" : "rtb",
+      "batteryPct" : 85.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 42.946264185996284,
+      "yM" : 55.301113255744895,
+      "mode" : "rtb",
+      "batteryPct" : 85.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 43.431457505076196,
+      "yM" : 43.431457505076196,
+      "mode" : "rtb",
+      "batteryPct" : 85.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 55.301113255744895,
+      "yM" : 42.946264185996284,
+      "mode" : "rtb",
+      "batteryPct" : 85.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 39,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 37.06454720924582,
+      "yM" : 47.213752412713006,
+      "mode" : "rtb",
+      "batteryPct" : 85.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 37.06454720924582,
+      "yM" : 47.213752412713006,
+      "mode" : "rtb",
+      "batteryPct" : 85.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 36.36038969321072,
+      "yM" : 36.36038969321072,
+      "mode" : "rtb",
+      "batteryPct" : 85.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 47.213752412713006,
+      "yM" : 37.06454720924582,
+      "mode" : "rtb",
+      "batteryPct" : 85.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 40,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 31.182830232495363,
+      "yM" : 39.12639156968112,
+      "mode" : "rtb",
+      "batteryPct" : 84.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 31.182830232495363,
+      "yM" : 39.12639156968112,
+      "mode" : "rtb",
+      "batteryPct" : 84.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 29.289321881345245,
+      "yM" : 29.289321881345245,
+      "mode" : "rtb",
+      "batteryPct" : 84.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 39.12639156968112,
+      "yM" : 31.182830232495363,
+      "mode" : "rtb",
+      "batteryPct" : 84.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 41,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 25.3011132557449,
+      "yM" : 31.039030726649234,
+      "mode" : "rtb",
+      "batteryPct" : 84.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 25.3011132557449,
+      "yM" : 31.039030726649234,
+      "mode" : "rtb",
+      "batteryPct" : 84.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 22.21825406947977,
+      "yM" : 22.21825406947977,
+      "mode" : "rtb",
+      "batteryPct" : 84.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 31.039030726649234,
+      "yM" : 25.3011132557449,
+      "mode" : "rtb",
+      "batteryPct" : 84.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 42,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 19.41939627899444,
+      "yM" : 22.95166988361735,
+      "mode" : "rtb",
+      "batteryPct" : 83.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 19.41939627899444,
+      "yM" : 22.95166988361735,
+      "mode" : "rtb",
+      "batteryPct" : 83.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 15.147186257614294,
+      "yM" : 15.147186257614294,
+      "mode" : "rtb",
+      "batteryPct" : 83.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 22.95166988361735,
+      "yM" : 19.41939627899444,
+      "mode" : "rtb",
+      "batteryPct" : 83.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 43,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 13.537679302243976,
+      "yM" : 14.864309040585464,
+      "mode" : "rtb",
+      "batteryPct" : 83.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 13.537679302243976,
+      "yM" : 14.864309040585464,
+      "mode" : "rtb",
+      "batteryPct" : 83.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "rtb",
+      "batteryPct" : 83.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 14.864309040585464,
+      "yM" : 13.537679302243976,
+      "mode" : "rtb",
+      "batteryPct" : 83.0,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 44,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "rtb",
+      "batteryPct" : 82.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "rtb",
+      "batteryPct" : 82.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "landed",
+      "batteryPct" : 82.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "landed",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "rtb",
+      "batteryPct" : 82.5,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "rtb",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  }, {
+    "tick" : 45,
+    "drones" : [ {
+      "id" : "d-01",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "landed",
+      "batteryPct" : 82.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-1",
+      "searchLaneComplete" : false,
+      "searchPhase" : "landed",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-02",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "landed",
+      "batteryPct" : 82.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "landed",
+      "supplementalPassCount" : 0
+    }, {
+      "id" : "d-03",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "landed",
+      "batteryPct" : 82.7,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-3",
+      "detectionTargetId" : "t2",
+      "searchLaneComplete" : false,
+      "searchPhase" : "landed",
+      "supplementalPassCount" : 1
+    }, {
+      "id" : "d-04",
+      "xM" : 10.0,
+      "yM" : 10.0,
+      "mode" : "landed",
+      "batteryPct" : 82.2,
+      "assignedTargetId" : "t2",
+      "sectorId" : "t2-lane-4",
+      "searchLaneComplete" : false,
+      "searchPhase" : "landed",
+      "supplementalPassCount" : 1
+    } ],
+    "foundTargetIds" : [ "t1", "t2" ]
+  } ],
+  "searchedCells" : [ [ 5, 5 ], [ 10, 5 ], [ 7, 6 ], [ 15, 6 ], [ 6, 7 ], [ 7, 7 ], [ 12, 7 ], [ 20, 7 ], [ 8, 8 ], [ 10, 8 ], [ 25, 8 ], [ 11, 9 ], [ 30, 9 ], [ 10, 10 ], [ 15, 10 ], [ 16, 10 ], [ 20, 10 ], [ 22, 10 ], [ 25, 10 ], [ 30, 10 ], [ 35, 10 ], [ 9, 11 ], [ 11, 11 ], [ 13, 12 ], [ 15, 12 ], [ 20, 13 ], [ 10, 14 ], [ 12, 14 ], [ 14, 14 ], [ 17, 14 ], [ 22, 14 ], [ 27, 14 ], [ 32, 14 ], [ 35, 14 ], [ 12, 15 ], [ 17, 15 ], [ 19, 15 ], [ 24, 16 ], [ 10, 18 ], [ 15, 18 ], [ 18, 18 ], [ 20, 18 ], [ 22, 18 ], [ 23, 18 ], [ 28, 18 ], [ 35, 18 ], [ 15, 19 ], [ 20, 19 ], [ 21, 21 ], [ 27, 21 ], [ 32, 21 ], [ 22, 22 ], [ 37, 22 ], [ 18, 23 ], [ 24, 23 ], [ 31, 24 ], [ 37, 24 ], [ 25, 25 ], [ 27, 26 ], [ 40, 26 ], [ 21, 27 ], [ 35, 27 ], [ 41, 27 ], [ 28, 28 ], [ 29, 29 ], [ 31, 30 ], [ 39, 30 ], [ 43, 30 ], [ 45, 30 ], [ 24, 31 ], [ 32, 32 ], [ 49, 32 ], [ 43, 33 ], [ 34, 34 ], [ 46, 34 ], [ 27, 35 ], [ 35, 35 ], [ 53, 35 ], [ 36, 36 ], [ 47, 36 ], [ 37, 37 ], [ 49, 38 ], [ 57, 38 ], [ 30, 39 ], [ 39, 39 ], [ 51, 39 ], [ 40, 40 ], [ 45, 40 ], [ 48, 40 ], [ 50, 40 ], [ 55, 40 ], [ 60, 40 ], [ 42, 42 ], [ 55, 42 ], [ 33, 43 ], [ 40, 44 ], [ 45, 44 ], [ 50, 44 ], [ 55, 44 ], [ 60, 44 ], [ 60, 45 ], [ 46, 46 ], [ 36, 47 ], [ 40, 48 ], [ 45, 48 ], [ 50, 48 ], [ 55, 48 ], [ 60, 48 ], [ 50, 50 ], [ 60, 50 ], [ 39, 51 ], [ 40, 52 ], [ 45, 52 ], [ 50, 52 ], [ 55, 52 ], [ 60, 52 ], [ 42, 55 ], [ 50, 55 ], [ 60, 55 ], [ 40, 56 ], [ 45, 56 ], [ 50, 56 ], [ 55, 56 ], [ 60, 56 ], [ 45, 60 ], [ 50, 60 ], [ 55, 60 ], [ 60, 60 ] ],
+  "summary" : {
+    "ticksRun" : 45,
+    "searchedCellCount" : 40,
+    "successCriteriaMet" : true,
+    "allTargetsFound" : true,
+    "allRtbLanded" : true,
+    "anyGeofenceViolation" : false,
+    "fleetRtbTick" : 30,
+    "foundTargetIds" : [ "t1", "t2" ],
+    "events" : [ {
+      "type" : "TARGET_FOUND",
+      "tick" : 14,
+      "targetId" : "t1",
+      "droneId" : "d-01",
+      "detail" : "confidence 0.91"
+    }, {
+      "type" : "LANE_COMPLETE",
+      "tick" : 27,
+      "targetId" : "t2",
+      "droneId" : "d-04",
+      "detail" : "primary search lane finished"
+    }, {
+      "type" : "EXPANDED_SEARCH",
+      "tick" : 28,
+      "targetId" : "t2",
+      "droneId" : "d-04",
+      "detail" : "pass 1 — continuing search until battery RTB"
+    }, {
+      "type" : "LANE_COMPLETE",
+      "tick" : 28,
+      "targetId" : "t2",
+      "droneId" : "d-03",
+      "detail" : "primary search lane finished"
+    }, {
+      "type" : "EXPANDED_SEARCH",
+      "tick" : 29,
+      "targetId" : "t2",
+      "droneId" : "d-03",
+      "detail" : "pass 1 — continuing search until battery RTB"
+    }, {
+      "type" : "FLEET_RTB",
+      "tick" : 30,
+      "detail" : "all targets found — fleet RTB"
+    }, {
+      "type" : "TARGET_FOUND",
+      "tick" : 30,
+      "targetId" : "t2",
+      "droneId" : "d-03",
+      "detail" : "confidence 0.91"
+    }, {
+      "type" : "MISSION_END",
+      "tick" : 45,
+      "detail" : "success — all targets found, all landed=true"
+    } ]
+  },
+  "copilot" : {
+    "narrations" : [ ],
+    "violations" : [ {
+      "tick" : 45,
+      "severity" : "INFO",
+      "ruleId" : "airspace-v1",
+      "summary" : "SAR mission sar-multi-001 successfully completed with all targets found.",
+      "recommendedAction" : "Verify target IDs and proceed with retrieval.",
+      "sourceEventType" : "MISSION_SAFETY_SUMMARY"
+    } ]
+  }
+}

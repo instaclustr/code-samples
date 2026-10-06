@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+<rect width="100%" height="100%" fill="#0f172a"/>
+<text x="20" y="28" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="16">sar-test-fast — search heatmap + paths</text>
+<polygon points="126,774 774,774 774,126 126,126 " fill="none" stroke="#22c55e" stroke-width="2.0" stroke-dasharray="8,4"/>
+<polygon points="946,-46 1033,-46 1033,-133 946,-133 " fill="#ef444433" stroke="#ef4444" stroke-width="1.5"/>
+<rect x="18" y="860" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="126" y="860" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="83" y="838" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="234" y="838" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="62" y="817" width="21" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="342" y="817" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="450" y="817" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="83" y="795" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="191" y="795" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="558" y="795" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="666" y="774" width="21" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="126" y="752" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="234" y="752" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="342" y="752" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="450" y="752" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="558" y="752" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="666" y="752" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="774" y="752" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="148" y="731" width="21" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="277" y="731" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="385" y="687" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="126" y="666" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="234" y="666" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="342" y="666" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="450" y="666" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="558" y="666" width="21" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="666" y="666" width="21" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="774" y="666" width="21" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="213" y="644" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="472" y="644" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="579" y="601" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="126" y="579" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="234" y="579" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="299" y="579" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="342" y="579" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="450" y="579" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="558" y="579" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="666" y="579" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="774" y="579" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="666" y="558" width="21" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="126" y="493" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="234" y="493" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="342" y="493" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="364" y="493" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="450" y="493" width="22" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="558" y="493" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="666" y="493" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="774" y="493" width="21" height="22" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="126" y="407" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="234" y="407" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="342" y="407" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<rect x="450" y="407" width="22" height="21" fill="#3b82f6" fill-opacity="0.35"/>
+<polyline fill="none" stroke="#2563eb" stroke-width="2.5" stroke-opacity="0.85" points="95,805 126,774 126,774 234,774 342,774 450,774 450,774 450,687 450,687 342,687 234,687 126,687 126,687 126,601 126,601 234,601 342,601 450,601 450,601 450,515 450,515 342,515 234,515 126,515 126,515 126,428 126,428 234,428 342,428 450,428 376,507 301,585 227,663 152,741 78,819 18,882 18,882 18,882 "/>
+<circle cx="18" cy="882" r="5" fill="#2563eb"/>
+<polyline fill="none" stroke="#dc2626" stroke-width="2.5" stroke-opacity="0.85" points="147,866 253,850 360,834 467,819 574,803 680,787 774,774 774,774 666,774 558,774 450,774 450,774 450,687 450,687 558,687 666,687 774,687 774,687 774,601 774,601 666,601 558,601 450,601 450,601 450,515 450,515 558,515 666,515 774,515 677,562 580,609 483,656 385,703 288,750 191,798 94,845 18,882 18,882 "/>
+<circle cx="18" cy="882" r="5" fill="#dc2626"/>
+<rect x="23" y="865" width="12" height="12" fill="#eab308" stroke="#fef08a" stroke-width="1"/>
+<text x="39" y="875" fill="#fef08a" font-size="11">base</text>
+<circle cx="461" cy="439" r="7" fill="none" stroke="#fb923c" stroke-width="2"/>
+<circle cx="461" cy="439" r="3" fill="#fb923c"/>
+<text x="471" y="443" fill="#fb923c" font-size="10">t1 · FOUND t30</text>
+<g font-family="system-ui,sans-serif" font-size="12" fill="#cbd5e1">
+<rect x="20" y="874" width="12" height="3" fill="#2563eb"/>
+<text x="38" y="884">d-01</text>
+<rect x="20" y="856" width="12" height="3" fill="#dc2626"/>
+<text x="38" y="866">d-02</text>
+</g>
+<rect x="608" y="762" width="268" height="108" rx="8" fill="#1e293b" fill-opacity="0.92" stroke="#475569"/>
+<text x="620" y="780" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Mission status</text>
+<text x="620" y="798" fill="#4ade80" font-family="system-ui,sans-serif" font-size="12">All targets found</text>
+<text x="620" y="814" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="11">Ticks: 38 · searched cells: 52 · landed: true</text>
+<text x="620" y="830" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="11">t1 (person): found tick 30</text>
+</svg>
