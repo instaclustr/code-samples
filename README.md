@@ -21,6 +21,7 @@ Each technology has its own folder hierarchy. Multi-tech demos that span multipl
 | **Kafka** | [data-processing-pipeline](./Kafka/data-processing-pipeline/) | Zero-code real-time Tide Data Processing Pipeline with Kafka Connect |
 | **PostgreSQL** | [Postgres-ANF](./Postgres/Postgres-ANF/) | Performance test scripts for PostgreSQL on Azure NetApp Files |
 | **ZooKeeper** | [Dining Philosophers](./Zookeeper/zookeeper-meets-Dining-Philosophers/) | Classic Dining Philosophers solved with ZooKeeper distributed locks |
+| **Labs** | [Labs](./Labs/) | Jupyter notebooks for the journeys in instaclustr/labs. Starts with rag-retrieval: vector, keyword, hybrid, grounded and governed retrieval on OpenSearch |
 
 ## Getting Started
 
