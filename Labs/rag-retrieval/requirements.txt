@@ -1,0 +1,17 @@
+# Python 3.10 or newer (3.12 recommended).
+# Pinned to the versions these notebooks were tested with, so a new release cannot break a workshop.
+# Where they overlap, versions match the instaclustr/labs rag-retrieval journey.
+opensearch-py==3.2.0
+sentence-transformers==6.2.0
+spacy==3.8.16
+numpy==2.2.6
+# On Python 3.10, scipy 1.15.x can fail to load on recent macOS ("__thread_bss ... zero-fill section").
+# 1.14.x avoids that. Newer Pythons get a current scipy.
+scipy==1.14.1; python_version < "3.11"
+python-dotenv==1.2.4
+boto3==1.43.116
+openai==2.54.0
+pandas==2.3.3
+# To open and run the notebooks
+jupyterlab==4.6.4
+ipykernel==7.3.0

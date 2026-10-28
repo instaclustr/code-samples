@@ -1,0 +1,14 @@
+# Secrets: your own LLM settings live in .env, never commit it
+.env
+.env.*
+!.env.example
+
+# Local environment and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.cache/
+
+.DS_Store
