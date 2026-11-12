@@ -11,4 +11,7 @@ __pycache__/
 .ipynb_checkpoints/
 .cache/
 
+# Not published: the scripts that built the shared cluster's indexes
+extras/
+
 .DS_Store

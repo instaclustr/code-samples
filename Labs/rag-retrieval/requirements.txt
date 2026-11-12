@@ -1,6 +1,6 @@
-# Python 3.10 or newer (3.12 recommended).
+# Python 3.10 or newer (tested on 3.10).
 # Pinned to the versions these notebooks were tested with, so a new release cannot break a workshop.
-# Where they overlap, versions match the instaclustr/labs rag-retrieval journey.
+# The instaclustr/labs rag-retrieval journey uses compatible versions (spaCy 3.8.16, NumPy 2 allowed), so one virtual environment can serve both.
 opensearch-py==3.2.0
 sentence-transformers==6.2.0
 spacy==3.8.16
