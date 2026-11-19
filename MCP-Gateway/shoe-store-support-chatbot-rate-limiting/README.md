@@ -1,6 +1,6 @@
 # Shoe Store Support ChatBot: MCP Gateway Rate Limiting Sample
 
-A **AWS Bedrock + Streamlit** chatbot that connects to the **NetApp Instaclustr MCP Gateway**
+An **AWS Bedrock + Streamlit** chatbot that connects to the **NetApp Instaclustr MCP Gateway**
 over Streamable HTTP. This is the companion code for the tutorial
 *"MCP Gateway Rate Limiting: Token-Bucket Limits for AI Agents"*, building on
 [shoe-store-support-chatbot](../shoe-store-support-chatbot) and
