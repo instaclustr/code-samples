@@ -1,6 +1,6 @@
 # Shoe Store Support ChatBot — MCP Gateway RBAC Sample
 
-A **AWS Bedrock + Streamlit** chatbot that logs users in with **[Auth0](https://auth0.com)**
+An **AWS Bedrock + Streamlit** chatbot that logs users in with **[Auth0](https://auth0.com)**
 and connects to the **NetApp Instaclustr MCP Gateway** over Streamable HTTP,
 attaching the resulting access token as a Bearer token on every request. The
 Gateway enforces **role-based tool access** via its per-persona **Access
